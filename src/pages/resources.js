@@ -4,11 +4,13 @@ import Box from 'components/box';
 import Head from 'components/head';
 import Title from 'components/title';
 
-const Resources = ({ data }) => (
+const Resources = () => (
   <Layout>
-    <Head pageTitle='Resources' />
+    <Head pageTitle="Resources" />
     <Box>
-      <Title as="h2" size="large">Resources</Title>
+      <Title as="h2" size="large">
+        Resources
+      </Title>
     </Box>
   </Layout>
 );

@@ -29,5 +29,14 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: `gatsby-source-meetup`,
+      options: {
+        groupUrlName: 'newhavenio',
+        status: 'upcoming',
+        desc: 'false',
+        page: 10,
+      },
+    },
   ],
 };

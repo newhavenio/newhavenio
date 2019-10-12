@@ -4,11 +4,13 @@ import Box from 'components/box';
 import Head from 'components/head';
 import Title from 'components/title';
 
-const Slack = ({ data }) => (
+const Slack = () => (
   <Layout>
-    <Head pageTitle='Slack' />
+    <Head pageTitle="Slack" />
     <Box>
-      <Title as="h2" size="large">Slack</Title>
+      <Title as="h2" size="large">
+        Slack
+      </Title>
     </Box>
   </Layout>
 );
