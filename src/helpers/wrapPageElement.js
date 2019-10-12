@@ -1,9 +1,16 @@
 import React from 'react';
-import Transition from 'components/transition';
+import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 
+import Transition from 'components/transition';
+import { theme } from 'constants/theme';
+
 const wrapPageElement = ({ element, props }) => {
-  return <Transition {...props}>{element}</Transition>;
+  return (
+    <ThemeProvider theme={theme}>
+      <Transition {...props}>{element}</Transition>
+    </ThemeProvider>
+  );
 };
 
 wrapPageElement.propTypes = {

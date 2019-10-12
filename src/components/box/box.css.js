@@ -1,6 +1,10 @@
 import styled from 'styled-components';
+import { flexbox, grid, layout, position, space } from 'styled-system';
 
 export const Container = styled.div`
-  padding: 2rem 4rem;
-  max-width: 700px;
+  ${flexbox};
+  ${grid};
+  ${layout};
+  ${position};
+  ${space};
 `;
