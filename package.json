@@ -70,7 +70,6 @@
     "eslint-plugin-react": "^7.16.0",
     "favicons": "^5.4.1",
     "gatsby-plugin-eslint": "^2.0.5",
-    "gatsby-plugin-root-import": "^2.0.5",
     "husky": "^3.0.8",
     "lighthouse": "^5.5.0",
     "mkdirp": "^0.5.1",
