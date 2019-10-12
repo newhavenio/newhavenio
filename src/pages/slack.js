@@ -6,9 +6,11 @@ import Title from 'components/title';
 
 const Slack = ({ data }) => (
   <Layout>
-    <Head pageTitle='Slack' />
+    <Head pageTitle="Slack" />
     <Box>
-      <Title as="h2" size="large">Slack</Title>
+      <Title as="h2" size="large">
+        Slack
+      </Title>
     </Box>
   </Layout>
 );

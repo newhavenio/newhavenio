@@ -6,9 +6,11 @@ import Title from 'components/title';
 
 const Events = ({ data }) => (
   <Layout>
-    <Head pageTitle='Events' />
+    <Head pageTitle="Events" />
     <Box>
-      <Title as="h2" size="large">Events</Title>
+      <Title as="h2" size="large">
+        Events
+      </Title>
     </Box>
   </Layout>
 );
