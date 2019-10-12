@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text } from './title.css';
+import { TitleText } from './title.css';
 
-const Title = ({ children, as = 'span', size }) => {
+const Title = ({ children, as = 'span', ...props }) => {
   return (
-    <Text as={as} size={size}>
+    <TitleText as={as} {...props}>
       {children}
-    </Text>
+    </TitleText>
   );
 };
 

@@ -1,7 +1,11 @@
 import styled from 'styled-components';
-import MEDIA from 'helpers/mediaTemplates';
+import { color } from 'styled-system';
 
-export const Text = styled.span`
+import MEDIA from 'helpers/mediaTemplates';
+import Text from 'components/Text';
+
+export const TitleText = styled(Text)`
+  ${color};
   display: block;
   font-weight: ${({ size }) => () => {
     switch (size) {
@@ -19,7 +23,7 @@ export const Text = styled.span`
         return '2rem';
     }
   }};
-   line-height: ${({ size }) => () => {
+  line-height: ${({ size }) => () => {
     switch (size) {
       case 'large':
         return '1';
