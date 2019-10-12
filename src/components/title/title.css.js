@@ -6,20 +6,27 @@ export const Text = styled.span`
   font-weight: ${({ size }) => () => {
     switch (size) {
       case 'large':
-        return '400';
+        return '700';
       default:
-        return '500';
+        return '400';
     }
   }};
   font-size: ${({ size }) => () => {
     switch (size) {
       case 'large':
-        return '3.2rem';
+        return '5rem';
       default:
         return '2rem';
     }
   }};
-  line-height: 1.2;
+   line-height: ${({ size }) => () => {
+    switch (size) {
+      case 'large':
+        return '1';
+      default:
+        return '1.2';
+    }
+  }};
 
   ${MEDIA.TABLET`
     font-size: ${({ size }) => () => {
