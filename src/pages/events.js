@@ -4,13 +4,13 @@ import Box from 'components/box';
 import Head from 'components/head';
 import Title from 'components/title';
 
-const About = ({ data }) => (
+const Events = ({ data }) => (
   <Layout>
-    <Head pageTitle='About' />
+    <Head pageTitle='Events' />
     <Box>
-      <Title as="h2" size="large">About</Title>
+      <Title as="h2" size="large">Events</Title>
     </Box>
   </Layout>
 );
 
-export default About;
+export default Events;
