@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-universal",
+  "name": "newhaven-io",
   "license": "MIT",
-  "author": "Fabian Schultz <desk@fabianschultz.com>",
+  "author": "newhaven.io <contact@newhaven.io>",
   "scripts": {
     "develop": "gatsby develop",
     "serve": "gatsby serve",
@@ -10,6 +10,7 @@
     "build:dir": "mkdirp ./public/icons/",
     "build:favicons": "node scripts/favicons",
     "build": "npm run build:dir && npm run build:favicons && gatsby build",
+    "lint": "eslint src/**/*.js --fix",
     "test": "ava **/*.test.js --verbose",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -70,9 +71,16 @@
     "favicons": "^5.4.1",
     "gatsby-plugin-eslint": "^2.0.5",
     "gatsby-plugin-root-import": "^2.0.5",
+    "husky": "^3.0.8",
     "lighthouse": "^5.5.0",
     "mkdirp": "^0.5.1",
     "node-gyp": "^6.0.0",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "pretty-quick --staged && yarn lint"
+    }
   }
 }
