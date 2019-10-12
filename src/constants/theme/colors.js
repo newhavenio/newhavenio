@@ -1,4 +1,4 @@
-export const White = {
+export const Whites = {
   100: '#FFFFFF',
 };
 
@@ -23,6 +23,7 @@ export const Oranges = {
 
 export const Blues = {
   100: '#386688',
+  60: '#6B99BB',
   30: '#EBEFF3',
 };
 
