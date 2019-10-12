@@ -4,7 +4,7 @@ import Box from 'components/box';
 import Head from 'components/head';
 import Title from 'components/title';
 
-const Resources = ({ data }) => (
+const Resources = () => (
   <Layout>
     <Head pageTitle="Resources" />
     <Box>

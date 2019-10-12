@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import Layout from 'components/layout';
 import Box from 'components/box';
 import Title from 'components/title';
 import Text from 'components/text';
 import SplashShapeTop from 'images/splash-shape-top.svg';
 import SplashShapeBottom from 'images/splash-shape-bottom.svg';
+
 
 const Index = () => (
   <Layout>
@@ -61,9 +61,5 @@ const Index = () => (
     </Box>
   </Layout>
 );
-
-Index.propTypes = {
-  data: PropTypes.object.isRequired,
-};
 
 export default Index;
