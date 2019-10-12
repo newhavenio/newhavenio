@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2087" height="702" fill="none" viewBox="0 0 2087 702">
+    <path fill="url(#splash_shape_top)" d="M0 630.731V0H2087L548.38 702L0 630.731Z"/>
+    <defs>
+        <linearGradient id="splash_shape_top" x1="-4.74789" x2="1185.84" y1="116.406" y2="340.002" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FC6612"/>
+            <stop offset="0.479167" stop-color="#FF7B1A"/>
+            <stop offset="1" stop-color="#FF961A"/>
+        </linearGradient>
+    </defs>
+</svg>
