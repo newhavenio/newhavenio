@@ -1,4 +1,5 @@
 import React from 'react';
+import P from 'prop-types';
 import Layout from 'components/layout';
 import Box from 'components/box';
 import Head from 'components/head';
@@ -17,6 +18,15 @@ const Events = ({ data: { meetupGroup } }) => (
     </Box>
   </Layout>
 );
+
+Events.propTypes = {
+  data: P.shape({
+    meetupGroup: P.shape({
+      members: P.number,
+      link: P.string,
+    }),
+  }),
+};
 
 export const homeQuery = graphql`
   query EventsQuery {

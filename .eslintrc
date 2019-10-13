@@ -6,14 +6,14 @@
   },
   "rules": {
     "strict": 0,
-    "no-console": "warn",
+    "no-console": "error",
     "quotes": [
       "warn",
       "single"
     ],
-    "prettier/prettier": "warn",
-    "react/prop-types": "warn",
-    "no-unused-vars": "warn"
+    "prettier/prettier": "error",
+    "react/prop-types": "error",
+    "no-unused-vars": "error"
   },
   "extends": [
     "eslint:recommended",

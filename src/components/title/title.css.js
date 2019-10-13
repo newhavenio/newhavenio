@@ -31,6 +31,14 @@ export const TitleText = styled(Text)`
         return '1.2';
     }
   }};
+  padding: ${({ size }) => () => {
+    switch (size) {
+      case 'large':
+        return '1.5rem 0';
+      default:
+        return '0';
+    }
+  }};
 
   ${MEDIA.TABLET`
     font-size: ${({ size }) => () => {

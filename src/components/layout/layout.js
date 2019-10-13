@@ -5,13 +5,17 @@ import Head from 'components/head';
 import Header from 'components/header';
 import GlobalStyle from 'global.css.js';
 
+import * as Styled from './layout.css';
+
 const Layout = ({ data, children }) => (
-  <div>
-    <GlobalStyle />
-    <Head />
-    <Header title={data.site.siteMetadata.siteTitle} />
-    {children}
-  </div>
+  <Styled.Container>
+    <Styled.Content>
+      <GlobalStyle />
+      <Head />
+      <Header title={data.site.siteMetadata.siteTitle} />
+      {children}
+    </Styled.Content>
+  </Styled.Container>
 );
 
 Layout.propTypes = {
