@@ -1,4 +1,2 @@
-export const fonts = {
-  heading: 'Source Sans Pro',
-  body: 'Lato',
-};
+export const heading = 'Source Sans Pro';
+export const body = 'Lato';
