@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Layout from 'components/layout';
 import Box from 'components/box';
+import ButtonWrapper from 'components/button/wrapper';
+import Button from 'components/button';
 import Title from 'components/title';
 import Text from 'components/text';
 import SplashShapeTop from 'images/splash-shape-top.svg';
 import SplashShapeBottom from 'images/splash-shape-bottom.svg';
-
 
 const Index = () => (
   <Layout>
@@ -16,6 +17,7 @@ const Index = () => (
       display="flex"
       flexDirection="column"
       padding="0 4rem"
+      alignItems="flex-start"
     >
       <SplashShapeTop
         style={{
@@ -32,6 +34,10 @@ const Index = () => (
         NewHaven.io is a tech community lorem ipsum dolor sit amet, consectetur
         adipiscing elit.
       </Text>
+      <ButtonWrapper>
+        <Button palette="secondary">Join the Slack</Button>
+        <Button palette="tertiary">Join the Meetup</Button>
+      </ButtonWrapper>
     </Box>
     <Box minHeight="300px" padding="4rem">
       <Title as="h2" size="large" color="Grays.100">

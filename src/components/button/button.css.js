@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-
 import { theme } from 'constants/theme';
 
 const makePalette = ({
@@ -51,8 +50,8 @@ export const Container = styled.button`
   cursor: pointer;
   font-size: 18px;
   font-weight: 600;
+  font-family: ${theme.fonts.heading};
   padding: 1rem 2rem;
-
   :disabled {
     cursor: default;
   }
