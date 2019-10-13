@@ -1,6 +1,5 @@
 import React from 'react';
 import { Location } from '@reach/router';
-import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
 import Nav from 'components/header/nav';
@@ -9,21 +8,20 @@ import { theme } from 'constants/theme';
 
 import { Container } from './header.css';
 
-const Header = ({ title }) => (
+const Header = () => (
   <Location>
     {({ location }) => (
       <Container isRoot={location.pathname === '/'}>
         <Link to="/">
-          <Logo color={theme.colors.Whites[100]} />
+          <Logo
+            squareColor={theme.colors.Whites[100]}
+            letterColor="transparent"
+          />
         </Link>
         <Nav />
       </Container>
     )}
   </Location>
 );
-
-Header.propTypes = {
-  title: PropTypes.string.isRequired,
-};
 
 export default Header;
