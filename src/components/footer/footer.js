@@ -1,12 +1,14 @@
 import React from 'react';
-import * as Styled from './footer.css';
 import Link from 'gatsby-link';
-import Logo from 'components/logo';
+
+import Logo from 'components/shared/logo';
 import SlackIcon from 'images/slack-icon.svg';
 import MeetupIcon from 'images/meetup-icon.svg';
 import TwitterIcon from 'images/twitter-icon.svg';
 import GithubIcon from 'images/github-icon.svg';
 import { theme } from 'constants/theme';
+
+import * as Styled from './footer.css';
 /**
  * Component present at the bottom of all screens via the Layout component
  */

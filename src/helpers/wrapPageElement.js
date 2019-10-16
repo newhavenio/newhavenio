@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Transition from 'components/transition';
+import Transition from 'components/shared/transition';
 import { theme } from 'constants/theme';
 
 const wrapPageElement = ({ element, props }) => {

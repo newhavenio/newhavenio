@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Consumer } from 'store/createContext';
-import Modal from 'components/modal';
+import Modal from 'components/shared/modal';
 
 const ModalContainer = ({ children }) => (
   <Consumer>

@@ -1,10 +1,10 @@
 import React from 'react';
 import P from 'prop-types';
-import Layout from 'components/layout';
-import Box from 'components/box';
-import Head from 'components/head';
-import Title from 'components/title';
 import { graphql } from 'gatsby';
+import Layout from 'components/layout';
+import Head from 'components/head';
+import Box from 'components/shared//box';
+import Title from 'components/shared/title';
 
 const Events = ({ data: { meetupGroup } }) => (
   <Layout>

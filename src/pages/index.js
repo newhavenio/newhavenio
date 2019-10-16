@@ -1,10 +1,9 @@
 import React from 'react';
 import Layout from 'components/layout';
-import Box from 'components/box';
-import ButtonWrapper from 'components/button/wrapper';
-import Button from 'components/button';
-import Title from 'components/title';
-import Text from 'components/text';
+import Box from 'components/shared/box';
+import Button from 'components/shared/button';
+import Title from 'components/shared/title';
+import Text from 'components/shared/text';
 import SplashShapeTop from 'images/splash-shape-top.svg';
 import SplashShapeBottom from 'images/splash-shape-bottom.svg';
 
@@ -36,10 +35,10 @@ const Index = () => (
           consectetur adipiscing elit.
         </Text>
       </Box>
-      <ButtonWrapper>
+      <Button.Wrapper>
         <Button palette="secondary">Join the Slack</Button>
         <Button palette="tertiary">Join the Meetup</Button>
-      </ButtonWrapper>
+      </Button.Wrapper>
     </Box>
     <Box padding="0 4rem">
       <Title as="h2" size="large" color="Grays.100">

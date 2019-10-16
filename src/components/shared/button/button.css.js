@@ -58,3 +58,11 @@ export const Container = styled.button`
 
   ${p => PALETTES[p.palette]}
 `;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  button + button {
+    margin-left: 1rem;
+  }
+`;

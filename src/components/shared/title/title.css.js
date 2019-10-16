@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { color } from 'styled-system';
 
 import MEDIA from 'helpers/mediaTemplates';
-import Text from 'components/text';
+import Text from 'components/shared/text';
 
 export const TitleText = styled(Text)`
   ${color};

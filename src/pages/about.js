@@ -1,8 +1,9 @@
 import React from 'react';
+
 import Layout from 'components/layout';
-import Box from 'components/box';
 import Head from 'components/head';
-import Title from 'components/title';
+import Box from 'components/shared/box';
+import Title from 'components/shared/title';
 
 const About = () => (
   <Layout>

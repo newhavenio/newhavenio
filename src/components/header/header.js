@@ -3,7 +3,7 @@ import { Location } from '@reach/router';
 import { Link } from 'gatsby';
 
 import Nav from 'components/header/nav';
-import Logo from 'components/logo';
+import Logo from 'components/shared/logo';
 import { theme } from 'constants/theme';
 
 import { Container } from './header.css';

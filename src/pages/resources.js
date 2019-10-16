@@ -1,8 +1,8 @@
 import React from 'react';
 import Layout from 'components/layout';
-import Box from 'components/box';
 import Head from 'components/head';
-import Title from 'components/title';
+import Title from 'components/shared/title';
+import Box from 'components/shared/box';
 
 const Resources = () => (
   <Layout>
