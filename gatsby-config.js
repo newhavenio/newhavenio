@@ -30,13 +30,16 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-meetup`,
+      resolve: 'gatsby-source-meetup',
       options: {
         groupUrlName: 'newhavenio',
         status: 'upcoming',
         desc: 'false',
         page: 10,
       },
+    },
+    {
+      resolve: 'gatsby-plugin-styled-components',
     },
   ],
 };
