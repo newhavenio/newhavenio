@@ -5,7 +5,7 @@ export const Container = styled.section`
   width: 100%;
   background: ${theme.colors.Whites[100]};
   /* position: absolute; */
-  padding: 4rem 2rem;
+  padding: 1rem 0;
   /* bottom: -500; */
   display: flex;
   justify-content: center;
