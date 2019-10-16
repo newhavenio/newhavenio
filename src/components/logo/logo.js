@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 
 import { theme } from 'constants/theme';
 
-const Logo = ({ squareColor = theme.colors.Oranges[60], letterColor = theme.colors.Whites[100] }) => (
+const Logo = ({
+  squareColor = theme.colors.Oranges[60],
+  letterColor = theme.colors.Whites[100],
+}) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="74" height="74" fill="none">
-    <path fill={letterColor} d="M1 1h72v72H1z"/>
+    <path fill={letterColor} d="M1 1h72v72H1z" />
     <path
       fill={squareColor}
       fillRule="evenodd"

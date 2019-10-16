@@ -40,25 +40,41 @@ const Footer = () => (
         <p className="heading">Follow Us</p>
         <ul>
           <li>
-					<Styled.SocialLink href="https://newhavenio.slack.com" target="_blank"  rel="noopener noreferrer">
+            <Styled.SocialLink
+              href="https://newhavenio.slack.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <SlackIcon />
               Slack
             </Styled.SocialLink>
           </li>
           <li>
-            <Styled.SocialLink href="https://www.meetup.com/newhavenio" target="_blank"  rel="noopener noreferrer">
+            <Styled.SocialLink
+              href="https://www.meetup.com/newhavenio"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <MeetupIcon />
               Meetup
             </Styled.SocialLink>
           </li>
           <li>
-            <Styled.SocialLink href="https://www.twitter.com/newhavenio" target="_blank"  rel="noopener noreferrer">
+            <Styled.SocialLink
+              href="https://www.twitter.com/newhavenio"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <TwitterIcon />
               Twitter
             </Styled.SocialLink>
           </li>
           <li>
-            <Styled.SocialLink href="https://www.github.com/newhavenio" target="_blank"  rel="noopener noreferrer">
+            <Styled.SocialLink
+              href="https://www.github.com/newhavenio"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <GithubIcon />
               Github
             </Styled.SocialLink>
