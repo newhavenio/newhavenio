@@ -1,5 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
+
+import { theme } from 'constants/theme';
 
 import GlobalStyle from '../../src/global.css';
 
@@ -9,8 +11,10 @@ require('typeface-lato');
 const Container = styled.div``;
 
 export default storyFn => (
-  <Container>
-    <GlobalStyle />
-    {storyFn()}
-  </Container>
+  <ThemeProvider theme={theme}>
+    <Container>
+      <GlobalStyle />
+      {storyFn()}
+    </Container>
+  </ThemeProvider>
 );
