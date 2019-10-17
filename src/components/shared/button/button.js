@@ -13,7 +13,7 @@ const Button = ({ children, disabled, palette }) => (
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
-  disabled: PropTypes.boolean,
+  disabled: PropTypes.bool,
   palette: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
 };
 
