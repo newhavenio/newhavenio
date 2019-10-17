@@ -11,7 +11,9 @@
     "build:favicons": "node scripts/favicons",
     "build": "npm run build:dir && npm run build:favicons && gatsby build",
     "lint": "eslint src/**/*.js --fix",
-    "test": "ava **/*.test.js --verbose",
+    "test:unit": "ava **/*.test.js --verbose",
+    "test:lighthouse": "ava scripts/lighthouse.js --verbose",
+    "test": "yarn test:unit && yarn test:lighthouse",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
