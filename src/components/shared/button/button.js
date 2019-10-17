@@ -17,6 +17,10 @@ Button.propTypes = {
   palette: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
 };
 
+Button.defaultProps = {
+  palette: 'primary',
+};
+
 Button.Wrapper = Styled.ButtonWrapper;
 
 export default Button;
