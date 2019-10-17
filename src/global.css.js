@@ -1,4 +1,11 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
+import * as typography from 'constants/theme/typography';
+
+const getTypographyStyles = kind => css`
+  font-size: ${typography[kind].fontSize};
+  font-weight: ${typography[kind].fontWeight};
+  letter-spacing: ${typography[kind].letterSpacing};
+`;
 
 export default createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -51,12 +58,24 @@ export default createGlobalStyle`
     font-family: "Source Sans Pro", -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   }
 
-  h1, h2, h3 {
-    font-weight: 700;
+  h1 {
+    ${getTypographyStyles('h1')}
   }
 
-  h4, h5, h6 {
-    font-weight: 400;
+  h2 {
+    ${getTypographyStyles('h2')}
+  }
+  h3 {
+    ${getTypographyStyles('h3')}
+  }
+  h4 {
+    ${getTypographyStyles('h4')}
+  }
+  h5 {
+    ${getTypographyStyles('h5')}
+  }
+  h6 {
+    ${getTypographyStyles('h6')}
   }
 
   ol, ul {
