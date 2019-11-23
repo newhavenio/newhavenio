@@ -12,6 +12,7 @@ const isValidEmail = email => EMAIL_REGEX.test(email.toLowerCase());
  */
 const InviteForm = () => {
   const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const handleEmailChange = e => {
     setMessage('');
@@ -21,6 +22,7 @@ const InviteForm = () => {
     e.preventDefault();
 
     try {
+      setLoading(true);
       await axios.post('/.netlify/functions/slackSubmit', {
         params: {
           email,
@@ -52,6 +54,8 @@ const InviteForm = () => {
           'An unexpected error occurred. Please refresh the page and try again.'
         );
       }
+    } finally {
+      setLoading(false);
     }
   });
 
@@ -65,7 +69,7 @@ const InviteForm = () => {
           onChange={handleEmailChange}
           value={email}
         />
-        <Button type="submit" disabled={!isValidEmail(email)}>
+        <Button type="submit" disabled={!isValidEmail(email) || loading}>
           Get Invite
         </Button>
       </Styled.Form>
