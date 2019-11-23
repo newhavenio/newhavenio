@@ -11,4 +11,7 @@ yarn-error.log*
 
 .cache/
 public
-build
+
+# Build
+/build
+/lambda
