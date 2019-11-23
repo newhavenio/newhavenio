@@ -3,8 +3,9 @@
   "license": "MIT",
   "author": "newhaven.io <contact@newhaven.io>",
   "scripts": {
-    "develop": "gatsby develop",
+    "develop:gatsby": "gatsby develop",
     "develop:lambda": "netlify-lambda serve src/lambda",
+    "develop": "run-p develop:**",
     "serve": "gatsby serve",
     "ssr": "npm run build && npm run serve",
     "format": "prettier --config ./.prettierrc --write src/**/*.js",
