@@ -1,7 +1,6 @@
-import styled, { css } from 'styled-components';
-import { theme } from 'constants/theme';
+import styled from 'styled-components';
 
-export const Container = styled.form`
+export const Form = styled.form`
   display: flex;
   flex-flow: row wrap;
   align-items: stretch;
@@ -18,4 +17,10 @@ export const Input = styled.input`
   ::placeholder {
     color: ${p => p.theme.colors.Grays[60]};
   }
+`;
+
+export const Message = styled.p`
+  color: ${p => p.theme.colors.Grays[100]};
+  font-size: 16px;
+  font-weight: 600;
 `;
