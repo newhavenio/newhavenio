@@ -4,6 +4,7 @@ import Button from 'components/shared/button';
 import Text from 'components/shared/text';
 import Title from 'components/shared/title';
 import InviteForm from 'components/shared/inviteform';
+import EventList from 'components/shared/eventlist';
 
 import React from 'react';
 
@@ -58,7 +59,7 @@ const Index = () => (
       display="flex"
       flexDirection="column"
       alignItems="flex-end"
-      padding="6rem 4rem 0"
+      padding={['2rem', '6rem 4rem']}
       style={{
         overflow: 'hidden',
       }}
@@ -70,6 +71,7 @@ const Index = () => (
       <Title as="h2" size="large" color="Grays.100" pt="0">
         Meet People IRL
       </Title>
+      <EventList />
     </Box>
   </Layout>
 );

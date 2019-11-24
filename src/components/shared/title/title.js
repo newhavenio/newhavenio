@@ -13,7 +13,7 @@ const Title = ({ children, as = 'span', ...props }) => {
 Title.propTypes = {
   children: PropTypes.string.isRequired,
   as: PropTypes.string,
-  size: PropTypes.oneOf(['large']),
+  size: PropTypes.oneOf(['large', 'small']),
 };
 
 export default Title;

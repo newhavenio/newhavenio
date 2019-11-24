@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { space } from 'styled-system';
 import { theme } from 'constants/theme';
 
 const makePalette = ({
@@ -58,6 +59,7 @@ export const Container = styled.button`
   }
 
   ${p => PALETTES[p.palette]}
+  ${space};
 `;
 
 export const ButtonWrapper = styled.div`

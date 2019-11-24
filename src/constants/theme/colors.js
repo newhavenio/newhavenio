@@ -11,6 +11,7 @@ export const Grays = {
   100: '#50606C',
   60: '#969696',
   30: '#DEDDDA',
+  20: '#EBEFF3',
   10: '#F0EDEB',
   8: '#F2F1F0',
 };

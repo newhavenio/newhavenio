@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { space } from 'styled-system';
 
 import * as fonts from 'constants/theme/fonts';
 import { FONT_WEIGHTS, LETTER_SPACINGS } from 'constants/theme/typography';
@@ -9,6 +10,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   font-family: ${fonts.heading};
+  ${space};
 `;
 
 export const DayOfWeek = styled.span`
