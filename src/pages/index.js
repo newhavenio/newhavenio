@@ -51,17 +51,6 @@ const Index = () => (
         Lorem ipsum dolor sit amet consectetur, adipisicing elit.
       </Text>
       <InviteForm />
-      <Text fontSize={1} mt={3} display="block" color="Grays.100">
-        Or if you&apos;re already a member{' '}
-        <a
-          href="https://newhavenio.slack.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          sign in
-        </a>
-        .
-      </Text>
     </Box>
     <Box
       minHeight="300px"

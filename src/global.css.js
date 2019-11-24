@@ -121,4 +121,7 @@ export default createGlobalStyle`
     line-height: 1.5;
     margin-bottom: 2rem;
   }
+
+  /* Visually hide recaptcha badge */
+  .grecaptcha-badge { visibility: hidden; }
 `;

@@ -19,8 +19,3 @@ export const Input = styled.input`
   }
 `;
 
-export const Message = styled.p`
-  color: ${p => p.theme.colors.Grays[100]};
-  font-size: 16px;
-  font-weight: 600;
-`;
