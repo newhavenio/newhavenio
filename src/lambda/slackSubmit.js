@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
 import axios from 'axios';
+import qs from 'qs';
 
 dotenv.config();
 
@@ -28,11 +29,19 @@ export async function handler(event, _context, callback) {
   const toSlack = `email=${email}&token=${SLACK_TOKEN}&set_active=true`;
 
   const {
-    data: { success, score },
-  } = await axios.post(RECAPTCHA_ENDPOINT, {
-    secret: RECAPTCHA_SECRET_KEY,
-    response: payload.params.recaptchaToken,
-  });
+    data: { success, score, 'error-codes': errorCodes },
+  } = await axios.post(
+    RECAPTCHA_ENDPOINT,
+    qs.stringify({
+      secret: RECAPTCHA_SECRET_KEY,
+      response: payload.params.recaptchaToken,
+    }),
+    {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    }
+  );
 
   if (!success) {
     // Recaptcha itself was invalid -- might mean key was misconfigured
@@ -40,6 +49,7 @@ export async function handler(event, _context, callback) {
       statusCode: 500,
       body: JSON.stringify({
         error: 'invalid-recaptcha',
+        errorCodes,
       }),
     });
   }
