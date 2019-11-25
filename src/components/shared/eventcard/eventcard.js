@@ -27,14 +27,6 @@ import { parse, format } from 'date-fns';
 const EventCard = ({ event }) => {
   const { name, local_date, time, featured_photo, venue, short_link } = event;
 
-  const image = () => {
-    if (featured_photo) {
-      return <Image src={featured_photo.photo_link} alt="event" />;
-    } else {
-      return <Image src={EventPlaceholderImage} alt="event" />;
-    }
-  };
-
   const parsedDateTime = parse(time, 'T', new Date());
   const formattedTime = format(parsedDateTime, 'h:mm a');
 
@@ -81,8 +73,15 @@ const EventCard = ({ event }) => {
           {name}
         </Text>
       </Box>
-      <ImageWrapper mt={[32, null, null, 0]}>{image()}</ImageWrapper>
-      <RSVPBox p={32} pl={[null, null, null, 0]}>
+      <ImageWrapper mt={{ _: 32, lg: 0 }}>
+        <Image
+          src={
+            featured_photo ? featured_photo.photo_link : EventPlaceholderImage
+          }
+          alt="event"
+        />
+      </ImageWrapper>
+      <RSVPBox p={32} pl={{ lg: 0 }}>
         <IconList>
           <IconRow>
             <Box flex="none">

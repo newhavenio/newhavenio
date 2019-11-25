@@ -40,14 +40,6 @@ const FeaturedEventCard = ({ event }) => {
   const parsedDateTime = parse(time, 'T', new Date());
   const formattedTime = format(parsedDateTime, 'h:mm a');
 
-  const image = () => {
-    if (featured_photo) {
-      return <Image src={featured_photo.photo_link} alt="event" />;
-    } else {
-      return <Image src={EventPlaceholderImage} alt="event" />;
-    }
-  };
-
   const venueLink = () => {
     if (venue) {
       const encodedAddress = encodeURI(
@@ -96,7 +88,14 @@ const FeaturedEventCard = ({ event }) => {
           dangerouslySetInnerHTML={{ __html: short_description }}
         ></Description>
       </Box>
-      <ImageWrapper>{image()}</ImageWrapper>
+      <ImageWrapper>
+        <Image
+          src={
+            featured_photo ? featured_photo.photo_link : EventPlaceholderImage
+          }
+          alt="event"
+        />
+      </ImageWrapper>
       <Box gridArea="blank" bg="Grays.20">
         {' '}
       </Box>
