@@ -15,7 +15,7 @@ const EventList = () => {
           node {
             id
             name
-            simple_html_description
+            plain_text_description
             local_date
             short_link
             time

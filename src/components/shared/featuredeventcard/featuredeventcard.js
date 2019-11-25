@@ -29,7 +29,7 @@ import { parse, format } from 'date-fns';
 const FeaturedEventCard = ({ event }) => {
   const {
     name,
-    simple_html_description,
+    plain_text_description,
     local_date,
     time,
     featured_photo,
@@ -37,7 +37,7 @@ const FeaturedEventCard = ({ event }) => {
     short_link,
   } = event;
 
-  const [short_description] = simple_html_description.split('\n');
+  const [short_description] = plain_text_description.split('\n');
   const parsedDateTime = parse(time, 'T', new Date());
   const formattedTime = format(parsedDateTime, 'h:mm a');
 
@@ -54,13 +54,9 @@ const FeaturedEventCard = ({ event }) => {
         <Text as="h5" color="Blues.100" fontWeight="bold">
           {name}
         </Text>
-        <Description
-          mt={16}
-          mb={0}
-          color="Grays.100"
-          fontSize={3}
-          dangerouslySetInnerHTML={{ __html: short_description }}
-        ></Description>
+        <Description mt={16} mb={0} color="Grays.100" fontSize={3}>
+          {short_description}
+        </Description>
       </Box>
       <ImageWrapper>
         <Image
