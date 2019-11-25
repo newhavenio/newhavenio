@@ -64,21 +64,12 @@ export const IconRow = styled.div`
 `;
 
 const IconText = styled(Text)(color, space, typography);
-const IconLink = styled(Text)(color, space, typography);
 
 IconText.defaultProps = {
   color: 'Grays.100',
   fontSize: 3,
   ml: 3,
 };
-
-IconLink.defaultProps = {
-  color: 'Grays.100',
-  textDecoration: 'underline',
-  fontSize: 3,
-  ml: 3,
-};
-
 export const ImageWrapper = styled.div`
   padding-bottom: 56%;
   position: relative;
@@ -99,4 +90,4 @@ export const Image = styled.img`
   ${grid};
 `;
 
-export { RSVPBox, IconText, IconLink };
+export { RSVPBox, IconText };

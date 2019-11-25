@@ -28,13 +28,6 @@ export const Article = styled.article`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
-export const Description = styled.p`
-  display: block;
-  ${space};
-  ${color};
-  ${typography};
-`;
-
 const RSVPBox = styled(Box)(space, grid, layout);
 
 RSVPBox.defaultProps = {
@@ -59,17 +52,9 @@ export const IconRow = styled.div`
 `;
 
 const IconText = styled(Text)(color, space, typography);
-const IconLink = styled(Text)(color, space, typography);
 
 IconText.defaultProps = {
   color: 'Grays.100',
-  fontSize: 3,
-  ml: 3,
-};
-
-IconLink.defaultProps = {
-  color: 'Grays.100',
-  textDecoration: 'underline',
   fontSize: 3,
   ml: 3,
 };
@@ -91,4 +76,4 @@ export const Image = styled.img`
   ${grid};
 `;
 
-export { RSVPBox, IconText, IconLink };
+export { RSVPBox, IconText };

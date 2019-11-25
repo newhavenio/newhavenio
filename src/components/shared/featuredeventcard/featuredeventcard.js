@@ -11,6 +11,8 @@ import EventPlaceholderImage from 'images/event-placeholder.png';
 import ClockIcon from 'images/clock.svg';
 import MapMarkerIcon from 'images/map-marker.svg';
 
+import VenueLink from 'components/shared/venuelink';
+
 import {
   Article,
   Description,
@@ -20,7 +22,6 @@ import {
   IconList,
   IconRow,
   IconText,
-  IconLink,
 } from './featuredeventcard.css';
 
 import { parse, format } from 'date-fns';
@@ -39,31 +40,6 @@ const FeaturedEventCard = ({ event }) => {
   const [short_description] = simple_html_description.split('\n');
   const parsedDateTime = parse(time, 'T', new Date());
   const formattedTime = format(parsedDateTime, 'h:mm a');
-
-  const venueLink = () => {
-    if (venue) {
-      const encodedAddress = encodeURI(
-        `${venue.name}, ${venue.address_1}, ${venue.city}, ${venue.state}`
-      );
-      const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
-      return (
-        <IconRow mt={3}>
-          <Box flex="none">
-            <MapMarkerIcon />
-          </Box>
-          <IconLink
-            as="a"
-            href={directionsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {venue.name}
-          </IconLink>
-        </IconRow>
-      );
-    }
-    return null;
-  };
 
   return (
     <Article>
@@ -105,7 +81,14 @@ const FeaturedEventCard = ({ event }) => {
             </Box>
             <IconText>{formattedTime}</IconText>
           </IconRow>
-          {venueLink()}
+          {venue && (
+            <IconRow mt={3}>
+              <Box flex="none">
+                <MapMarkerIcon />
+              </Box>
+              <VenueLink venue={venue} />
+            </IconRow>
+          )}
         </IconList>
         <Box mt={{ _: 4, sm: 0 }}>
           <Button
