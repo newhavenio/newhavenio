@@ -45,12 +45,11 @@ const EventList = () => {
       </Box>
       <Box
         display="grid"
-        gridTemplateColumns={['1 fr', null, '1fr 1fr']}
+        gridTemplateColumns={{ _: '1 fr', lg: '1fr 1fr' }}
         gridColumnGap={32}
         gridRowGap={32}
         mt={32}
       >
-        <EventCard event={secondEvent.node} />
         {events}
       </Box>
     </Box>

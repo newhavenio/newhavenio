@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { grid, space, color, typography, layout } from 'styled-system';
+import breakpoints from 'constants/theme/breakpoints';
+
 import Text from 'components/shared/text';
 import Box from 'components/shared/box';
 
-// style-system default breakpoints
-// const breakpoints = ['40em', '52em', '64em']
 export const Article = styled.article`
   display: grid;
   grid-template-columns: auto 1fr;
@@ -14,7 +14,7 @@ export const Article = styled.article`
     'image image'
     'rsvp rsvp';
 
-  @media screen and (min-width: 64em) {
+  @media screen and (min-width: ${breakpoints.lg}) {
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto 1fr;
     grid-template-areas:

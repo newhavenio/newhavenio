@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import { grid, space, color, typography, layout } from 'styled-system';
+import breakpoints from 'constants/theme/breakpoints';
 
 import Text from 'components/shared/text';
 import Box from 'components/shared/box';
 
-// style-system default breakpoints
-// const breakpoints = ['40em', '52em', '64em']
 export const Article = styled.article`
-  @media screen and (min-width: 52em) {
+  @media screen and (min-width: ${breakpoints.md}) {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto auto;
@@ -17,7 +16,7 @@ export const Article = styled.article`
       'rsvp rsvp';
   }
 
-  @media screen and (min-width: 64em) {
+  @media screen and (min-width: ${breakpoints.lg}) {
     height: 400px;
     grid-template-columns: auto 1fr 400px;
     grid-template-rows: 1fr 1fr;
@@ -86,7 +85,7 @@ export const ImageWrapper = styled.div`
   display: block;
   grid-area: image;
 
-  @media screen and (min-width: 64em) {
+  @media screen and (min-width: ${breakpoints.lg}) {
     height: auto;
   }
   ${grid};

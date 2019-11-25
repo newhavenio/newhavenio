@@ -67,11 +67,11 @@ const FeaturedEventCard = ({ event }) => {
 
   return (
     <Article>
-      <Box pl={32} pt={32} pr={[32, 0]}>
+      <Box pl={32} pt={32} pr={{ _: 32, sm: 0 }}>
         <Day
           date={local_date}
           gridArea="date"
-          alignItems={['start', 'center']}
+          alignItems={{ _: 'start', sm: 'center' }}
         />
       </Box>
       <Box p={32} display="flex" flexDirection="column" gridArea="description">
@@ -97,7 +97,7 @@ const FeaturedEventCard = ({ event }) => {
       <Box gridArea="blank" bg="Grays.20">
         {' '}
       </Box>
-      <RSVPBox pb={[32, 'auto']}>
+      <RSVPBox pb={{ _: 32, sm: 'auto' }}>
         <IconList>
           <IconRow>
             <Box flex="none">
@@ -107,7 +107,7 @@ const FeaturedEventCard = ({ event }) => {
           </IconRow>
           {venueLink()}
         </IconList>
-        <Box mt={[4, 0]}>
+        <Box mt={{ _: 4, sm: 0 }}>
           <Button
             as="a"
             p=".5rem 1.25rem"

@@ -89,7 +89,7 @@ const EventCard = ({ event }) => {
           </IconRow>
           {venueLink()}
         </IconList>
-        <Box mt={[4, 0]}>
+        <Box mt={{ _: 4, sm: 0 }}>
           <Button
             as="a"
             p=".5rem 1.25rem"
