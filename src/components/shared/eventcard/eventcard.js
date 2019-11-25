@@ -55,8 +55,6 @@ const EventCard = ({ event }) => {
     return null;
   };
 
-  const handleRSVPClick = () => window.open(short_link);
-
   return (
     <Article>
       <Box p={32} pb={0} gridArea="date">

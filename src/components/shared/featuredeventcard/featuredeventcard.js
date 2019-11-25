@@ -65,8 +65,6 @@ const FeaturedEventCard = ({ event }) => {
     return null;
   };
 
-  const handleRSVPClick = () => window.open(short_link);
-
   return (
     <Article>
       <Box pl={32} pt={32} pr={[32, 0]}>
