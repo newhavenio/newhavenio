@@ -33,9 +33,9 @@ const EventList = () => {
     }
   `);
 
-  const [nextEvent, secondEvent, ...otherEvents] = data.allMeetupEvent.edges;
-  const events = otherEvents.map((edge, index) => (
-    <EventCard key={index} event={edge.node} />
+  const [nextEvent, ...otherEvents] = data.allMeetupEvent.edges;
+  const events = otherEvents.map(edge => (
+    <EventCard key={edge.id} event={edge.node} />
   ));
 
   return (
