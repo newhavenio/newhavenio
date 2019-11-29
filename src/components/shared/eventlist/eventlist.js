@@ -4,7 +4,6 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Box from 'components/shared/box';
 import Text from 'components/shared/text';
 
-import FeaturedEventCard from 'components/shared/featuredeventcard';
 import EventCard from 'components/shared/eventcard';
 
 const EventList = () => {
@@ -38,10 +37,10 @@ const EventList = () => {
   const [nextEvent, ...otherEvents] = data.allMeetupEvent.edges;
 
   return (
-    <Box display="flex" flexDirection="column" width={1}>
+    <Box display="flex" flexDirection="column">
       {nextEvent && (
-        <Box width={1}>
-          <FeaturedEventCard event={nextEvent.node} />
+        <Box>
+          <EventCard event={nextEvent.node} featured={true} />
         </Box>
       )}
 

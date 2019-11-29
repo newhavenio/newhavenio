@@ -8,19 +8,20 @@ import Box from 'components/shared/box';
 export const Article = styled.article`
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto auto auto auto;
   grid-template-areas:
     'date title'
+    'description description'
     'image image'
     'rsvp rsvp';
 
   @media screen and (min-width: ${breakpoints.lg}) {
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto 1fr;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: 1fr auto 1fr;
     grid-template-areas:
-      'date title'
-      'blank image'
-      'blank rsvp';
+      'date title featured-image'
+      'blank image featured-image'
+      'blank rsvp featured-image';
   }
 
   background-color: white;
@@ -28,9 +29,18 @@ export const Article = styled.article`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
-const RSVPBox = styled(Box)(space, grid, layout);
+export const Description = styled.p`
+  display: block;
+  ${layout};
+  ${space};
+  ${color};
+  ${typography};
+`;
+
+const RSVPBox = styled(Box)(color, space, grid, layout);
 
 RSVPBox.defaultProps = {
+  p: 32,
   gridArea: 'rsvp',
   display: 'flex',
   alignItems: 'flex-start',
@@ -59,10 +69,23 @@ IconText.defaultProps = {
   ml: 3,
 };
 
+export const FeaturedImageWrapper = styled.div`
+  padding-bottom: 56%;
+  position: relative;
+  display: block;
+
+  @media screen and (min-width: ${breakpoints.lg}) {
+    height: auto;
+  }
+  ${grid};
+  ${layout};
+`;
+
 export const ImageWrapper = styled.div`
   position: relative;
   display: block;
   grid-area: image;
+
   padding-bottom: 56%;
   ${space};
   ${grid};

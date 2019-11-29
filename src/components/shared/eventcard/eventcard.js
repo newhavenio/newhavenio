@@ -15,6 +15,8 @@ import VenueLink from 'components/shared/venuelink';
 
 import {
   Article,
+  Description,
+  FeaturedImageWrapper,
   ImageWrapper,
   Image,
   RSVPBox,
@@ -25,20 +27,29 @@ import {
 
 import { parse, format } from 'date-fns';
 
-const EventCard = ({ event }) => {
-  const { name, local_date, time, featured_photo, venue, short_link } = event;
+const EventCard = ({ event, featured }) => {
+  const {
+    name,
+    plain_text_description,
+    local_date,
+    time,
+    featured_photo,
+    venue,
+    short_link,
+  } = event;
 
+  const [short_description] = plain_text_description.split('\n');
   const parsedDateTime = parse(time, 'T', new Date());
   const formattedTime = format(parsedDateTime, 'h:mm a');
 
   return (
     <Article>
       <Box p={32} pb={0} gridArea="date">
-        <Day date={local_date} alignItems={['start', 'center']} />
+        <Day date={local_date} alignItems={{ _: 'start', sm: 'center' }} />
       </Box>
       <Box
-        pt={32}
-        pr={32}
+        p={32}
+        pl={{ _: 0, lg: 0 }}
         display="flex"
         flexDirection="column"
         gridArea="title"
@@ -46,16 +57,61 @@ const EventCard = ({ event }) => {
         <Text as="h5" color="Blues.100" fontWeight="bold">
           {name}
         </Text>
+        {featured && (
+          <Description
+            display={{ _: 'none', lg: 'block' }}
+            mt={16}
+            mb={0}
+            color="Grays.100"
+            fontSize={3}
+          >
+            {short_description}
+          </Description>
+        )}
       </Box>
-      <ImageWrapper mt={{ _: 32, lg: 0 }}>
-        <Image
-          src={
-            featured_photo ? featured_photo.photo_link : EventPlaceholderImage
-          }
-          alt="event"
-        />
-      </ImageWrapper>
-      <RSVPBox p={32} pl={{ lg: 0 }}>
+      {featured && (
+        <Box
+          p={32}
+          display={{ _: 'block', lg: 'none' }}
+          flexDirection="column"
+          gridArea="description"
+        >
+          {featured && (
+            <Description mt={16} mb={0} color="Grays.100" fontSize={3}>
+              {short_description}
+            </Description>
+          )}
+        </Box>
+      )}
+      {featured && (
+        <FeaturedImageWrapper
+          width={{ lg: 400 }}
+          gridArea={{ _: 'image', lg: 'featured-image' }}
+        >
+          <Image
+            src={
+              featured_photo ? featured_photo.photo_link : EventPlaceholderImage
+            }
+            alt="event"
+          />
+        </FeaturedImageWrapper>
+      )}
+      {!featured && (
+        <ImageWrapper mt={{ _: 32, lg: 0 }}>
+          <Image
+            src={
+              featured_photo ? featured_photo.photo_link : EventPlaceholderImage
+            }
+            alt="event"
+          />
+        </ImageWrapper>
+      )}
+      {featured && (
+        <Box gridArea="blank" bg="Grays.20">
+          {' '}
+        </Box>
+      )}
+      <RSVPBox pl={{ lg: 0 }} bg={featured ? 'Grays.20' : null}>
         <IconList>
           <IconRow>
             <Box flex="none">
@@ -90,6 +146,7 @@ const EventCard = ({ event }) => {
 
 EventCard.propTypes = {
   event: PropTypes.object.isRequired,
+  featured: PropTypes.bool,
 };
 
 EventCard.defaultProps = {
@@ -97,6 +154,7 @@ EventCard.defaultProps = {
     venue: {},
     featured_photo: {},
   },
+  featured: false,
 };
 
 export default EventCard;
