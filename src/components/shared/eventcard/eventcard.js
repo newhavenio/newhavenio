@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { parse, format } from 'date-fns';
 
 import Day from 'components/shared/day';
 import Box from 'components/shared/box';
 import Text from 'components/shared/text';
 import Button from 'components/shared/button';
+import VenueLink from 'components/shared/venuelink';
 
 import EventPlaceholderImage from 'images/event-placeholder.png';
-
 import ClockIcon from 'images/clock.svg';
 import MapMarkerIcon from 'images/map-marker.svg';
-
-import VenueLink from 'components/shared/venuelink';
 
 import {
   Article,
@@ -20,32 +19,33 @@ import {
   ImageWrapper,
   Image,
   RSVPBox,
-  IconList,
   IconRow,
   IconText,
 } from './eventcard.css';
 
-import { parse, format } from 'date-fns';
-
 const EventCard = ({ event, featured }) => {
   const {
+    featured_photo,
+    local_date,
+    local_time,
     name,
     plain_text_description,
-    local_date,
-    time,
-    featured_photo,
-    venue,
     short_link,
+    venue,
   } = event;
 
   const [short_description] = plain_text_description.split('\n');
-  const parsedDateTime = parse(time, 'T', new Date());
+  const parsedDate = parse(local_date, 'yyyy-MM-dd', new Date());
+  const parsedDateTime = parse(local_time, 'HH:mm', parsedDate);
   const formattedTime = format(parsedDateTime, 'h:mm a');
 
   return (
     <Article>
       <Box p={32} pb={0} gridArea="date">
-        <Day date={local_date} alignItems={{ _: 'start', sm: 'center' }} />
+        <Day
+          date={parsedDateTime.toISOString()}
+          alignItems={{ _: 'start', sm: 'center' }}
+        />
       </Box>
       <Box
         p={32}
@@ -90,13 +90,19 @@ const EventCard = ({ event, featured }) => {
         >
           <Image
             src={
-              featured_photo ? featured_photo.photo_link : EventPlaceholderImage
+              featured_photo
+                ? featured_photo.highres_link
+                : EventPlaceholderImage
             }
             alt="event"
           />
         </FeaturedImageWrapper>
       )}
-      {!featured && (
+      {featured ? (
+        <Box gridArea="blank" bg="Grays.20">
+          {' '}
+        </Box>
+      ) : (
         <ImageWrapper mt={{ _: 32, lg: 0 }}>
           <Image
             src={
@@ -106,28 +112,17 @@ const EventCard = ({ event, featured }) => {
           />
         </ImageWrapper>
       )}
-      {featured && (
-        <Box gridArea="blank" bg="Grays.20">
-          {' '}
-        </Box>
-      )}
       <RSVPBox pl={{ lg: 0 }} bg={featured ? 'Grays.20' : null}>
-        <IconList>
-          <IconRow>
-            <Box flex="none">
-              <ClockIcon />
-            </Box>
-            <IconText>{formattedTime}</IconText>
-          </IconRow>
+        <IconRow>
+          <ClockIcon />
+          <IconText>{formattedTime}</IconText>
           {venue && (
-            <IconRow mt={3}>
-              <Box flex="none">
-                <MapMarkerIcon />
-              </Box>
+            <>
+              <MapMarkerIcon />
               <VenueLink venue={venue} />
-            </IconRow>
+            </>
           )}
-        </IconList>
+        </IconRow>
         <Box mt={{ _: 4, sm: 0 }}>
           <Button
             as="a"

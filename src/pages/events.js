@@ -40,12 +40,25 @@ export const homeQuery = graphql`
     allMeetupEvent {
       edges {
         node {
-          name
-          local_time
-          link
-          description
+          featured_photo {
+            highres_link
+            photo_link
+            thumb_link
+            type
+          }
           duration
-          time
+          link
+          local_date
+          local_time
+          name
+          plain_text_description
+          short_link
+          venue {
+            address_1
+            city
+            name
+            state
+          }
           yes_rsvp_count
         }
       }

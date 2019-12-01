@@ -8,7 +8,6 @@ IconLink.defaultProps = {
   color: 'Grays.100',
   textDecoration: 'underline',
   fontSize: 3,
-  ml: 3,
 };
 
 export { IconLink };

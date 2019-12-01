@@ -48,17 +48,17 @@ RSVPBox.defaultProps = {
   justifyContent: 'space-between',
 };
 
-export const IconList = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-`;
-
 export const IconRow = styled.div`
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 16px;
   align-items: center;
   justify-content: center;
   ${space};
+
+  > svg {
+    justify-self: center;
+  }
 `;
 
 const IconText = styled(Text)(color, space, typography);
@@ -66,7 +66,6 @@ const IconText = styled(Text)(color, space, typography);
 IconText.defaultProps = {
   color: 'Grays.100',
   fontSize: 3,
-  ml: 3,
 };
 
 export const FeaturedImageWrapper = styled.div`
