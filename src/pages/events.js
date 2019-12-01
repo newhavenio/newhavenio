@@ -1,10 +1,12 @@
 import React from 'react';
 import P from 'prop-types';
 import { graphql } from 'gatsby';
+
 import Layout from 'components/layout';
 import Head from 'components/head';
 import Box from 'components/shared/box';
 import Title from 'components/shared/title';
+import EventList from 'components/shared/eventlist/eventlist';
 
 const Events = ({ data: { meetupGroup } }) => (
   <Layout>
@@ -15,6 +17,7 @@ const Events = ({ data: { meetupGroup } }) => (
       </Title>
       We are currently {meetupGroup.members} members strong!
       <a href={meetupGroup.link}>Join us!</a>
+      <EventList />
     </Box>
   </Layout>
 );
@@ -22,9 +25,12 @@ const Events = ({ data: { meetupGroup } }) => (
 Events.propTypes = {
   data: P.shape({
     meetupGroup: P.shape({
-      members: P.number,
-      link: P.string,
-    }),
+      members: P.number.isRequired,
+      link: P.string.isRequired,
+      next_event: P.shape({
+        time: P.string,
+      }).isRequired,
+    }).isRequired,
   }),
 };
 
@@ -35,32 +41,6 @@ export const homeQuery = graphql`
       link
       next_event {
         time
-      }
-    }
-    allMeetupEvent {
-      edges {
-        node {
-          featured_photo {
-            highres_link
-            photo_link
-            thumb_link
-            type
-          }
-          duration
-          link
-          local_date
-          local_time
-          name
-          plain_text_description
-          short_link
-          venue {
-            address_1
-            city
-            name
-            state
-          }
-          yes_rsvp_count
-        }
       }
     }
   }

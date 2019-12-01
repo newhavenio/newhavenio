@@ -7,20 +7,22 @@ import Text from 'components/shared/text';
 import EventCard from 'components/shared/eventcard';
 
 const EventList = () => {
+  // TODO: Possibly combine with events.js query if other components there need
+  // Meetup data, to reduce concurrent fetches.
   const data = useStaticQuery(graphql`
     query UpcomingEvents {
       allMeetupEvent {
         edges {
           node {
-            id
-            name
-            plain_text_description
-            local_date
-            short_link
-            time
             featured_photo {
               photo_link
             }
+            id
+            local_date
+            local_time
+            name
+            plain_text_description
+            short_link
             venue {
               name
               address_1

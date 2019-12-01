@@ -7,6 +7,7 @@ import Box from 'components/shared/box';
 import Text from 'components/shared/text';
 import Button from 'components/shared/button';
 import VenueLink from 'components/shared/venuelink';
+import Event from 'customtypes/event';
 
 import EventPlaceholderImage from 'images/event-placeholder.png';
 import ClockIcon from 'images/clock.svg';
@@ -90,9 +91,7 @@ const EventCard = ({ event, featured }) => {
         >
           <Image
             src={
-              featured_photo
-                ? featured_photo.highres_link
-                : EventPlaceholderImage
+              featured_photo ? featured_photo.photo_link : EventPlaceholderImage
             }
             alt="event"
           />
@@ -145,10 +144,7 @@ EventCard.propTypes = {
 };
 
 EventCard.defaultProps = {
-  event: {
-    venue: {},
-    featured_photo: {},
-  },
+  event: Event,
   featured: false,
 };
 
