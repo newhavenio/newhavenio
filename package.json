@@ -75,7 +75,6 @@
     "babel-loader": "^8.0.6",
     "chrome-launcher": "^0.11.2",
     "core-js": "^3.2.1",
-    "directory-named-webpack-plugin": "^4.0.1",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.0",
     "eslint-loader": "^3.0.2",
