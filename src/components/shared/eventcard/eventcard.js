@@ -36,17 +36,13 @@ const EventCard = ({ event, featured }) => {
   } = event;
 
   const [short_description] = plain_text_description.split('\n');
-  const parsedDate = parse(local_date, 'yyyy-MM-dd', new Date());
-  const parsedDateTime = parse(local_time, 'HH:mm', parsedDate);
+  const parsedDateTime = parse(local_time, 'HH:mm', new Date());
   const formattedTime = format(parsedDateTime, 'h:mm a');
 
   return (
     <Article>
       <Box p={32} pb={0} gridArea="date">
-        <Day
-          date={parsedDateTime.toISOString()}
-          alignItems={{ _: 'start', sm: 'center' }}
-        />
+        <Day date={local_date} alignItems={{ _: 'start', sm: 'center' }} />
       </Box>
       <Box
         p={32}
