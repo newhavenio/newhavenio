@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { grid, space, color, typography, layout } from 'styled-system';
 import breakpoints from 'constants/theme/breakpoints';
 
+import Card from 'components/shared/card';
 import Text from 'components/shared/text';
 import Box from 'components/shared/box';
 
-export const Article = styled.article`
+export const Article = styled(Card).attrs(() => ({ forwardedAs: 'article' }))`
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto auto auto auto;
@@ -26,7 +27,7 @@ export const Article = styled.article`
 
   background-color: white;
   box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 0;
 `;
 
 export const Description = styled.p`
@@ -95,6 +96,10 @@ export const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  @media screen and (min-width: ${breakpoints.lg}) {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+  }
   ${grid};
 `;
 
