@@ -18,4 +18,3 @@ export const Input = styled.input`
     color: ${p => p.theme.colors.Grays[60]};
   }
 `;
-

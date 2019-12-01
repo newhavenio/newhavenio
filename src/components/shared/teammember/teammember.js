@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Text from 'components/shared/text';
 import * as Styled from './teammember.css';
+import { Image } from 'customtypes';
 
 /**
  * A static component to display image, name, title and description of a team member
@@ -30,10 +31,10 @@ const TeamMember = ({ name, title, description, image }) => {
 };
 
 TeamMember.propTypes = {
-  /**
-   * ISO-8601 date string
-   */
-  // date: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  image: Image,
 };
 
 export default TeamMember;

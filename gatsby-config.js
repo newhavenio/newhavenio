@@ -12,7 +12,18 @@ module.exports = {
     'gatsby-plugin-offline',
     'gatsby-transformer-json',
     'gatsby-transformer-remark',
-    'gatsby-plugin-eslint',
+    {
+      resolve: 'gatsby-plugin-eslint',
+      options: {
+        test: /\.js$|\.jsx$/,
+        exclude: /(node_modules|.cache|public)/,
+        stages: ['develop'],
+        options: {
+          emitWarning: true,
+          failOnError: false,
+        },
+      },
+    },
     'gatsby-transformer-yaml',
     {
       resolve: 'gatsby-source-filesystem',

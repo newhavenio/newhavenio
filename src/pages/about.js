@@ -7,6 +7,7 @@ import Box from 'components/shared/box';
 import Title from 'components/shared/title';
 import Text from 'components/shared/text';
 import TeamMember from 'components/shared/teammember';
+import { Image, Team } from 'customtypes';
 
 const About = ({ data }) => {
   const teamMembers = data.allTeamYaml.edges;
@@ -74,17 +75,11 @@ export const aboutQuery = graphql`
 
 About.propTypes = {
   data: PropTypes.shape({
+    allImageSharp: PropTypes.shape({
+      edges: PropTypes.arrayOf(Image),
+    }),
     allTeamYaml: PropTypes.shape({
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            description: PropTypes.string,
-            name: PropTypes.string,
-            title: PropTypes.string,
-            image: PropTypes.string,
-          }),
-        })
-      ),
+      edges: PropTypes.arrayOf(Team),
     }),
   }),
 };

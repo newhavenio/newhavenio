@@ -9,11 +9,12 @@
     "no-console": ["error", { allow: ["info", "warn", "error"] }],
     "quotes": [
       "warn",
-      "single"
+      "single",
+      { avoidEscape: true }
     ],
-    "prettier/prettier": "warn",
-    "react/prop-types": "warn",
-    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }]
+    "prettier/prettier": "error",
+    "react/prop-types": "error",
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
   },
   "extends": [
     "eslint:recommended",
