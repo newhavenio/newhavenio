@@ -72,7 +72,7 @@ const EventList = ({ count }) => {
   );
 };
 
-EventList.PropTypes = {
+EventList.propTypes = {
   count: P.number,
 };
 

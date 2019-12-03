@@ -15,10 +15,6 @@ const Nav = () => (
         <Link to="/events">Events</Link>
       </li>
       <li>
-        {/* <a href="https://github.com/fabe/gatsby-universal">Slack</a> */}
-        <Link to="/slack">Slack</Link>
-      </li>
-      <li>
         <Link to="/resources">Rules and Resources</Link>
       </li>
     </ul>

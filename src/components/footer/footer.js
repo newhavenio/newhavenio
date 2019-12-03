@@ -39,9 +39,6 @@ const Footer = () => {
               <Link to="/events">Events</Link>
             </li>
             <li>
-              <Link to="/slack">Slack</Link>
-            </li>
-            <li>
               <Link to="/resources">Rules & Resources</Link>
             </li>
           </ul>
