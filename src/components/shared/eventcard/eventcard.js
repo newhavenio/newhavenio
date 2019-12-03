@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import P from 'prop-types';
 import { parse, format } from 'date-fns';
 
 import Day from 'components/shared/day';
@@ -24,7 +24,7 @@ import {
   IconText,
 } from './eventcard.css';
 
-const EventCard = ({ event, featured }) => {
+const EventCard = ({ event, type }) => {
   const {
     featured_photo,
     local_date,
@@ -34,18 +34,21 @@ const EventCard = ({ event, featured }) => {
     short_link,
     venue,
   } = event;
+  const isFeatured = type === 'featured';
+  const isDefault = type === 'default';
+  const isCompact = type === 'compact';
 
   const [short_description] = plain_text_description.split('\n');
   const parsedDateTime = parse(local_time, 'HH:mm', new Date());
   const formattedTime = format(parsedDateTime, 'h:mm a');
 
   return (
-    <Article>
-      <Box p={32} pb={0} gridArea="date">
+    <Article type={type}>
+      <Box p={isCompact ? 0 : 32} pb={0} gridArea="date">
         <Day date={local_date} alignItems={{ _: 'start', sm: 'center' }} />
       </Box>
       <Box
-        p={32}
+        p={isCompact ? 0 : 32}
         pl={{ _: 0, lg: 0 }}
         display="flex"
         flexDirection="column"
@@ -54,7 +57,7 @@ const EventCard = ({ event, featured }) => {
         <Text as="h5" color="Blues.100" fontWeight="bold">
           {name}
         </Text>
-        {featured && (
+        {isFeatured && (
           <Description
             display={{ _: 'none', lg: 'block' }}
             mt={16}
@@ -66,38 +69,39 @@ const EventCard = ({ event, featured }) => {
           </Description>
         )}
       </Box>
-      {featured && (
-        <Box
-          p={32}
-          display={{ _: 'block', lg: 'none' }}
-          flexDirection="column"
-          gridArea="description"
-        >
-          {featured && (
-            <Description mt={16} mb={0} color="Grays.100" fontSize={3}>
-              {short_description}
-            </Description>
-          )}
-        </Box>
+      {isFeatured && (
+        <>
+          <Box
+            p={32}
+            display={{ _: 'block', lg: 'none' }}
+            flexDirection="column"
+            gridArea="description"
+          >
+            {isFeatured && (
+              <Description mt={16} mb={0} color="Grays.100" fontSize={3}>
+                {short_description}
+              </Description>
+            )}
+          </Box>
+          <FeaturedImageWrapper
+            width={{ lg: 400 }}
+            gridArea={{ _: 'image', lg: 'featured-image' }}
+          >
+            <Image
+              src={
+                featured_photo
+                  ? featured_photo.photo_link
+                  : EventPlaceholderImage
+              }
+              alt="event"
+            />
+          </FeaturedImageWrapper>
+          <Box gridArea="blank" bg="Grays.20">
+            {' '}
+          </Box>
+        </>
       )}
-      {featured && (
-        <FeaturedImageWrapper
-          width={{ lg: 400 }}
-          gridArea={{ _: 'image', lg: 'featured-image' }}
-        >
-          <Image
-            src={
-              featured_photo ? featured_photo.photo_link : EventPlaceholderImage
-            }
-            alt="event"
-          />
-        </FeaturedImageWrapper>
-      )}
-      {featured ? (
-        <Box gridArea="blank" bg="Grays.20">
-          {' '}
-        </Box>
-      ) : (
+      {isDefault && (
         <ImageWrapper mt={{ _: 32, lg: 0 }}>
           <Image
             src={
@@ -107,7 +111,11 @@ const EventCard = ({ event, featured }) => {
           />
         </ImageWrapper>
       )}
-      <RSVPBox pl={{ lg: 0 }} bg={featured ? 'Grays.20' : null}>
+      <RSVPBox
+        p={isCompact ? 0 : 32}
+        pl={{ lg: 0 }}
+        bg={isFeatured ? 'Grays.20' : null}
+      >
         <IconRow>
           <ClockIcon />
           <IconText>{formattedTime}</IconText>
@@ -135,13 +143,13 @@ const EventCard = ({ event, featured }) => {
 };
 
 EventCard.propTypes = {
-  event: PropTypes.object.isRequired,
-  featured: PropTypes.bool,
+  event: P.object.isRequired,
+  type: P.oneOf(['default', 'featured', 'compact']),
 };
 
 EventCard.defaultProps = {
   event: Event,
-  featured: false,
+  type: 'default',
 };
 
 export default EventCard;

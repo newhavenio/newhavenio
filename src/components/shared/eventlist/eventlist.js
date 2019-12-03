@@ -1,4 +1,5 @@
 import React from 'react';
+import P from 'prop-types';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import Box from 'components/shared/box';
@@ -6,7 +7,7 @@ import Text from 'components/shared/text';
 
 import EventCard from 'components/shared/eventcard';
 
-const EventList = () => {
+const EventList = ({ count }) => {
   // TODO: Possibly combine with events.js query if other components there need
   // Meetup data, to reduce concurrent fetches.
   const data = useStaticQuery(graphql`
@@ -36,13 +37,13 @@ const EventList = () => {
     }
   `);
 
-  const [nextEvent, ...otherEvents] = data.allMeetupEvent.edges;
+  const [nextEvent, ...otherEvents] = data.allMeetupEvent.edges.slice(0, count);
 
   return (
     <Box display="flex" flexDirection="column">
       {nextEvent && (
         <Box>
-          <EventCard event={nextEvent.node} featured={true} />
+          <EventCard event={nextEvent.node} type="featured" />
         </Box>
       )}
 
@@ -54,8 +55,12 @@ const EventList = () => {
           gridRowGap={32}
           mt={32}
         >
-          {otherEvents.map(edge => (
-            <EventCard key={edge.id} event={edge.node} />
+          {otherEvents.map((edge, idx) => (
+            <EventCard
+              key={edge.id}
+              event={edge.node}
+              type={idx >= 2 ? 'compact' : 'default'}
+            />
           ))}
         </Box>
       )}
@@ -65,6 +70,10 @@ const EventList = () => {
       )}
     </Box>
   );
+};
+
+EventList.PropTypes = {
+  count: P.number,
 };
 
 export default EventList;

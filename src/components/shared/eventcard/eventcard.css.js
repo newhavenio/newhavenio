@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { grid, space, color, typography, layout } from 'styled-system';
 import breakpoints from 'constants/theme/breakpoints';
 
@@ -25,6 +25,28 @@ export const Article = styled(Card).attrs(() => ({ forwardedAs: 'article' }))`
       'blank rsvp featured-image';
   }
 
+  ${p =>
+    p.type === 'featured' &&
+    css`
+      @media screen and (min-width: ${breakpoints.lg}) {
+        grid-template-rows: 2fr auto 1fr;
+      }
+    `};
+  ${p =>
+    p.type === 'compact' &&
+    css`
+      &&& {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: 1fr auto;
+        grid-template-areas:
+          'date title'
+          'rsvp rsvp';
+        align-items: center;
+        padding: 24px;
+        grid-gap: 24px;
+      }
+    `};
+
   background-color: white;
   box-sizing: border-box;
   padding: 0;
@@ -41,7 +63,6 @@ export const Description = styled.p`
 const RSVPBox = styled(Box)(color, space, grid, layout);
 
 RSVPBox.defaultProps = {
-  p: 32,
   gridArea: 'rsvp',
   display: 'flex',
   alignItems: 'flex-start',
