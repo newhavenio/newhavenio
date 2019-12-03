@@ -52,7 +52,9 @@ export const Container = styled.button`
   font-size: 18px;
   font-weight: 600;
   font-family: ${theme.fonts.heading};
+  line-height: normal;
   padding: 1rem 2rem;
+  display: inline-block;
   text-decoration: none;
   white-space: nowrap;
   :disabled {
