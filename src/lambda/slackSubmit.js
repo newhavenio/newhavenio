@@ -70,7 +70,7 @@ export async function handler(event, _context, callback) {
     if (data.error != null) {
       // Slack invite failed -- can mean malformed email or user already invited
       return callback(null, {
-        statusCode: 422,
+        statusCode: data.error === 'invalid_auth' ? 500 : 422,
         body: JSON.stringify({
           error: data.error,
         }),

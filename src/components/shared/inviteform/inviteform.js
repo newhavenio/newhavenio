@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import P from 'prop-types';
 import axios from 'axios';
 import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 
@@ -15,6 +16,7 @@ const isValidEmail = email => EMAIL_REGEX.test(email.toLowerCase());
 const InviteForm = () => {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
+  const [focused, setFocused] = useState(false);
   const [message, setMessage] = useState({});
   const { executeRecaptcha } = useGoogleReCaptcha();
   const handleEmailChange = e => {
@@ -78,6 +80,11 @@ const InviteForm = () => {
               error: true,
               body: 'Please enter a valid email address.',
             });
+          case 'invalid_auth':
+            return setMessage({
+              error: true,
+              body: 'Something went wrong on our end. Please try again later.',
+            });
           default:
             return setMessage({
               error: true,
@@ -98,27 +105,30 @@ const InviteForm = () => {
   });
 
   return (
-    <>
-      <RecaptchaText />
-      <Styled.Form onSubmit={handleSubmit}>
-        <Styled.Input
-          placeholder="you@email.com"
-          required
-          type="email"
-          onChange={handleEmailChange}
-          value={email}
-        />
-        <Button type="submit" disabled={message.error || loading}>
-          Get Invite
-        </Button>
-      </Styled.Form>
-      {message.body != null && (
-        <Text fontSize={2} fontWeight={600} mt={3} color="Blues.100">
-          {message.body}
-        </Text>
-      )}
-
-      <Text fontSize={1} mt={3} display="block" color="Grays.100">
+    <Styled.Container>
+      <form onSubmit={handleSubmit}>
+        <Styled.InputAndButton>
+          <Styled.Input
+            placeholder="you@email.com"
+            required
+            type="email"
+            onChange={handleEmailChange}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+            value={email}
+          />
+          <Button type="submit" disabled={message.error || loading}>
+            Get Invite
+          </Button>
+        </Styled.InputAndButton>
+        {message.body != null && (
+          <Text fontSize={2} fontWeight={600} mt={3} color="Blues.100">
+            {message.body}
+          </Text>
+        )}
+      </form>
+      <RecaptchaText focused={focused} />
+      <Text fontSize={1} display="block" color="Grays.100">
         Or if you&apos;re already a member{' '}
         <a
           href="https://newhavenio.slack.com/"
@@ -129,7 +139,7 @@ const InviteForm = () => {
         </a>
         .
       </Text>
-    </>
+    </Styled.Container>
   );
 };
 
@@ -143,10 +153,14 @@ export default InviteForm;
  *
  * https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed
  */
-const RecaptchaText = () => (
-  <Text fontSize={1} mb={2} display="block" color="Grays.60">
+const RecaptchaText = ({ focused }) => (
+  <Styled.RecaptchaText focused={focused} fontSize={1}>
     This site is protected by reCAPTCHA and the Google&nbsp;
     <a href="https://policies.google.com/privacy">Privacy Policy</a> and&nbsp;
     <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-  </Text>
+  </Styled.RecaptchaText>
 );
+
+RecaptchaText.propTypes = {
+  focused: P.bool,
+};

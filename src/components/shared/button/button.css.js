@@ -54,6 +54,7 @@ export const Container = styled.button`
   font-family: ${theme.fonts.heading};
   padding: 1rem 2rem;
   text-decoration: none;
+  white-space: nowrap;
   :disabled {
     cursor: default;
   }
