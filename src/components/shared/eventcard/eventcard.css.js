@@ -97,6 +97,10 @@ export const FeaturedImageWrapper = styled.div`
 
   @media screen and (min-width: ${breakpoints.lg}) {
     height: auto;
+    img {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
   }
   ${grid};
   ${layout};
@@ -117,10 +121,6 @@ export const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  @media screen and (min-width: ${breakpoints.lg}) {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-  }
   ${grid};
 `;
 
