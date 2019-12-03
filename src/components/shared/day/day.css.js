@@ -33,3 +33,12 @@ export const Month = styled.span`
   font-weight: ${FONT_WEIGHTS.bold};
   letter-spacing: ${LETTER_SPACINGS.wide};
 `;
+
+export const DaysAway = styled.span`
+  color: ${p => p.theme.colors.Oranges[100]};
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: ${FONT_WEIGHTS.bold};
+  letter-spacing: ${LETTER_SPACINGS.tight};
+  margin-top: 4px;
+`;
