@@ -1,3 +1,7 @@
+import React from 'react';
+import { graphql } from 'gatsby';
+import P from 'prop-types';
+
 import Layout from 'components/layout';
 import Box from 'components/shared/box';
 import Button from 'components/shared/button';
@@ -6,9 +10,13 @@ import Title from 'components/shared/title';
 import InviteForm from 'components/shared/inviteform';
 import EventList from 'components/shared/eventlist';
 
-import React from 'react';
-
-const Index = () => (
+const Index = ({
+  data: {
+    pagesYaml: {
+      index: { home, slack, events },
+    },
+  },
+}) => (
   <Layout>
     <Box
       display="flex"
@@ -20,12 +28,11 @@ const Index = () => (
       bg="Oranges.100"
     >
       <Title as="h2" size="large" color="Whites.100" maxWidth="860px">
-        Where tech happens in New Haven.
+        {home.title}
       </Title>
       <Box maxWidth="640px">
         <Text as="p" color="Whites.100">
-          NewHaven.io is a tech community lorem ipsum dolor sit amet,
-          consectetur adipiscing elit.
+          {home.description}
         </Text>
       </Box>
       <Button.Wrapper>
@@ -42,14 +49,20 @@ const Index = () => (
       </Button.Wrapper>
     </Box>
     <Box padding="6rem 4rem">
-      <Title color="Oranges.100" size="small" weight="800" py="1rem">
-        ONLINE CHAT
+      <Title
+        color="Oranges.100"
+        size="small"
+        weight="800"
+        py="1rem"
+        textTransform="uppercase"
+      >
+        {slack.subtitle}
       </Title>
       <Title as="h2" size="large" weight="800" color="Grays.100" pt="0">
-        Join the Slack Community
+        {slack.title}
       </Title>
       <Text mb={4} display="block" color="Grays.100">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+        {slack.description}
       </Text>
       <InviteForm />
     </Box>
@@ -65,15 +78,49 @@ const Index = () => (
       }}
       bg="Grays.8"
     >
-      <Title color="Oranges.100" size="small" weight="800" py="1rem">
-        UPCOMING EVENTS
+      <Title
+        color="Oranges.100"
+        size="small"
+        weight="800"
+        py="1rem"
+        textTransform="uppercase"
+      >
+        {events.subtitle}
       </Title>
       <Title as="h2" size="large" color="Grays.100" pt="0">
-        Meet People IRL
+        {events.title}
       </Title>
       <EventList count={7} />
     </Box>
   </Layout>
 );
+
+Index.propTypes = {
+  data: P.shape({
+    pagesYaml: P.any.isRequired,
+  }),
+};
+
+export const query = graphql`
+  query IndexQuery {
+    pagesYaml {
+      index {
+        home {
+          description
+          title
+        }
+        slack {
+          description
+          subtitle
+          title
+        }
+        events {
+          subtitle
+          title
+        }
+      }
+    }
+  }
+`;
 
 export default Index;

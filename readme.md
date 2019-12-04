@@ -9,6 +9,8 @@ This site is an open source Gatsby site for the NewHaven.io community! We're a t
 
 ## Contributing
 
+### Getting Started
+
 ```bash
 # Install dependencies
 yarn install
@@ -29,3 +31,12 @@ yarn ssr
 yarn format
 ```
 
+### Pages
+
+#### Content
+
+All top-level routable pages should live in `src/pages/*`. Pages should be accessible from both the top nav and the footer.
+
+Copy for pages should live in `content/pages/index.yaml` for maintainability and ease of auditing. Use your best judgment regarding what qualifies as copy (as opposed to minor labels, etc.). This is queried through GraphQL.
+
+Assets for pages should also live in `content/images` and also be accessed via GraphQL.
