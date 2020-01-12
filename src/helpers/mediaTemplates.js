@@ -14,15 +14,17 @@ import BREAKPOINTS from 'constants/breakpoints';
 //
 // Edit or add breakpoints inside constants/breakpoints.js
 
+export const makeQuery = widthPx => `${widthPx / 16}em`;
+
 const MEDIA = Object.keys(BREAKPOINTS).reduce((acc, label) => {
   acc[label] = (...args) => css`
-    @media (max-width: ${BREAKPOINTS[label] / 16}em) {
+    @media (max-width: ${makeQuery(BREAKPOINTS[label])}) {
       ${css(...args)};
     }
   `;
 
   acc[`MIN_${label}`] = (...args) => css`
-    @media (min-width: ${BREAKPOINTS[label] / 16}em) {
+    @media (min-width: ${makeQuery(BREAKPOINTS[label])}) {
       ${css(...args)};
     }
   `;
