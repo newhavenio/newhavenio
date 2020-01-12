@@ -1,6 +1,8 @@
 import reactHeadroom from 'react-headroom';
 import styled from 'styled-components';
 
+import MEDIA from 'helpers/mediaTemplates';
+
 export const Headroom = styled(reactHeadroom)`
   background: ${p => p.theme.colors.Gradients.Orange};
   height: 140px;
@@ -25,6 +27,11 @@ export const Headroom = styled(reactHeadroom)`
     align-items: flex-end;
     padding: 1rem 4rem;
     transition: background-color 1s;
+
+    ${MEDIA.TABLET`
+      align-items: center;
+      padding-right: 2rem;
+    `};
 
     a {
       color: ${p => p.theme.colors.Whites[100]};

@@ -23,9 +23,12 @@ export const Container = styled.div`
 
 export const InputAndButton = styled.div`
   display: flex;
-  flex-flow: row wrap;
   flex-wrap: nowrap;
   align-items: stretch;
+
+  ${MEDIA.PHONE`
+    flex-direction: column;
+  `};
 `;
 
 export const Input = styled.input`
@@ -34,7 +37,10 @@ export const Input = styled.input`
   padding: 1rem;
   background-color: white;
   border: 1px solid ${p => p.theme.colors.Grays[30]};
-  width: 300px;
+  min-width: 300px;
+  ${MEDIA.PHONE`
+    min-width: unset;
+  `};
   color: ${p => p.theme.colors.Grays[100]};
   ::placeholder {
     color: ${p => p.theme.colors.Grays[60]};

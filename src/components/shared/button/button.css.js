@@ -2,6 +2,8 @@ import styled, { css } from 'styled-components';
 import { space } from 'styled-system';
 import { theme } from 'constants/theme';
 
+import MEDIA from 'helpers/mediaTemplates';
+
 const makePalette = ({
   bgColor,
   bgColorActive,
@@ -66,9 +68,11 @@ export const Container = styled.button`
 `;
 
 export const ButtonWrapper = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  > * + * {
-    margin-left: 1rem;
-  }
+  display: grid;
+  grid-gap: 0.5rem 1rem;
+  grid-auto-flow: column;
+
+  ${MEDIA.PHONE`
+    grid-auto-flow: row;
+  `};
 `;

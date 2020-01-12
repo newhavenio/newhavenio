@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { theme } from 'constants/theme';
 import { space } from 'styled-system';
 
+import MEDIA from 'helpers/mediaTemplates';
+
 export const Container = styled.section`
   ${space};
   width: 100%;
   background: ${theme.colors.Whites[100]};
-  /* position: absolute; */
-  padding: 3rem 0;
-  /* bottom: -500; */
+  padding: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,8 +22,9 @@ export const Grid = styled.div`
   align-content: center;
   justify-content: center;
   grid-gap: 2rem;
-  @media all and (max-width: 600px) {
+  ${MEDIA.TABLET`
     grid-template-columns: 1fr;
+  `};
   }
 `;
 

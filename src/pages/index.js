@@ -72,7 +72,7 @@ const Index = ({
       display="flex"
       flexDirection="column"
       alignItems="flex-end"
-      padding={['8rem 2rem 0', '8rem 4rem']}
+      padding={['8rem 2rem 2rem', '8rem 4rem']}
       style={{
         overflow: 'hidden',
       }}
