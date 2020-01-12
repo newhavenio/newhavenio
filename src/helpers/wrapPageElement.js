@@ -2,15 +2,12 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 
-import Transition from 'components/shared/transition';
+// Remove transition for now -- not well implemented. Header should be outside.
+// import Transition from 'components/shared/transition';
 import { theme } from 'constants/theme';
 
-const wrapPageElement = ({ element, props }) => {
-  return (
-    <ThemeProvider theme={theme}>
-      <Transition {...props}>{element}</Transition>
-    </ThemeProvider>
-  );
+const wrapPageElement = ({ element }) => {
+  return <ThemeProvider theme={theme}>{element}</ThemeProvider>;
 };
 
 wrapPageElement.propTypes = {
