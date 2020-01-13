@@ -43,17 +43,11 @@ const Index = ({
         padding="0 4rem 6rem"
         alignItems="flex-start"
       >
-        <Title
-          as={motion.h2}
-          size="large"
-          color="Whites.100"
-          maxWidth="860px"
-          {...entryAnimation(0)}
-        >
+        <Title as="h2" size="large" color="Whites.100" maxWidth="860px">
           {home.title}
         </Title>
         <Box maxWidth="640px">
-          <Text as={motion.p} color="Whites.100" {...entryAnimation(1)}>
+          <Text as="p" color="Whites.100">
             {home.description}
           </Text>
         </Box>
@@ -61,7 +55,7 @@ const Index = ({
           <Button
             palette="secondary"
             onClick={handleSlackButtonClick}
-            {...entryAnimation(2)}
+            {...entryAnimation(0)}
           >
             Join the Slack
           </Button>
@@ -71,7 +65,7 @@ const Index = ({
             target="_blank"
             rel="noopener noreferrer"
             palette="tertiary"
-            {...entryAnimation(3)}
+            {...entryAnimation(1)}
           >
             Join the Meetup
           </Button>

@@ -7,7 +7,7 @@ import { Container } from './nav.css';
 
 // Note: this should coordinate with the animation in index.js.
 // There should be a small delay after all index elements render, then the nav should come in.
-const INDEX_ANIMATION_COUNT = 4;
+const INDEX_ANIMATION_COUNT = 2;
 // Inserts a half second pause between index and menu animations
 const entryAnimationFactory = pathname => {
   const isIndexPage = pathname === '/';
