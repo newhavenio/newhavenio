@@ -1,5 +1,5 @@
 // theme.js
-const breakpoints = ['40em', '52em', '64em', '80em'];
+const breakpoints = ['512px', '768px', '1024px', '1408px'];
 
 // aliases
 breakpoints.sm = breakpoints[0];

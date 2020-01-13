@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import { color, layout, space } from 'styled-system';
-
-import MEDIA from 'helpers/mediaTemplates';
+import breakpoints from 'constants/theme/breakpoints';
 import Text from 'components/shared/text';
 
 export const TitleText = styled(Text)`
@@ -50,7 +49,7 @@ export const TitleText = styled(Text)`
   ${layout};
   ${color};
   ${space};
-  ${MEDIA.TABLET`
+  @media screen and (max-width: ${breakpoints.md}) {
     font-size: ${({ size }) => () => {
       switch (size) {
         case 'large':
@@ -61,7 +60,7 @@ export const TitleText = styled(Text)`
           return '2rem';
       }
     }};
-  `};
+  }
   ${p =>
     p.textTransform != null &&
     css`

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { theme } from 'constants/theme';
+import breakpoints from 'constants/theme/breakpoints';
 import { space } from 'styled-system';
-
-import MEDIA from 'helpers/mediaTemplates';
 
 export const Container = styled.section`
   ${space};
@@ -22,9 +21,8 @@ export const Grid = styled.div`
   align-content: center;
   justify-content: center;
   grid-gap: 2rem;
-  ${MEDIA.TABLET`
+  @media screen and (max-width: ${breakpoints.md}) {
     grid-template-columns: 1fr;
-  `};
   }
 `;
 

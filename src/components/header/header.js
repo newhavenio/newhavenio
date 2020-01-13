@@ -6,14 +6,13 @@ import MobileNav from 'components/header/mobilenav';
 import Nav from 'components/header/nav';
 import Logo from 'components/shared/logo';
 import { theme } from 'constants/theme';
-import BREAKPOINTS from 'constants/breakpoints';
-import { makeQuery } from 'helpers/mediaTemplates';
+import breakpoints from 'constants/theme/breakpoints';
 
 import * as Styled from './header.css';
 
 const Header = () => {
   const isMobile = useMediaQuery({
-    query: `(max-width: ${makeQuery(BREAKPOINTS.TABLET)})`,
+    query: `(max-width: ${breakpoints.md})`,
   });
 
   return (
@@ -32,4 +31,3 @@ const Header = () => {
 };
 
 export default Header;
-

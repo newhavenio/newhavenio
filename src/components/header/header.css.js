@@ -1,7 +1,6 @@
 import reactHeadroom from 'react-headroom';
 import styled from 'styled-components';
-
-import MEDIA from 'helpers/mediaTemplates';
+import breakpoints from 'constants/theme/breakpoints';
 
 export const Headroom = styled(reactHeadroom)`
   background: ${p => p.theme.colors.Gradients.Orange};
@@ -28,10 +27,10 @@ export const Headroom = styled(reactHeadroom)`
     padding: 1rem 4rem;
     transition: background-color 1s;
 
-    ${MEDIA.TABLET`
+    @media screen and (max-width: ${breakpoints.md}) {
       align-items: center;
       padding-right: 2rem;
-    `};
+    }
 
     a {
       color: ${p => p.theme.colors.Whites[100]};

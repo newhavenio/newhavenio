@@ -1,34 +1,35 @@
 import styled from 'styled-components';
 
 import Text from 'components/shared/text';
-import MEDIA from 'helpers/mediaTemplates';
+import breakpoints from 'constants/theme/breakpoints';
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto auto;
-  grid-gap: 16px;
-  grid-template-areas:
-    'form recaptcha'
-    'member member';
-  align-items: center;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-gap: 12px;
+  grid-template-areas: 'form' 'recaptcha' 'member';
 
-  ${MEDIA.TABLET`
-    grid-template-columns: auto;
-    grid-template-rows: auto auto auto;
-    grid-gap: 12px;
-    grid-template-areas: 'form'  'recaptcha' 'member';
-  `};
+  @media screen and (min-width: ${breakpoints.md}) {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 16px;
+    grid-template-areas:
+      'form recaptcha'
+      'member member';
+    align-items: center;
+  }
 `;
 
 export const InputAndButton = styled.div`
   display: flex;
   flex-wrap: nowrap;
   align-items: stretch;
+  flex-direction: column;
 
-  ${MEDIA.PHONE`
-    flex-direction: column;
-  `};
+  @media screen and (min-width: ${breakpoints.sm}) {
+    flex-direction: row;
+  }
 `;
 
 export const Input = styled.input`
@@ -37,10 +38,10 @@ export const Input = styled.input`
   padding: 1rem;
   background-color: white;
   border: 1px solid ${p => p.theme.colors.Grays[30]};
-  min-width: 300px;
-  ${MEDIA.PHONE`
-    min-width: unset;
-  `};
+  min-width: unset;
+  @media screen and (min-width: ${breakpoints.sm}) {
+    min-width: 300px;
+  }
   color: ${p => p.theme.colors.Grays[100]};
   ::placeholder {
     color: ${p => p.theme.colors.Grays[60]};

@@ -3,8 +3,7 @@ import { space } from 'styled-system';
 
 import { theme } from 'constants/theme';
 import { timeout } from 'constants/transition';
-
-import MEDIA from 'helpers/mediaTemplates';
+import breakpoints from 'constants/theme/breakpoints';
 
 const makePalette = ({
   bgColor,
@@ -75,7 +74,7 @@ export const ButtonWrapper = styled.div`
   grid-gap: 0.5rem 1rem;
   grid-auto-flow: column;
 
-  ${MEDIA.PHONE`
+  @media screen and (max-width: ${breakpoints.sm}) {
     grid-auto-flow: row;
-  `};
+  }
 `;
