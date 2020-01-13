@@ -27,7 +27,7 @@ const Footer = () => {
         </Styled.LogoContainer>
 
         <Styled.FooterSection>
-          <p className="heading">Group 1</p>
+          <p className="heading">Directory</p>
           <ul>
             <li>
               <Link to="/">Home</Link>

@@ -61,7 +61,7 @@ const Index = ({
       <Title as="h2" size="large" weight="800" color="Grays.100" pt="0">
         {slack.title}
       </Title>
-      <Text mb={4} display="block" color="Grays.100">
+      <Text as="p" mb={4} display="block" color="Grays.100">
         {slack.description}
       </Text>
       <InviteForm />

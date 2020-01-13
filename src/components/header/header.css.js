@@ -15,8 +15,8 @@ export const Headroom = styled(reactHeadroom)`
   .headroom--pinned {
     background: ${p => p.theme.colors.Gradients.Orange};
     svg {
-      width: 25px;
-      height: 25px;
+      width: 32px;
+      height: 32px;
     }
   }
 
