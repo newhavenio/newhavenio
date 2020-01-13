@@ -3,18 +3,52 @@
   title: "President"
   description: "Sit amet marshmallow topping cheesecake muffin. Halvah
       croissant candy canes bonbon."
+  social:
+    github: "https://github.com/quinncuatro"
+    twitter: ""
+    slack: "@Henry"
 - name: "Jenn Nolte"
   picture: "jenn.jpg"
   title: "Vice President"
   description: "Sit amet marshmallow topping cheesecake muffin. Halvah
       croissant candy canes bonbon."
-- name: "Steve McQueen"
+  social:
+    github: ""
+    twitter: ""
+    slack: "@Jenn Nolte she/her"
+- name: "Steve Voils"
   picture: "steve.jpg"
   title: "Junior Vice President"
   description: "Sit amet marshmallow topping cheesecake muffin. Halvah
       croissant candy canes bonbon."
+  social:
+    github: ""
+    twitter: ""
+    slack: "@steve"
 - name: "Josh Levinson"
   picture: "josh.jpg"
   title: "President Jr."
   description: "Sit amet marshmallow topping cheesecake muffin. Halvah
       croissant candy canes bonbon."
+  social:
+    github: "https://github.com/jlevnhv"
+    twitter: ""
+    slack: "@jlevnhv"
+- name: "Tom Reznick"
+  picture: "josh.jpg"
+  title: "President Jr."
+  description: "Sit amet marshmallow topping cheesecake muffin. Halvah
+      croissant candy canes bonbon."
+  social:
+    github: "https://github.com/treznick"
+    twitter: ""
+    slack: "@tom"
+- name: "Ben Midyette"
+  picture: "josh.jpg"
+  title: "President Jr."
+  description: "Sit amet marshmallow topping cheesecake muffin. Halvah
+      croissant candy canes bonbon."
+  social:
+    github: ""
+    twitter: ""
+    slack: "@Ben"

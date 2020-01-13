@@ -17,9 +17,11 @@ const Events = ({ data: { meetupGroup } }) => (
         Events
       </Title>
       <Text as="p" fontSize="3">
-        We are currently {meetupGroup.members} members strong!{' '}
+        NewHaven.io hosts tech-focused and social events in the New Haven area
+        that are open for all to attend. We are currently {meetupGroup.members}{' '}
+        members strong!{' '}
         <a href={meetupGroup.link} target="_blank" rel="noopener noreferrer">
-          Join the Meetup
+          Join our Meetup group to be notified of future events
         </a>
         .
       </Text>

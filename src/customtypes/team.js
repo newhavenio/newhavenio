@@ -1,11 +1,16 @@
-import PropTypes from 'prop-types';
+import P from 'prop-types';
 
-const Team = PropTypes.shape({
-  node: PropTypes.shape({
-    description: PropTypes.string,
-    name: PropTypes.string,
-    title: PropTypes.string,
-    image: PropTypes.string,
+const Team = P.shape({
+  node: P.shape({
+    description: P.string,
+    name: P.string,
+    title: P.string,
+    image: P.string,
+    social: P.shape({
+      slack: P.string,
+      twitter: P.string,
+      github: P.string,
+    }),
   }),
 });
 

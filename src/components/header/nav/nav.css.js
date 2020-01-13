@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { theme } from 'constants/theme';
 
 import { NavContainer } from '../navcontainer.css';
 

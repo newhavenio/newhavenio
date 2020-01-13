@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { color, layout, space } from 'styled-system';
 
 import MEDIA from 'helpers/mediaTemplates';
@@ -62,4 +62,9 @@ export const TitleText = styled(Text)`
       }
     }};
   `};
+  ${p =>
+    p.textTransform != null &&
+    css`
+      text-transform: ${p.textTransform};
+    `}
 `;

@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import P from 'prop-types';
 import { graphql } from 'gatsby';
 import Layout from 'components/layout';
 import Head from 'components/head';
@@ -9,47 +9,77 @@ import Text from 'components/shared/text';
 import TeamMember from 'components/shared/teammember';
 import { Image, Team } from 'customtypes';
 
-const About = ({ data }) => {
-  const teamMembers = data.allTeamYaml.edges;
-  const memberImages = data.allImageSharp.edges;
-  return (
-    <Layout>
-      <Head pageTitle="About" />
-      <Box padding="2rem 4rem">
-        <Title as="h2" size="large" color="Oranges.100">
-          About
+const About = ({
+  data: {
+    pagesYaml: {
+      about: { home, board },
+    },
+    allTeamYaml: { edges: teamMembers },
+    allImageSharp: { edges: memberImages },
+  },
+}) => (
+  <Layout>
+    <Head pageTitle={home.title} />
+    <Box padding="2rem 4rem">
+      <Title as="h2" size="large" color="Oranges.100">
+        {home.title}
+      </Title>
+      <Text as="p" fontSize={3}>
+        {home.description}
+      </Text>
+      <ul style={{ listStyle: 'inside', marginLeft: '2rem' }}>
+        {home.values.map((v, i) => (
+          <li key={i}>
+            <Text fontSize={3}>{v}</Text>
+          </li>
+        ))}
+      </ul>
+      <Box my={4}>
+        <Title
+          color="Oranges.100"
+          size="small"
+          weight="800"
+          py="1rem"
+          textTransform="uppercase"
+        >
+          {board.title}
         </Title>
-        <Text fontSize={3} color="Grays.100">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis vero
-          aliquid enim sit repellendus alias! Qui illum, sapiente in, nostrum,
-          deleniti magnam perferendis quod impedit facilis repellat culpa cumque
-          delectus?
-        </Text>
-        <Box my={4}>
-          <Title as="h3" color="Grays.100">
-            The Board
-          </Title>
-          <Box display="flex" flexWrap="wrap">
-            {teamMembers.map(({ node: member }) => (
-              <TeamMember
-                key={member.name}
-                name={member.name}
-                title={member.title}
-                description={member.description}
-                image={memberImages.find(
-                  image => image.node.fluid.originalName === member.picture
-                )}
-              />
-            ))}
-          </Box>
+        <Box
+          display="grid"
+          gridTemplateColumns="repeat(auto-fill, minmax(300px, 1fr))"
+        >
+          {teamMembers.map(({ node: member }) => (
+            <TeamMember
+              key={member.name}
+              name={member.name}
+              title={member.title}
+              description={member.description}
+              image={memberImages.find(
+                image => image.node.fluid.originalName === member.picture
+              )}
+              social={member.social}
+            />
+          ))}
         </Box>
       </Box>
-    </Layout>
-  );
-};
+    </Box>
+  </Layout>
+);
 
 export const aboutQuery = graphql`
   query AboutQuery {
+    pagesYaml {
+      about {
+        home {
+          description
+          title
+          values
+        }
+        board {
+          title
+        }
+      }
+    }
     allTeamYaml {
       edges {
         node {
@@ -57,6 +87,10 @@ export const aboutQuery = graphql`
           name
           picture
           title
+          social {
+            github
+            slack
+          }
         }
       }
     }
@@ -74,12 +108,13 @@ export const aboutQuery = graphql`
 `;
 
 About.propTypes = {
-  data: PropTypes.shape({
-    allImageSharp: PropTypes.shape({
-      edges: PropTypes.arrayOf(Image),
+  data: P.shape({
+    pagesYaml: P.any.isRequired,
+    allImageSharp: P.shape({
+      edges: P.arrayOf(Image),
     }),
-    allTeamYaml: PropTypes.shape({
-      edges: PropTypes.arrayOf(Team),
+    allTeamYaml: P.shape({
+      edges: P.arrayOf(Team),
     }),
   }),
 };

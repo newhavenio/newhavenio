@@ -14,4 +14,39 @@ index:
 about:
   home:
     title: About
-    description: TODO
+    description: NewHaven.io is a group of talented and passionate individuals living, working and creating in the New Haven area. We aspire to…
+    values:
+      - organize events around business and technology
+      - unite like-minded individuals in the area
+      - foster a culture of creation and experimentation
+      - create a stronger tech and startup minded community in New Haven
+      - partner with other organizations to achieve these goals
+  board:
+    title: The board
+resources:
+  home:
+    title: Rules and Resources
+  rules:
+    title: Code of conduct
+    description: All members of NewHaven.io are expected to abide by our code of conduct, found below.
+  resources:
+    title: How can we help you?
+    role:
+      - title: Developer
+        description:
+        - "Community: Social gatherings and hack nights"
+        - "Grow: A chance to learn, to mentor, to present"
+        - "Network: Find a new team, teammate, or co-founder"
+      - title: Local software meetup group
+        description:
+        - "Wider outreach & visibility"
+        - "Access to meeting spaces"
+        - "Logistical help"
+      - title: Software company
+        description:
+        - "Recruiting & hiring"
+        - "A way for your employees to grow and learn"
+        - "Engagement with the local tech community"
+      - title: Entrepreneur
+        description:
+        - "Sponsor a meetup (usually between $300-$500) for a chance to pitch to our developers"

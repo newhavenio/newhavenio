@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import P from 'prop-types';
 import Text from 'components/shared/text';
 import * as Styled from './teammember.css';
 import { Image } from 'customtypes';
@@ -31,10 +31,15 @@ const TeamMember = ({ name, title, description, image }) => {
 };
 
 TeamMember.propTypes = {
-  name: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  name: P.string.isRequired,
+  title: P.string.isRequired,
+  description: P.string.isRequired,
   image: Image,
+  social: P.shape({
+    slack: P.string,
+    twitter: P.string,
+    github: P.string,
+  }).isRequired,
 };
 
 export default TeamMember;
