@@ -98,7 +98,7 @@ export const aboutQuery = graphql`
     allImageSharp {
       edges {
         node {
-          fluid(maxWidth: 500) {
+          fluid(maxWidth: 500, maxHeight: 500) {
             ...GatsbyImageSharpFluid
             originalName
           }

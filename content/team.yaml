@@ -1,53 +1,47 @@
 - name: "Henry Quinn"
   picture: "henry.jpg"
   title: "President"
-  description: "Sit amet marshmallow topping cheesecake muffin. Halvah
-      croissant candy canes bonbon."
+  description: "This user prefers to keep an air of mystery about them."
   social:
     github: "https://github.com/quinncuatro"
     twitter: ""
     slack: "@Henry"
 - name: "Jenn Nolte"
   picture: "jenn.jpg"
-  title: "Vice President"
-  description: "Sit amet marshmallow topping cheesecake muffin. Halvah
-      croissant candy canes bonbon."
+  title: "Community & Governance"
+  description: "Jenn (she/her) is a librarian and CT native who worked in IT for over a decade before becoming a UX researcher. She served on the CT UXPA board for 3 years before joining New Haven IO. She is interested in issues of diversity and inclusion in tech, including supporting entry-level and pre-professional people at the beginning of their careers, and she hates it when you say UX/UI like it’s a thing."
   social:
     github: ""
     twitter: ""
     slack: "@Jenn Nolte she/her"
 - name: "Steve Voils"
   picture: "steve.jpg"
-  title: "Junior Vice President"
-  description: "Sit amet marshmallow topping cheesecake muffin. Halvah
-      croissant candy canes bonbon."
+  title: "Secretary"
+  description: "Steve has been working with, around, and in software development since high school, after writing his first program for a TI-83 calculator. Today, he’s passionate about both expanding his technical knowledge base and creating an environment in which team members can do their best work and create amazing products."
   social:
     github: ""
     twitter: ""
     slack: "@steve"
 - name: "Josh Levinson"
   picture: "josh.jpg"
-  title: "President Jr."
-  description: "Sit amet marshmallow topping cheesecake muffin. Halvah
-      croissant candy canes bonbon."
+  title: "Social Organization & Moral Support"
+  description: "Josh Levinson studied Computer Science in college and despite the results, continues to work with computers to this day. He writes Ruby on Rails for a New Haven-based company, as well as performs comedy all over the tri-state area (mostly Connecticut, if we're being honest). He loves riding bikes, playing video games, and starting pointless arguments and then leaving before it gets ugly."
   social:
     github: "https://github.com/jlevnhv"
-    twitter: ""
+    twitter: "@JLevNHV"
     slack: "@jlevnhv"
 - name: "Tom Reznick"
-  picture: "josh.jpg"
-  title: "President Jr."
-  description: "Sit amet marshmallow topping cheesecake muffin. Halvah
-      croissant candy canes bonbon."
+  picture: "tom.jpg"
+  title: "Treasurer"
+  description: "Tom Reznick is an Engineer who works on the Data Team at Heroku. He believes code should be clean, architecture and design should be elegant, tests should be well thought out and purposeful, and that software should be made with love, trust, and empathy. He enjoys karaoke, cooking, good beer, better cheese, and being a dad. That list is not in priority order."
   social:
     github: "https://github.com/treznick"
     twitter: ""
     slack: "@tom"
 - name: "Ben Midyette"
-  picture: "josh.jpg"
-  title: "President Jr."
-  description: "Sit amet marshmallow topping cheesecake muffin. Halvah
-      croissant candy canes bonbon."
+  picture: "ben.jpg"
+  title: "Event Management"
+  description: "Ben is a tech enthusiast and a generalist by nature, spending most of his time absorbed in weekly fleeting interests. He loves bicycling and being outside during the warmer months, retreating indoors to learn, code, and game during the colder ones. He's interested in seeing New Haven grow with the tech industry and become a better place for everyone."
   social:
     github: ""
     twitter: ""

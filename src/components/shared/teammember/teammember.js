@@ -11,7 +11,7 @@ const TeamMember = ({ name, title, description, image }) => {
   return (
     <Styled.Container>
       {image && <Styled.Img fluid={image.node.fluid} />}
-      <Text fontSize={3} my={1} fontWeight={700} color="Grays.100">
+      <Text fontSize={3} mt={4} mb={1} fontWeight={700} color="Grays.100">
         {name}
       </Text>
       <Text fontSize={3} my={1} color="Grays.100">
