@@ -5,7 +5,8 @@ import { NavContainer as _NavContainer } from '../navcontainer.css';
 
 export const ModalStyle = createGlobalStyle`
   #mobile-nav-modal[data-reach-dialog-content] {
-    height: 100vh;
+    /* don't use 100vh because it breaks on mobile (by design) */
+    height: 100%;
     width: 100vw;
     margin: 0;
     padding: 0;
@@ -19,13 +20,13 @@ export const Container = styled(motion.div)`
   width: calc(100% + 160px);
   background: ${p => p.theme.colors.Gradients.Orange};
   height: 100%;
-  padding: 3rem;
   display: flex;
 `;
 
 export const NavContainer = styled(_NavContainer)`
   margin-top: auto;
-  margin-bottom: 6rem;
+  margin-bottom: 9rem;
+  margin-left: 3rem;
 
   ul {
     flex-direction: column;
