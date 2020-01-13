@@ -52,7 +52,10 @@ const MobileNav = () => (
   <Consumer>
     {({ outerOpen, innerOpen, showModal, hideModal }) => (
       <>
-        <Burger open={innerOpen} onClick={innerOpen ? hideModal : showModal} />
+        <Burger
+          open={innerOpen}
+          onClick={innerOpen ? () => hideModal(false) : showModal}
+        />
         <ModalStyle />
         <Modal
           id="mobile-nav-modal"
