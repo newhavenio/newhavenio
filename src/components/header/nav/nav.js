@@ -29,22 +29,22 @@ const Nav = () => (
         <Container>
           <ul>
             <motion.li {...entryAnimation(0)}>
-              <Link activeClassName="active" to="/">
+              <Link partiallyActive activeClassName="active" to="/">
                 Home
               </Link>
             </motion.li>
             <motion.li {...entryAnimation(1)}>
-              <Link activeClassName="active" to="/about/">
+              <Link partiallyActive activeClassName="active" to="/about/">
                 About
               </Link>
             </motion.li>
             <motion.li {...entryAnimation(2)}>
-              <Link activeClassName="active" to="/events/">
+              <Link partiallyActive activeClassName="active" to="/events/">
                 Events
               </Link>
             </motion.li>
             <motion.li {...entryAnimation(3)}>
-              <Link activeClassName="active" to="/resources/">
+              <Link partiallyActive activeClassName="active" to="/resources/">
                 Rules and Resources
               </Link>
             </motion.li>

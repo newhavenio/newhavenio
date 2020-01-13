@@ -20,22 +20,42 @@ const Menu = ({ onClick }) => (
     <NavContainer>
       <ul>
         <li>
-          <Link activeClassName="active" to="/" onClick={onClick}>
+          <Link
+            partiallyActive
+            activeClassName="active"
+            to="/"
+            onClick={onClick}
+          >
             Home
           </Link>
         </li>
         <li>
-          <Link activeClassName="active" to="/about/" onClick={onClick}>
+          <Link
+            partiallyActive
+            activeClassName="active"
+            to="/about/"
+            onClick={onClick}
+          >
             About
           </Link>
         </li>
         <li>
-          <Link activeClassName="active" to="/events/" onClick={onClick}>
+          <Link
+            partiallyActive
+            activeClassName="active"
+            to="/events/"
+            onClick={onClick}
+          >
             Events
           </Link>
         </li>
         <li>
-          <Link activeClassName="active" to="/resources/" onClick={onClick}>
+          <Link
+            partiallyActive
+            activeClassName="active"
+            to="/resources/"
+            onClick={onClick}
+          >
             Rules
           </Link>
         </li>
