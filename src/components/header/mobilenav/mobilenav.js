@@ -61,7 +61,7 @@ const MobileNav = () => (
           hideModal={hideModal}
         >
           <AnimatePresence>
-            {innerOpen && <Menu onClick={hideModal} />}
+            {innerOpen && <Menu onClick={() => hideModal(true)} />}
           </AnimatePresence>
         </Modal>
       </>
