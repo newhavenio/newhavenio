@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { motion } from 'framer-motion';
 
 import MobileNav from 'components/header/mobilenav';
 import Nav from 'components/header/nav';
@@ -24,7 +25,9 @@ const Header = () => {
             letterColor="transparent"
           />
         </Link>
-        {isMobile ? <MobileNav /> : <Nav />}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          {isMobile ? <MobileNav /> : <Nav />}
+        </motion.div>
       </div>
     </Styled.Headroom>
   );

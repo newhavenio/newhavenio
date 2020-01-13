@@ -2,12 +2,28 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 
-// Remove transition for now -- not well implemented. Header should be outside.
-// import Transition from 'components/shared/transition';
+import Transition from 'components/shared/transition';
 import { theme } from 'constants/theme';
+import Head from 'components/head';
+import Header from 'components/header';
+import Footer from 'components/footer';
+import GlobalStyle from 'global.css.js';
+import * as Styled from 'components/layout/layout.css';
 
-const wrapPageElement = ({ element }) => {
-  return <ThemeProvider theme={theme}>{element}</ThemeProvider>;
+const wrapPageElement = ({ element, props }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <Styled.Container>
+        <Styled.Content>
+          <GlobalStyle />
+          <Head />
+          <Header />
+          <Transition {...props}>{element}</Transition>
+        </Styled.Content>
+        <Footer />
+      </Styled.Container>
+    </ThemeProvider>
+  );
 };
 
 wrapPageElement.propTypes = {

@@ -23,11 +23,9 @@ const AppProvider = ({ children }) => {
       clearTimeout(timeout);
     }
   }, [timeout]);
-  // immediate is a temporary measure since routing short circuits the animation.
-  // If the animation worked, we can remove this prop.
-  const hideModal = useCallback(immediate => {
+  const hideModal = useCallback(() => {
     setInnerOpen(false);
-    const timeout = setTimeout(() => setOuterOpen(false), immediate ? 0 : 300);
+    const timeout = setTimeout(() => setOuterOpen(false), 300);
     setTimeoutId(timeout);
   }, []);
   const ctx = useMemo(
