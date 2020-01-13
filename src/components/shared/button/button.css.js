@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { space } from 'styled-system';
+import { motion } from 'framer-motion';
 
 import { theme } from 'constants/theme';
 import { timeout } from 'constants/transition';
@@ -49,7 +50,7 @@ const PALETTES = {
   }),
 };
 
-export const Container = styled.button`
+export const Container = styled(motion.button)`
   border: none;
   cursor: pointer;
   font-size: 18px;

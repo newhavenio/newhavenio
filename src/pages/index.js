@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import P from 'prop-types';
+import { motion } from 'framer-motion';
 
 import Layout from 'components/layout';
 import Box from 'components/shared/box';
@@ -11,6 +12,12 @@ import InviteForm from 'components/shared/inviteform';
 import EventList from 'components/shared/eventlist';
 
 import { HeroSection, EventSection } from 'components/homepage';
+
+const entryAnimation = idx => ({
+  initial: { opacity: 0, y: -25 },
+  animate: { opacity: 1, y: 0 },
+  transition: { type: 'tween', delay: 0.2 * (idx + 1) },
+});
 
 const Index = ({
   data: {
@@ -36,24 +43,35 @@ const Index = ({
         padding="0 4rem 6rem"
         alignItems="flex-start"
       >
-        <Title as="h2" size="large" color="Whites.100" maxWidth="860px">
+        <Title
+          as={motion.h2}
+          size="large"
+          color="Whites.100"
+          maxWidth="860px"
+          {...entryAnimation(0)}
+        >
           {home.title}
         </Title>
         <Box maxWidth="640px">
-          <Text as="p" color="Whites.100">
+          <Text as={motion.p} color="Whites.100" {...entryAnimation(1)}>
             {home.description}
           </Text>
         </Box>
         <Button.Wrapper>
-          <Button palette="secondary" onClick={handleSlackButtonClick}>
+          <Button
+            palette="secondary"
+            onClick={handleSlackButtonClick}
+            {...entryAnimation(2)}
+          >
             Join the Slack
           </Button>
           <Button
-            as="a"
+            as={motion.a}
             href="https://www.meetup.com/newhavenio/"
             target="_blank"
             rel="noopener noreferrer"
             palette="tertiary"
+            {...entryAnimation(3)}
           >
             Join the Meetup
           </Button>
