@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { text, boolean } from '@storybook/addon-knobs';
+import { text, select } from '@storybook/addon-knobs';
 
 import EventCard from './eventcard';
 
@@ -31,16 +31,18 @@ const EVENT_FIXTURE = {
   yes_rsvp_count: 5,
 };
 
+const TYPE_OPTIONS = ['default', 'featured', 'compact'];
+
 storiesOf('EventCard', module).add('with text', () => {
   const knobs = {
     event: text('Event data', JSON.stringify(EVENT_FIXTURE)),
-    featured: boolean('Featured', false),
+    type: select('Type', TYPE_OPTIONS, TYPE_OPTIONS[0]),
   };
 
   return (
     <EventCard
       event={JSON.parse(knobs.event.replace(/&quot;/g, '"'))}
-      featured={knobs.featured}
+      type={knobs.type}
     />
   );
 });
