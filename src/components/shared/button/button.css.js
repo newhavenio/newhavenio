@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import { space } from 'styled-system';
+
 import { theme } from 'constants/theme';
+import { timeout } from 'constants/transition';
 
 import MEDIA from 'helpers/mediaTemplates';
 
@@ -62,6 +64,7 @@ export const Container = styled.button`
   :disabled {
     cursor: default;
   }
+  transition-duration: ${timeout}ms;
 
   ${p => PALETTES[p.palette]}
   ${space};
