@@ -109,6 +109,7 @@ const InviteForm = () => {
       <form onSubmit={handleSubmit}>
         <Styled.InputAndButton>
           <Styled.Input
+            id="slack-invite"
             placeholder="you@email.com"
             required
             type="email"
@@ -129,7 +130,7 @@ const InviteForm = () => {
       </form>
       <RecaptchaText focused={focused} />
       <Text fontSize={1} display="block" color="Grays.100">
-        Or if you&apos;re already a member{' '}
+        Or if you&apos;re already a member,{' '}
         <a
           href="https://newhavenio.slack.com/"
           target="_blank"

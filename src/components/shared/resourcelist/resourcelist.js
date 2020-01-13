@@ -7,10 +7,14 @@ import Card from 'components/shared/card';
 
 import { ResourceListContainer } from './resourcelist.css';
 
+// Super ghetto function to fix grammar. Maybe there's a library for this but ¯\_(ツ)_/¯
+const getPrefix = title =>
+  title[0].toLowerCase().match(/[aeiou]/) ? "If you're an " : "If you're a ";
+
 const Resource = ({ title, description }) => (
   <Card display="flex" justifyContent="space-between" flexDirection="column">
     <Title display="inline" color="Grays.100" size="small" py="1rem">
-      {"If you're a "} <Text color="Oranges.100">{title}</Text>
+      {getPrefix(title)} <Text color="Oranges.100">{title}</Text>
       ...
     </Title>{' '}
     <ul>
