@@ -20,12 +20,7 @@ const Menu = ({ onClick }) => (
     <NavContainer>
       <ul>
         <li>
-          <Link
-            partiallyActive
-            activeClassName="active"
-            to="/"
-            onClick={onClick}
-          >
+          <Link activeClassName="active" to="/" onClick={onClick}>
             Home
           </Link>
         </li>

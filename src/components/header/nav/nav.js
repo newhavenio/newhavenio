@@ -29,7 +29,7 @@ const Nav = () => (
         <Container>
           <ul>
             <motion.li {...entryAnimation(0)}>
-              <Link partiallyActive activeClassName="active" to="/">
+              <Link activeClassName="active" to="/">
                 Home
               </Link>
             </motion.li>
