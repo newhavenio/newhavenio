@@ -8,6 +8,7 @@ import Box from 'components/shared/box';
 import Button from 'components/shared/button';
 import Text from 'components/shared/text';
 import Title from 'components/shared/title';
+import AnimatedTitle from 'components/shared/animatedtitle';
 import InviteForm from 'components/shared/inviteform';
 import EventList from 'components/shared/eventlist';
 
@@ -43,9 +44,7 @@ const Index = ({
         padding="0 4rem 6rem"
         alignItems="flex-start"
       >
-        <Title as="h2" size="large" color="Whites.100" maxWidth="860px">
-          {home.title}
-        </Title>
+        <AnimatedTitle />
         <Box maxWidth="640px">
           <Text as="p" color="Whites.100">
             {home.description}
