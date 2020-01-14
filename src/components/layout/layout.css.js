@@ -9,7 +9,6 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   box-sizing: border-box;
-  max-width: 1440px;
   width: 100%;
   position: relative;
   flex: 1 1 auto;

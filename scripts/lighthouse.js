@@ -34,10 +34,10 @@ const logScore = score => `Is ${score * 100}.`;
  *
  * We can consider removing PWA since we don't really care about that.
  */
-test('Performance Score above 90', t => {
+test('Performance Score above 80', t => {
   const score = scores['performance'].score;
   t.log(logScore(score));
-  score >= 0.9 ? t.pass() : t.fail();
+  score >= 0.8 ? t.pass() : t.fail();
 });
 
 test('PWA Score above 70', t => {
