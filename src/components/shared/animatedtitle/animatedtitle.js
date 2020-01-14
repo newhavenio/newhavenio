@@ -1,8 +1,10 @@
 import React, { useCallback, useState, useEffect } from 'react';
 import Typed from 'react-typed';
 import shuffle from 'lodash/fp/shuffle';
+import { useMediaQuery } from 'react-responsive';
 
 import Title from 'components/shared/title';
+import breakpoints from 'constants/theme/breakpoints';
 
 const AnimatedTitle = () => {
   const [hasLooped, setHasLooped] = useState(false);
@@ -31,19 +33,26 @@ const AnimatedTitle = () => {
     shuffleTerms();
   }, []);
 
+  const isSmall = useMediaQuery({
+    query: `(max-width: ${breakpoints.sm})`,
+  });
+
   // Randomize terms so order is different every mount. Note that 'tech' is not in here -- we always want it to be first.
   useEffect(() => {
     shuffleTerms();
   }, []);
 
+  // Shorter delay on mobile because we do not need to wait for the topnav to animate.
+  const startDelay = isSmall ? 1250 : 2500;
+
   return (
     <Title as="h2" size="large" color="Whites.100" maxWidth="860px">
-      Where{' '}
+      Where {isSmall && <br />}
       <Typed
         // This component leverages caching, so this forces a cache reset once we loop
         key={hasLooped ? 0 : 1}
         backspaceFirst={!hasLooped}
-        startDelay={hasLooped ? 0 : 2500}
+        startDelay={hasLooped ? 0 : startDelay}
         // Add 'tech' at the end for seamless looping, since we strip away the 'tech' in the DOM.
         strings={techTerms.concat('tech')}
         backDelay={1000}
@@ -55,7 +64,7 @@ const AnimatedTitle = () => {
         {!hasLooped && <span>tech</span>}
       </Typed>
       <br />
-      happens in New Haven
+      happens in {isSmall && <br />} New Haven
     </Title>
   );
 };
