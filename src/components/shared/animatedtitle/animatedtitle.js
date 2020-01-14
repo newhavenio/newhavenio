@@ -81,6 +81,8 @@ const AnimatedTitle = () => {
         backDelay={1000}
         typeSpeed={50}
         backSpeed={35}
+        // Fully delete the word -- smart backspace looks weird for short strings
+        smartBackspace={false}
         onLastStringBackspaced={handleComplete}
         loop
       >
