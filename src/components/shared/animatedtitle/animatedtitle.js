@@ -3,8 +3,9 @@ import Typed from 'react-typed';
 import shuffle from 'lodash/fp/shuffle';
 import { useMediaQuery } from 'react-responsive';
 
-import Title from 'components/shared/title';
 import breakpoints from 'constants/theme/breakpoints';
+
+import * as Styled from './animatedtitle.css';
 
 const TECH_TERMS = [
   // List created based on active Slack channels and commonly discussed topics -- can add more.
@@ -26,18 +27,21 @@ const TECH_TERMS = [
 ];
 
 // Empirically measured to cause word wrap.
-const MOBILE_PHRASE_LENGTH_LIMIT = 12;
+const MOBILE_PHRASE_LENGTH_LIMIT = 10;
 
 const AnimatedTitle = () => {
   const isSmall = useMediaQuery({
     query: `(max-width: ${breakpoints.sm})`,
   });
+  const isMobile = useMediaQuery({
+    query: `(max-width: ${breakpoints.md})`,
+  });
 
   const [hasLooped, setHasLooped] = useState(false);
   const [techTerms, setTechTerms] = useState(
-    isSmall
+    isMobile
       ? // Filter out words that might wrap on mobile
-        TECH_TERMS.filter(x => x.length <= MOBILE_PHRASE_LENGTH_LIMIT)
+        TECH_TERMS.filter(x => x.length < MOBILE_PHRASE_LENGTH_LIMIT)
       : TECH_TERMS
   );
 
@@ -53,10 +57,16 @@ const AnimatedTitle = () => {
   }, []);
 
   // Shorter delay on mobile because we do not need to wait for the topnav to animate.
-  const startDelay = isSmall ? 1250 : 2500;
+  const startDelay = isMobile ? 1250 : 2500;
+
+  const [hasStarted, setHasStarted] = useState(false);
+  useEffect(() => {
+    const timeout = setTimeout(() => setHasStarted(true), startDelay);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
-    <Title as="h2" size="large" color="Whites.100" maxWidth="860px">
+    <Styled.Title active={hasStarted}>
       Where {isSmall && <br />}
       <Typed
         // This component leverages caching, so this forces a cache reset once we loop
@@ -75,7 +85,7 @@ const AnimatedTitle = () => {
       </Typed>
       <br />
       happens in {isSmall && <br />} New Haven
-    </Title>
+    </Styled.Title>
   );
 };
 
