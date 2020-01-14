@@ -84,7 +84,7 @@ const AnimatedTitle = () => {
         {!hasLooped && <span>tech</span>}
       </Typed>
       <br />
-      happens in {isSmall && <br />} New Haven
+      happens in New Haven
     </Styled.Title>
   );
 };
