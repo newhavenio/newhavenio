@@ -6,36 +6,46 @@ import { useMediaQuery } from 'react-responsive';
 import Title from 'components/shared/title';
 import breakpoints from 'constants/theme/breakpoints';
 
+const TECH_TERMS = [
+  // List created based on active Slack channels and commonly discussed topics -- can add more.
+  // The carets are an additional delay in ms for short words.
+  'AWS^100',
+  'DevOps',
+  'Docker',
+  'interview prep',
+  'Javascript',
+  'Linux',
+  'open source',
+  'PHP^100',
+  'Python',
+  'R^300',
+  'Ruby',
+  'UX^200',
+  'Vim^100',
+  'data science',
+];
+
+// Empirically measured to cause word wrap.
+const MOBILE_PHRASE_LENGTH_LIMIT = 12;
+
 const AnimatedTitle = () => {
+  const isSmall = useMediaQuery({
+    query: `(max-width: ${breakpoints.sm})`,
+  });
+
   const [hasLooped, setHasLooped] = useState(false);
-  const [techTerms, setTechTerms] = useState([
-    // List created based on active Slack channels and commonly discussed topics -- can add more.
-    // The carets are an additional delay in ms for short words.
-    'AWS^100',
-    'DevOps',
-    'Docker',
-    'interview prep',
-    'Javascript',
-    'Linux',
-    'open source',
-    'PHP^100',
-    'Python',
-    'R^300',
-    'Ruby',
-    'UX^200',
-    'Vim^100',
-    'data science',
-  ]);
+  const [techTerms, setTechTerms] = useState(
+    isSmall
+      ? // Filter out words that might wrap on mobile
+        TECH_TERMS.filter(x => x.length <= MOBILE_PHRASE_LENGTH_LIMIT)
+      : TECH_TERMS
+  );
 
   const shuffleTerms = useCallback(() => setTechTerms(shuffle(techTerms)), []);
   const handleComplete = useCallback(() => {
     setHasLooped(true);
     shuffleTerms();
   }, []);
-
-  const isSmall = useMediaQuery({
-    query: `(max-width: ${breakpoints.sm})`,
-  });
 
   // Randomize terms so order is different every mount. Note that 'tech' is not in here -- we always want it to be first.
   useEffect(() => {
