@@ -4,7 +4,6 @@ import breakpoints from 'constants/theme/breakpoints';
 
 export const Headroom = styled(reactHeadroom)`
   background: ${p => p.theme.colors.Gradients.Orange};
-  height: 140px;
 
   svg {
     width: 75px;
