@@ -189,6 +189,7 @@ const HeadWithQuery = props => (
             siteDescription
             siteUrl
             themeColor
+            imageUrl
             social {
               twitter
             }

@@ -2,9 +2,8 @@ import test from 'ava';
 import { launch } from 'chrome-launcher';
 import lighthouse from 'lighthouse';
 
-// import { siteUrl } from '../site-config';
 // TODO: switch this to actual URL once deployed
-const siteUrl = 'https://fervent-kepler-18363b.netlify.com/';
+import { siteUrlDevelopment as siteUrl } from '../site-config';
 
 const launchChromeAndRunLighthouse = (
   url,
