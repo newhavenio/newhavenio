@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { theme } from 'constants/theme';
-import breakpoints from 'constants/theme/breakpoints';
 import { space } from 'styled-system';
 
 export const Container = styled.section`
@@ -21,7 +20,7 @@ export const Grid = styled.div`
   align-content: center;
   justify-content: center;
   grid-gap: 2rem;
-  @media screen and (max-width: ${breakpoints.md}) {
+  @media screen and (max-width: ${p => p.theme.breakpoints.md}) {
     grid-template-columns: 1fr;
   }
 `;

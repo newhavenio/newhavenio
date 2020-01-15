@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { grid, space, color, typography, layout } from 'styled-system';
-import breakpoints from 'constants/theme/breakpoints';
 
 import Card from 'components/shared/card';
 import Text from 'components/shared/text';
@@ -16,7 +15,7 @@ export const Article = styled(Card).attrs(() => ({ forwardedAs: 'article' }))`
     'image image'
     'rsvp rsvp';
 
-  @media screen and (min-width: ${breakpoints.lg}) {
+  @media screen and (min-width: ${p => p.theme.breakpoints.xlLower}) {
     grid-template-columns: auto 1fr auto;
     grid-template-rows: 1fr auto 1fr;
     grid-template-areas:
@@ -28,7 +27,7 @@ export const Article = styled(Card).attrs(() => ({ forwardedAs: 'article' }))`
   ${p =>
     p.type === 'featured' &&
     css`
-      @media screen and (min-width: ${breakpoints.lg}) {
+      @media screen and (min-width: ${p => p.theme.breakpoints.xlLower}) {
         grid-template-rows: 2fr auto 1fr;
       }
     `};
@@ -95,7 +94,7 @@ export const FeaturedImageWrapper = styled.div`
   position: relative;
   display: block;
 
-  @media screen and (min-width: ${breakpoints.lg}) {
+  @media screen and (min-width: ${p => p.theme.breakpoints.xlLower}) {
     height: auto;
     img {
       border-top-right-radius: 4px;

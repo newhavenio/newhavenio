@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 import Text from 'components/shared/text';
-import breakpoints from 'constants/theme/breakpoints';
 
 export const Container = styled.div`
   display: grid;
@@ -10,7 +9,7 @@ export const Container = styled.div`
   grid-gap: 12px;
   grid-template-areas: 'form' 'recaptcha' 'member';
 
-  @media screen and (min-width: ${breakpoints.md}) {
+  @media screen and (min-width: ${p => p.theme.breakpoints.lgLower}) {
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
     grid-gap: 16px;
@@ -27,7 +26,7 @@ export const InputAndButton = styled.div`
   align-items: stretch;
   flex-direction: column;
 
-  @media screen and (min-width: ${breakpoints.sm}) {
+  @media screen and (min-width: ${p => p.theme.breakpoints.mdLower}) {
     flex-direction: row;
   }
 `;
@@ -39,7 +38,7 @@ export const Input = styled.input`
   background-color: white;
   border: 1px solid ${p => p.theme.colors.Grays[30]};
   min-width: unset;
-  @media screen and (min-width: ${breakpoints.sm}) {
+  @media screen and (min-width: ${p => p.theme.breakpoints.mdLower}) {
     min-width: 300px;
   }
   color: ${p => p.theme.colors.Grays[100]};

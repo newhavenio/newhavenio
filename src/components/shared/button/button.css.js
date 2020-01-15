@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 
 import { theme } from 'constants/theme';
 import { timeout } from 'constants/transition';
-import breakpoints from 'constants/theme/breakpoints';
 
 const makePalette = ({
   bgColor,
@@ -79,7 +78,7 @@ export const ButtonWrapper = styled.div`
   grid-gap: 0.5rem 1rem;
   grid-auto-flow: column;
 
-  @media screen and (max-width: ${breakpoints.sm}) {
+  @media screen and (max-width: ${p => p.theme.breakpoints.sm}) {
     grid-auto-flow: row;
   }
 `;

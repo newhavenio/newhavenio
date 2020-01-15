@@ -1,8 +1,6 @@
 // From https://css-tricks.com/hamburger-menu-with-a-side-of-react-hooks-and-styled-components/
 import styled from 'styled-components';
 
-import { Whites } from 'constants/theme/colors';
-
 export const Container = styled.div`
   position: relative;
   height: 2rem;
@@ -29,7 +27,7 @@ export const StyledBurger = styled.button`
   div {
     width: 2rem;
     height: 0.25rem;
-    background: ${Whites[100]};
+    background: ${p => p.theme.colors.Whites[100]};
     border-radius: 10px;
     transition: all 0.2s linear;
     position: relative;

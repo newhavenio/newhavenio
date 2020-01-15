@@ -1,8 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import { motion } from 'framer-motion';
 
-import breakpoints from 'constants/theme/breakpoints';
-
 import { NavContainer as _NavContainer } from '../navcontainer.css';
 
 export const ModalStyle = createGlobalStyle`
@@ -30,11 +28,11 @@ export const NavContainer = styled(_NavContainer)`
   margin-bottom: 9rem;
   margin-left: 3rem;
 
-  @media screen and (max-height: ${breakpoints.sm}) {
+  @media screen and (max-height: ${p => p.theme.breakpoints.sm}) {
     margin-bottom: 3rem;
   }
 
-  @media screen and (max-height: ${breakpoints.xs}) {
+  @media screen and (max-height: ${p => p.theme.breakpoints.xs}) {
     margin-bottom: 1rem;
   }
 
@@ -46,7 +44,7 @@ export const NavContainer = styled(_NavContainer)`
       font-size: 2.5rem;
       margin-bottom: 0.5rem;
 
-      @media screen and (max-height: ${breakpoints.xs}) {
+      @media screen and (max-height: ${p => p.theme.breakpoints.xs}) {
         font-size: 1.75rem;
       }
     }

@@ -13,6 +13,7 @@ class Transition extends PureComponent {
           enter={{ opacity: 1, delay: timeout, delayChildren: timeout }}
           exit={{ opacity: 0 }}
           key={location.pathname}
+          style={{ width: '100%' }}
         >
           {children}
         </motion.div>

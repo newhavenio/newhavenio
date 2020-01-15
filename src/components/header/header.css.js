@@ -1,6 +1,5 @@
 import reactHeadroom from 'react-headroom';
 import styled from 'styled-components';
-import breakpoints from 'constants/theme/breakpoints';
 
 export const Headroom = styled(reactHeadroom)`
   background: ${p => p.theme.colors.Gradients.Orange};
@@ -26,7 +25,7 @@ export const Headroom = styled(reactHeadroom)`
     padding: 1rem 4rem;
     transition: background-color 1s;
 
-    @media screen and (max-width: ${breakpoints.md}) {
+    @media screen and (max-width: ${p => p.theme.breakpoints.md}) {
       align-items: center;
       padding-right: 2rem;
     }

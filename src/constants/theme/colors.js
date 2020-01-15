@@ -20,19 +20,22 @@ export const Oranges = {
   100: '#FC6612',
   60: '#FF7B1A',
   30: '#FF961A',
+  20: '#FFA632',
+  10: '#FFC066',
+  8: '#FFD999',
 };
 
 export const Blues = {
   100: '#386688',
-  60: '#6B99BB',
-  30: '#EBEFF3',
+  60: '#4E7EA0',
+  30: '#6B99BB',
+  20: '#8EB0CC',
+  10: '#C0D1E0',
+  8: '#EBEFF3',
 };
 
 export const Gradients = {
-  Orange: `linear-gradient(100deg, ${Oranges[100]} 1%, ${Oranges[60]} 46%, ${
-    Oranges[30]
-  } 95%);`,
-  Gray: `linear-gradient(293deg, ${Grays[30]} 1%, ${Grays[10]} 46%, ${
-    Grays[8]
-  } 95%);`,
+  Orange: `linear-gradient(100deg, ${Oranges[100]} 1%, ${Oranges[60]} 46%, ${Oranges[30]} 95%);`,
+  Blue: `linear-gradient(50deg, ${Blues[100]} 1%, ${Blues[60]} 46%, ${Blues[30]} 95%);`,
+  Gray: `linear-gradient(293deg, ${Grays[30]} 1%, ${Grays[10]} 46%, ${Grays[8]} 95%);`,
 };

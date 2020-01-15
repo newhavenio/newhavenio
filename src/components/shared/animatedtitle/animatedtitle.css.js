@@ -1,11 +1,8 @@
 import styled, { css } from 'styled-components';
 
-import _Title from 'components/shared/title';
+import { TitleText } from 'components/shared/title/title.css';
 
-export const Title = styled(_Title).attrs(() => ({
-  as: 'h2',
-  size: 'large',
-}))`
+export const Title = styled(TitleText)`
   color: ${p => p.theme.colors.Whites[100]};
   max-width: 860px;
   ${p =>

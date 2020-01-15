@@ -42,7 +42,7 @@ const AnimatedTitle = () => {
 
   const [hasLooped, setHasLooped] = useState(false);
   const [techTerms, setTechTerms] = useState(
-    isMobile
+    isSmall
       ? // Filter out words that might wrap on mobile
         TECH_TERMS.filter(x => x.length < MOBILE_PHRASE_LENGTH_LIMIT)
       : TECH_TERMS
@@ -69,7 +69,7 @@ const AnimatedTitle = () => {
   }, []);
 
   return (
-    <Styled.Title active={hasStarted}>
+    <Styled.Title as="h2" size="large" active={hasStarted}>
       Where {isSmall && <br />}
       <Typed
         // This component leverages caching, so this forces a cache reset once we loop

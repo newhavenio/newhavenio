@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { color, layout, space } from 'styled-system';
-import breakpoints from 'constants/theme/breakpoints';
 import Text from 'components/shared/text';
 
 export const TitleText = styled(Text)`
@@ -49,7 +48,7 @@ export const TitleText = styled(Text)`
   ${layout};
   ${color};
   ${space};
-  @media screen and (max-width: ${breakpoints.md}) {
+  @media screen and (max-width: ${p => p.theme.breakpoints.md}) {
     font-size: ${({ size }) => () => {
       switch (size) {
         case 'large':
