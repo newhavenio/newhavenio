@@ -23,6 +23,13 @@ about:
       - partner with other organizations to achieve these goals
   board:
     title: The board
+events:
+  home:
+    title: Events
+    description: NewHaven.io hosts tech-focused and social events in the New Haven area that are open for all to attend.
+    join: Join our Meetup group
+  eventList:
+    title: Upcoming events
 resources:
   home:
     title: Rules and Resources
