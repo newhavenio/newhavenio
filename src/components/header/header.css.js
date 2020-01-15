@@ -3,7 +3,12 @@ import styled from 'styled-components';
 
 export const Headroom = styled(reactHeadroom)`
   width: 100%;
-  background: ${p => p.theme.colors.Gradients.Orange};
+  background: ${p => {
+    // Note this is slightly different than colors.Gradients.Orange. The angle
+    // is different to make this gradient blend into the theme gradient better.
+    const { Oranges } = p.theme.colors;
+    return `linear-gradient(45deg, ${Oranges[100]} 1%, ${Oranges[60]} 46%, ${Oranges[30]} 95%);`;
+  }};
 
   svg {
     width: 75px;
