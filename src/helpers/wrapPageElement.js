@@ -13,7 +13,7 @@ import * as Styled from 'components/layout/layout.css';
 const wrapPageElement = ({ element, props }) => {
   return (
     <ThemeProvider theme={theme}>
-      <Styled.Container>
+      <Styled.Container initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         <Styled.Content>
           <GlobalStyle />
           <Head />
