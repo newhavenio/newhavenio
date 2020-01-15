@@ -12,4 +12,18 @@ export const Title = styled(TitleText)`
         opacity: 0;
       }
     `};
+
+  > span:last-child {
+    display: block;
+  }
+
+  /*
+   * On mobile, we want the first line to break, to avoid jank from the
+   * typewriter effect.
+   */
+  @media screen and (max-width: ${p => p.theme.breakpoints.sm}) {
+    > span:first-child {
+      display: block;
+    }
+  }
 `;

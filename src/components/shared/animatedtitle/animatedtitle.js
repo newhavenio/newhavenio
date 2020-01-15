@@ -70,7 +70,7 @@ const AnimatedTitle = () => {
 
   return (
     <Styled.Title as="h2" size="large" active={hasStarted}>
-      Where {isSmall && <br />}
+      <span>Where</span>{' '}
       <Typed
         // This component leverages caching, so this forces a cache reset once we loop
         key={hasLooped ? 0 : 1}
@@ -88,8 +88,7 @@ const AnimatedTitle = () => {
       >
         {!hasLooped && <span>tech</span>}
       </Typed>
-      <br />
-      happens in New Haven
+      <span>happens in New Haven</span>
     </Styled.Title>
   );
 };
