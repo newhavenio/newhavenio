@@ -1,7 +1,7 @@
 const path = require('path');
 
 const SITE_URL = 'https://newhaven.io';
-const SITE_URL_DEVELOPMENT = 'https://fervent-kepler-18363b.netlify.com/';
+const SITE_URL_DEVELOPMENT = 'https://fervent-kepler-18363b.netlify.com';
 
 module.exports = {
   siteTitle: 'New Haven.io',
