@@ -1,7 +1,7 @@
 - name: "Henry Quinn"
   picture: "henry.jpg"
   title: "President"
-  description: "This user prefers to keep an air of mystery about them."
+  description: "Henry chose computers as a career after writing tools to get through high school calculus. After cutting his teeth on PHP 5 building web apps for the federal judiciary, he’s now a DevOps engineer who enjoys process automation in the name of better developer experience. When he’s not turning coffee into tools or organizing things for IO, he’s usually rock climbing, cooking, or rooting for the Packers."
   social:
     github: "https://github.com/quinncuatro"
     twitter: ""
