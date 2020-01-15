@@ -3,6 +3,7 @@ import React from 'react';
 import Layout from 'components/layout';
 import Head from 'components/head';
 import Box from 'components/shared/box';
+import PageContainer from 'components/shared/pagecontainer';
 import Button from 'components/shared/button';
 import Title from 'components/shared/title';
 import Text from 'components/shared/text';
@@ -11,7 +12,7 @@ import EventList from 'components/shared/eventlist/eventlist';
 const Events = () => (
   <Layout>
     <Head pageTitle="Events" />
-    <Box padding="2rem 4rem">
+    <PageContainer>
       <Title as="h2" size="large" color="Oranges.100">
         Events
       </Title>
@@ -39,7 +40,7 @@ const Events = () => (
         </Title>
         <EventList />
       </Box>
-    </Box>
+    </PageContainer>
   </Layout>
 );
 

@@ -2,6 +2,7 @@ import reactHeadroom from 'react-headroom';
 import styled from 'styled-components';
 
 export const Headroom = styled(reactHeadroom)`
+  width: 100%;
   background: ${p => p.theme.colors.Gradients.Orange};
 
   svg {

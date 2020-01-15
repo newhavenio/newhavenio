@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import Layout from 'components/layout';
 import Head from 'components/head';
 import Box from 'components/shared/box';
+import PageContainer from 'components/shared/pagecontainer';
 import Title from 'components/shared/title';
 import Text from 'components/shared/text';
 import TeamMember from 'components/shared/teammember';
@@ -20,7 +21,7 @@ const About = ({
 }) => (
   <Layout>
     <Head pageTitle={home.title} />
-    <Box padding="2rem 4rem">
+    <PageContainer>
       <Title as="h2" size="large" color="Oranges.100">
         {home.title}
       </Title>
@@ -62,7 +63,7 @@ const About = ({
           ))}
         </Box>
       </Box>
-    </Box>
+    </PageContainer>
   </Layout>
 );
 

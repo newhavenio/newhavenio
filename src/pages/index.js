@@ -12,7 +12,7 @@ import AnimatedTitle from 'components/shared/animatedtitle';
 import InviteForm from 'components/shared/inviteform';
 import EventList from 'components/shared/eventlist';
 
-import { HeroSection, EventSection } from 'components/homepage';
+import { HeroSection, SlackSection, EventSection } from 'components/homepage';
 
 const entryAnimation = idx => ({
   initial: { opacity: 0, y: -25 },
@@ -37,13 +37,7 @@ const Index = ({
 
   return (
     <Layout>
-      <HeroSection
-        display="flex"
-        flexDirection="column"
-        position="relative"
-        padding="0 4rem 6rem"
-        alignItems="flex-start"
-      >
+      <HeroSection>
         <AnimatedTitle />
         <Box maxWidth="640px">
           <Text as="p" color="Whites.100">
@@ -70,7 +64,7 @@ const Index = ({
           </Button>
         </Button.Wrapper>
       </HeroSection>
-      <Box padding="6rem 4rem">
+      <SlackSection>
         <Title
           color="Oranges.100"
           size="small"
@@ -87,18 +81,8 @@ const Index = ({
           {slack.description}
         </Text>
         <InviteForm />
-      </Box>
-      <EventSection
-        minHeight="300px"
-        position="relative"
-        display="flex"
-        flexDirection="column"
-        alignItems="flex-end"
-        padding={['8rem 2rem 2rem', '8rem 4rem']}
-        style={{
-          overflow: 'hidden',
-        }}
-      >
+      </SlackSection>
+      <EventSection>
         <Title
           color="Oranges.100"
           size="small"

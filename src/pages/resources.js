@@ -7,6 +7,7 @@ import Head from 'components/head';
 import Title from 'components/shared/title';
 import Text from 'components/shared/text';
 import Box from 'components/shared/box';
+import PageContainer from 'components/shared/pagecontainer';
 import Button from 'components/shared/button';
 
 import ResourceList from 'components/shared/resourcelist';
@@ -20,7 +21,7 @@ const Resources = ({
 }) => (
   <Layout>
     <Head pageTitle={home.title} />
-    <Box padding="2rem 4rem">
+    <PageContainer>
       <Title as="h2" size="large" color="Oranges.100">
         {home.title}
       </Title>
@@ -56,7 +57,7 @@ const Resources = ({
         </Title>
         <ResourceList roles={resources.role} />
       </Box>
-    </Box>
+    </PageContainer>
   </Layout>
 );
 

@@ -1,11 +1,14 @@
-import Box from 'components/shared/box';
-import EventCard from 'components/shared/eventcard';
-import Text from 'components/shared/text';
+import React from 'react';
+import P from 'prop-types';
 import isPast from 'date-fns/isPast';
 import parse from 'date-fns/parse';
 import { graphql, useStaticQuery } from 'gatsby';
-import P from 'prop-types';
-import React from 'react';
+
+import Box from 'components/shared/box';
+import EventCard from 'components/shared/eventcard';
+import Text from 'components/shared/text';
+
+import * as Styled from './eventlist.css';
 
 const EventList = ({ count }) => {
   // TODO: Possibly combine with events.js query if other components there need
@@ -46,7 +49,7 @@ const EventList = ({ count }) => {
     .slice(0, count);
 
   return (
-    <Box display="flex" flexDirection="column">
+    <Styled.Container>
       {nextEvent && (
         <Box>
           <EventCard event={nextEvent.node} type="featured" />
@@ -74,7 +77,7 @@ const EventList = ({ count }) => {
       {data.allMeetupEvent.edges.length === 0 && (
         <Text as="p">Sorry, no upcoming events!</Text>
       )}
-    </Box>
+    </Styled.Container>
   );
 };
 
