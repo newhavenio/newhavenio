@@ -1,9 +1,27 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Box from 'components/shared/box';
 
-export const Container = styled(Box)`
+export const Container = styled(Box).attrs(p => {
+  if (p != null && p.onClick != null) {
+    return {
+      role: 'link',
+    };
+  } else {
+    return {};
+  }
+})`
   padding: 1.5rem;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 4px;
+  box-shadow: ${p => p.theme.shadows.md};
+  border-radius: ${p => p.theme.radii.md};
+  transition-duration: ${p => p.theme.transition.md}ms;
+
+  ${p =>
+    p.onClick != null &&
+    css`
+      cursor: pointer;
+      :hover {
+        box-shadow: ${p.theme.shadows.lg};
+      }
+    `}
 `;

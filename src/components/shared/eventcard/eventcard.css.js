@@ -59,7 +59,16 @@ export const Description = styled.p`
   ${typography};
 `;
 
-const RSVPBox = styled(Box)(color, space, grid, layout);
+const RSVPBox = styled(Box)`
+  @media screen and (max-width: ${p => p.theme.breakpoints.lg}) {
+    border-bottom-left-radius: ${p => p.theme.radii.md};
+    border-bottom-right-radius: ${p => p.theme.radii.md};
+  }
+  ${color}
+  ${space}
+  ${grid}
+  ${layout}
+`;
 
 RSVPBox.defaultProps = {
   gridArea: 'rsvp',
@@ -97,8 +106,8 @@ export const FeaturedImageWrapper = styled.div`
   @media screen and (min-width: ${p => p.theme.breakpoints.xlLower}) {
     height: auto;
     img {
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
+      border-top-right-radius: ${p => p.theme.radii.md};
+      border-bottom-right-radius: ${p => p.theme.radii.md};
     }
   }
   ${grid};

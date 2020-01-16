@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import P from 'prop-types';
 import { parse, format } from 'date-fns';
 
@@ -42,8 +42,10 @@ const EventCard = ({ event, type }) => {
   const parsedDateTime = parse(local_time, 'HH:mm', new Date());
   const formattedTime = format(parsedDateTime, 'h:mm a');
 
+  const onCardClick = useCallback(() => window.open(short_link), [short_link]);
+
   return (
-    <Article type={type}>
+    <Article type={type} role="link" onClick={onCardClick}>
       <Box p={isCompact ? 0 : 32} pb={0} gridArea="date">
         <Day date={local_date} alignItems={{ _: 'start', sm: 'center' }} />
       </Box>
@@ -96,7 +98,7 @@ const EventCard = ({ event, type }) => {
               alt="event"
             />
           </FeaturedImageWrapper>
-          <Box gridArea="blank" bg="Grays.20">
+          <Box gridArea="blank" bg="Grays.20" borderBottomLeftRadius="md">
             {' '}
           </Box>
         </>
@@ -133,6 +135,7 @@ const EventCard = ({ event, type }) => {
             href={short_link}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={e => e.stopPropagation()}
           >
             RSVP
           </Button>

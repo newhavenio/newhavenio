@@ -14,6 +14,7 @@ const VenueLink = ({ venue }) => {
       href={directionsUrl}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={e => e.stopPropagation()}
     >
       {venue.name}
     </IconLink>
