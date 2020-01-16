@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { theme } from 'constants/theme';
-
 export const NavContainer = styled.nav`
   a {
     text-decoration: none;
@@ -13,11 +11,11 @@ export const NavContainer = styled.nav`
     padding: 0;
 
     li {
-      font-family: ${theme.fonts.heading};
+      font-family: ${p => p.theme.fonts.heading};
       font-weight: 700;
 
       a {
-        color: ${theme.colors.Whites[100]};
+        color: ${p => p.theme.colors.Whites[100]};
         position: relative;
         z-index: 1;
         display: inline-flex;
@@ -25,7 +23,7 @@ export const NavContainer = styled.nav`
         padding-bottom: 8px;
       }
       a:hover {
-        color: ${theme.colors.Whites[100]} !important;
+        color: ${p => p.theme.colors.Whites[100]} !important;
       }
       a::before {
         content: '';
@@ -33,7 +31,7 @@ export const NavContainer = styled.nav`
         height: 100%;
         background-image: linear-gradient(
           to top,
-          ${theme.colors.Whites[100]} 15%,
+          ${p => p.theme.colors.Whites[100]} 15%,
           rgba(0, 0, 0, 0) 15%
         );
         position: absolute;

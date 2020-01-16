@@ -1,9 +1,8 @@
-import React, { useCallback, useState, useEffect } from 'react';
+import React, { useCallback, useState, useEffect, useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 import Typed from 'react-typed';
 import shuffle from 'lodash/fp/shuffle';
 import { useMediaQuery } from 'react-responsive';
-
-import breakpoints from 'constants/theme/breakpoints';
 
 import * as Styled from './animatedtitle.css';
 
@@ -33,6 +32,7 @@ const TECH_TERMS = [
 const MOBILE_PHRASE_LENGTH_LIMIT = 10;
 
 const AnimatedTitle = () => {
+  const { breakpoints } = useContext(ThemeContext);
   const isSmall = useMediaQuery({
     query: `(max-width: ${breakpoints.sm})`,
   });

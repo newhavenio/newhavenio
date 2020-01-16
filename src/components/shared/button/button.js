@@ -1,11 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import P from 'prop-types';
 import * as Styled from './button.css';
 
 /**
  * A static display component that provides padding and a slight shadow.
  */
-const Button = ({ children, disabled, palette, onClick, type, ...props }) => (
+const Button = ({
+  children,
+  disabled,
+  palette,
+  onClick,
+  type,
+  prefixIcon,
+  ...props
+}) => (
   <Styled.Container
     disabled={disabled}
     palette={palette}
@@ -13,16 +21,20 @@ const Button = ({ children, disabled, palette, onClick, type, ...props }) => (
     type={type}
     {...props}
   >
+    {!!prefixIcon && (
+      <Styled.PrefixIconContainer>{prefixIcon}</Styled.PrefixIconContainer>
+    )}
     {children}
   </Styled.Container>
 );
 
 Button.propTypes = {
-  children: PropTypes.node.isRequired,
-  disabled: PropTypes.bool,
-  onClick: PropTypes.func.isRequired,
-  palette: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
-  type: PropTypes.oneOf(['button', 'submit']),
+  children: P.node.isRequired,
+  disabled: P.bool,
+  onClick: P.func.isRequired,
+  palette: P.oneOf(['primary', 'secondary', 'tertiary']),
+  type: P.oneOf(['button', 'submit']),
+  prefixIcon: P.node,
 };
 
 Button.defaultProps = {

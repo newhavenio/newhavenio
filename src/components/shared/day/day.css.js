@@ -1,15 +1,12 @@
 import styled from 'styled-components';
 import { space } from 'styled-system';
 
-import * as fonts from 'constants/theme/fonts';
-import { FONT_WEIGHTS, LETTER_SPACINGS } from 'constants/theme/typography';
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: ${fonts.heading};
+  font-family: ${p => p.theme.fonts.heading};
   ${space};
 `;
 
@@ -17,7 +14,7 @@ export const DayOfWeek = styled.span`
   color: ${p => p.theme.colors.Grays[60]};
   text-transform: uppercase;
   font-size: 14px;
-  letter-spacing: ${LETTER_SPACINGS.tight};
+  letter-spacing: ${p => p.theme.typography.LETTER_SPACINGS.tight};
   margin-bottom: -2px;
 `;
 
@@ -30,15 +27,15 @@ export const Month = styled.span`
   color: ${p => p.theme.colors.Grays[100]};
   text-transform: uppercase;
   font-size: 18px;
-  font-weight: ${FONT_WEIGHTS.bold};
-  letter-spacing: ${LETTER_SPACINGS.wide};
+  font-weight: ${p => p.theme.typography.FONT_WEIGHTS.bold};
+  letter-spacing: ${p => p.theme.typography.LETTER_SPACINGS.wide};
 `;
 
 export const DaysAway = styled.span`
   color: ${p => p.theme.colors.Oranges[100]};
   text-transform: uppercase;
   font-size: 14px;
-  font-weight: ${FONT_WEIGHTS.bold};
-  letter-spacing: ${LETTER_SPACINGS.tight};
+  font-weight: ${p => p.theme.typography.FONT_WEIGHTS.bold};
+  letter-spacing: ${p => p.theme.typography.LETTER_SPACINGS.tight};
   margin-top: 4px;
 `;

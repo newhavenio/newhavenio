@@ -1,12 +1,21 @@
 import styled from 'styled-components';
-import { flexbox, grid, layout, position, space, color } from 'styled-system';
+import {
+  color,
+  flexbox,
+  grid,
+  layout,
+  position,
+  border,
+  space,
+} from 'styled-system';
 import { motion } from 'framer-motion';
 
 export const Container = styled(motion.div)`
+  ${color};
   ${flexbox};
   ${grid};
   ${layout};
   ${position};
+  ${border};
   ${space};
-  ${color};
 `;

@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import GatsbyImage from 'gatsby-image';
 
-import { timeout } from 'constants/transition';
-
 export const Container = styled.div`
   max-width: 400px;
   flex: 1;
@@ -24,7 +22,7 @@ export const Img = styled(GatsbyImage)`
 export const Overlay = styled.div`
   position: absolute;
   opacity: ${p => (p.active ? 0.5 : 0)};
-  transition-duration: ${timeout};
+  transition-duration: ${p => p.theme.transition.md};
   width: 100%;
   height: auto;
   border-radius: 5px;

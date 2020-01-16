@@ -1,10 +1,9 @@
 import { createGlobalStyle, css } from 'styled-components';
-import * as typography from 'constants/theme/typography';
 
 const getTypographyStyles = kind => css`
-  font-size: ${typography[kind].fontSize};
-  font-weight: ${typography[kind].fontWeight};
-  letter-spacing: ${typography[kind].letterSpacing};
+  font-size: ${p => p.theme.typography[kind].fontSize};
+  font-weight: ${p => p.theme.typography[kind].fontWeight};
+  letter-spacing: ${p => p.theme.typography[kind].letterSpacing};
 `;
 
 export default createGlobalStyle`

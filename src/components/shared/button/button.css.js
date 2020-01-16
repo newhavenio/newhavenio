@@ -3,7 +3,7 @@ import { space } from 'styled-system';
 import { motion } from 'framer-motion';
 
 import { theme } from 'constants/theme';
-import { timeout } from 'constants/transition';
+import Box from 'components/shared/box';
 
 const makePalette = ({
   bgColor,
@@ -57,20 +57,33 @@ export const Container = styled(motion.button)`
   font-family: ${theme.fonts.heading};
   line-height: normal;
   padding: 1rem 2rem;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
   white-space: nowrap;
   :disabled {
     cursor: default;
   }
   :active {
-    box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.35);
+    box-shadow: ${p => p.theme.shadows.inset};
   }
-  transition-duration: ${timeout}ms;
-  transition: box-shadow 100ms, background-color ${timeout}ms;
+  transition-duration: ${p => p.theme.transition.md}ms;
+  transition: box-shadow ${(p => p, theme.transition.sm)}ms,
+    background-color ${p => p.theme.transition.md}ms;
 
   ${p => PALETTES[p.palette]}
   ${space};
+`;
+
+export const PrefixIconContainer = styled(Box)`
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+
+  > svg {
+    height: 20px;
+    width: 20px;
+  }
 `;
 
 export const ButtonWrapper = styled.div`

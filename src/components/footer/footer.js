@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from 'styled-components';
 import Link from 'gatsby-link';
 
 import Logo from 'components/shared/logo';
@@ -6,7 +7,6 @@ import SlackIcon from 'images/slack-icon.svg';
 import MeetupIcon from 'images/meetup-icon.svg';
 import TwitterIcon from 'images/twitter-icon.svg';
 import GithubIcon from 'images/github-icon.svg';
-import { theme } from 'constants/theme';
 
 import * as Styled from './footer.css';
 /**
@@ -14,14 +14,16 @@ import * as Styled from './footer.css';
  */
 const Footer = () => {
   const year = new Date().getFullYear();
+  const { colors } = useContext(ThemeContext);
+
   return (
     <Styled.Container>
       <Styled.Grid>
         <Styled.LogoContainer>
           <Link to="/">
             <Logo
-              squareColor={theme.colors.Grays[60]}
-              hoverSquareColor={theme.colors.Oranges[100]}
+              squareColor={colors.Grays[60]}
+              hoverSquareColor={colors.Oranges[100]}
             />
           </Link>
         </Styled.LogoContainer>
