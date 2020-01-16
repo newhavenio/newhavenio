@@ -59,7 +59,10 @@ const EventCard = ({ event, type }) => {
         pl={{ _: 0, lg: 0 }}
         display="flex"
         flexDirection="column"
-        justifyContent="center"
+        justifyContent={{
+          _: 'center',
+          lg: isFeatured ? 'flex-start' : 'center',
+        }}
         gridArea="title"
       >
         <EventName>{name}</EventName>
@@ -136,7 +139,11 @@ const EventCard = ({ event, type }) => {
             </>
           )}
         </IconRow>
-        <Box mt={{ _: 4, sm: 0 }} ml={2} alignSelf={{ sm: 'flex-end' }}>
+        <Box
+          mt={{ _: 4, sm: 0 }}
+          ml={{ _: 0, sm: 2 }}
+          alignSelf={{ sm: 'flex-end' }}
+        >
           <Button
             as="a"
             p=".5rem 1.25rem"
