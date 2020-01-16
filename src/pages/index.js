@@ -11,6 +11,8 @@ import Title from 'components/shared/title';
 import AnimatedTitle from 'components/shared/animatedtitle';
 import InviteForm from 'components/shared/inviteform';
 import EventList from 'components/shared/eventlist';
+import SlackIcon from 'images/slack-icon.svg';
+import MeetupIcon from 'images/meetup-icon.svg';
 
 import { HeroSection, SlackSection, EventSection } from 'components/homepage';
 
@@ -48,6 +50,7 @@ const Index = ({
           <Button
             palette="secondary"
             onClick={handleSlackButtonClick}
+            prefixIcon={<SlackIcon />}
             {...entryAnimation(0)}
           >
             Join the Slack
@@ -58,6 +61,7 @@ const Index = ({
             target="_blank"
             rel="noopener noreferrer"
             palette="tertiary"
+            prefixIcon={<MeetupIcon />}
             {...entryAnimation(1)}
           >
             Join the Meetup

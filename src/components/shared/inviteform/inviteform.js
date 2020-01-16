@@ -6,6 +6,7 @@ import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import * as Styled from './inviteform.css';
 import Button from 'components/shared/button';
 import Text from 'components/shared/text';
+import SlackIcon from 'images/slack-icon.svg';
 
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const isValidEmail = email => EMAIL_REGEX.test(email.toLowerCase());
@@ -118,7 +119,11 @@ const InviteForm = () => {
             onBlur={() => setFocused(false)}
             value={email}
           />
-          <Button type="submit" disabled={message.error || loading}>
+          <Button
+            type="submit"
+            disabled={message.error || loading}
+            prefixIcon={<SlackIcon />}
+          >
             Get Invite
           </Button>
         </Styled.InputAndButton>
