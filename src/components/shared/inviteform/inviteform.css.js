@@ -36,14 +36,22 @@ export const InputAndButton = styled.div`
   border-radius: ${p => p.theme.radii.sm};
 
   > *:first-child {
+    border-top-right-radius: ${p => p.theme.radii.sm};
     border-top-left-radius: ${p => p.theme.radii.sm};
-    border-bottom-left-radius: ${p => p.theme.radii.sm};
+    @media screen and (min-width: ${p => p.theme.breakpoints.mdLower}) {
+      border-top-right-radius: 0;
+      border-bottom-left-radius: ${p => p.theme.radii.sm};
+    }
   }
 
   > *:last-child {
     border-radius: 0;
-    border-top-right-radius: ${p => p.theme.radii.sm};
     border-bottom-right-radius: ${p => p.theme.radii.sm};
+    border-bottom-left-radius: ${p => p.theme.radii.sm};
+    @media screen and (min-width: ${p => p.theme.breakpoints.mdLower}) {
+      border-top-right-radius: ${p => p.theme.radii.sm};
+      border-bottom-left-radius: 0;
+    }
   }
 
   @media screen and (min-width: ${p => p.theme.breakpoints.mdLower}) {
