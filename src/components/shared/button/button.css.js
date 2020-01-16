@@ -14,7 +14,8 @@ const makePalette = ({
 }) => css`
   background-color: ${bgColor};
   color: ${textColor};
-  :hover {
+  :hover,
+  :focus {
     background-color: ${bgColorHover};
   }
   :active {
@@ -61,11 +62,18 @@ export const Container = styled(motion.button)`
   align-items: center;
   text-decoration: none;
   white-space: nowrap;
+  box-shadow: ${p => p.theme.shadows.radial};
+  border-radius: ${p => p.theme.radii.sm};
+
+  :focus {
+    outline: none;
+  }
+
   :disabled {
     cursor: default;
   }
   :active {
-    box-shadow: ${p => p.theme.shadows.inset};
+    box-shadow: ${p => p.theme.shadows.inset}, ${p => p.theme.shadows.radial};
   }
   transition-duration: ${p => p.theme.transition.md}ms;
   transition: box-shadow ${(p => p, theme.transition.sm)}ms,

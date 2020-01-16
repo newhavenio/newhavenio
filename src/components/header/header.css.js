@@ -9,6 +9,7 @@ export const Headroom = styled(reactHeadroom)`
     const { Oranges } = p.theme.colors;
     return `linear-gradient(45deg, ${Oranges[100]} 1%, ${Oranges[60]} 46%, ${Oranges[30]} 95%);`;
   }};
+  box-shadow: none;
 
   svg {
     width: 75px;
@@ -21,6 +22,7 @@ export const Headroom = styled(reactHeadroom)`
       width: 32px;
       height: 32px;
     }
+    box-shadow: ${p => p.theme.shadows.md};
   }
 
   .headroom--inner {

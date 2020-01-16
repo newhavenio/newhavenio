@@ -128,7 +128,7 @@ const InviteForm = () => {
           </Button>
         </Styled.InputAndButton>
         {message.body != null && (
-          <Text fontSize={2} fontWeight={600} mt={3} color="Blues.100">
+          <Text fontSize={2} fontWeight={600} mt={4} color="Blues.100">
             {message.body}
           </Text>
         )}

@@ -32,6 +32,19 @@ export const InputAndButton = styled.div`
   flex-wrap: nowrap;
   align-items: stretch;
   flex-direction: column;
+  box-shadow: ${p => p.theme.shadows.radial};
+  border-radius: ${p => p.theme.radii.sm};
+
+  > *:first-child {
+    border-top-left-radius: ${p => p.theme.radii.sm};
+    border-bottom-left-radius: ${p => p.theme.radii.sm};
+  }
+
+  > *:last-child {
+    border-radius: 0;
+    border-top-right-radius: ${p => p.theme.radii.sm};
+    border-bottom-right-radius: ${p => p.theme.radii.sm};
+  }
 
   @media screen and (min-width: ${p => p.theme.breakpoints.mdLower}) {
     flex-direction: row;
@@ -43,7 +56,7 @@ export const Input = styled.input`
   font-size: 18px;
   padding: 1rem;
   background-color: white;
-  border: 1px solid ${p => p.theme.colors.Grays[30]};
+  border: none;
   min-width: unset;
   @media screen and (min-width: ${p => p.theme.breakpoints.mdLower}) {
     min-width: 300px;
