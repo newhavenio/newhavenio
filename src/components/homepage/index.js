@@ -9,12 +9,13 @@ export const HeroSection = styled(Box).attrs(() => ({
   flex-direction: column;
   align-items: flex-start;
   position: relative;
-  padding: 0 4rem 8rem;
+  padding: 0 4rem 10rem;
   background: ${p => p.theme.colors.Gradients.Orange};
   clip-path: polygon(0 89%, 0 0, 100% 0, 100% 80%, 40% 100%);
 
   @media screen and (min-width: ${p => p.theme.breakpoints.lgLower}) {
     clip-path: polygon(0 89%, 0 0, 100% 0, 100% 65%, 40% 100%);
+    padding-bottom: 8rem;
   }
 
   @media screen and (min-width: ${p => p.theme.breakpoints.xlLower}) {
