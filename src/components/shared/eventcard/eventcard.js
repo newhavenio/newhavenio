@@ -4,7 +4,6 @@ import { parse, format } from 'date-fns';
 
 import Day from 'components/shared/day';
 import Box from 'components/shared/box';
-import Text from 'components/shared/text';
 import Button from 'components/shared/button';
 import VenueLink from 'components/shared/venuelink';
 import Event from 'customtypes/event';
@@ -15,6 +14,7 @@ import MapMarkerIcon from 'images/map-marker.svg';
 
 import {
   Article,
+  EventName,
   Description,
   FeaturedImageWrapper,
   ImageWrapper,
@@ -46,7 +46,12 @@ const EventCard = ({ event, type }) => {
 
   return (
     <Article type={type} role="link" onClick={onCardClick}>
-      <Box p={isCompact ? 0 : 32} pb={0} gridArea="date">
+      <Box
+        p={isCompact ? 0 : 32}
+        pb={isCompact ? 0 : { _: 32, lg: 0 }}
+        px={isCompact ? 0 : { _: 24, sm: 32 }}
+        gridArea="date"
+      >
         <Day date={local_date} alignItems={{ _: 'start', sm: 'center' }} />
       </Box>
       <Box
@@ -54,15 +59,14 @@ const EventCard = ({ event, type }) => {
         pl={{ _: 0, lg: 0 }}
         display="flex"
         flexDirection="column"
+        justifyContent="center"
         gridArea="title"
       >
-        <Text as="h5" color="Blues.100" fontWeight="bold">
-          {name}
-        </Text>
+        <EventName>{name}</EventName>
         {isFeatured && (
           <Description
             display={{ _: 'none', lg: 'block' }}
-            mt={16}
+            mt={{ _: 0, lg: 16 }}
             mb={0}
             color="Grays.100"
             fontSize={3}
@@ -75,15 +79,19 @@ const EventCard = ({ event, type }) => {
         <>
           <Box
             p={32}
+            pt={0}
             display={{ _: 'block', lg: 'none' }}
             flexDirection="column"
             gridArea="description"
           >
-            {isFeatured && (
-              <Description mt={16} mb={0} color="Grays.100" fontSize={3}>
-                {short_description}
-              </Description>
-            )}
+            <Description
+              mt={{ _: 0, lg: 16 }}
+              mb={0}
+              color="Grays.100"
+              fontSize={3}
+            >
+              {short_description}
+            </Description>
           </Box>
           <FeaturedImageWrapper
             width={{ lg: 400 }}
@@ -104,7 +112,7 @@ const EventCard = ({ event, type }) => {
         </>
       )}
       {isDefault && (
-        <ImageWrapper mt={{ _: 32, lg: 0 }}>
+        <ImageWrapper>
           <Image
             src={
               featured_photo ? featured_photo.photo_link : EventPlaceholderImage
@@ -128,7 +136,7 @@ const EventCard = ({ event, type }) => {
             </>
           )}
         </IconRow>
-        <Box mt={{ _: 4, sm: 0 }}>
+        <Box mt={{ _: 4, sm: 0 }} ml={2} alignSelf={{ sm: 'flex-end' }}>
           <Button
             as="a"
             p=".5rem 1.25rem"

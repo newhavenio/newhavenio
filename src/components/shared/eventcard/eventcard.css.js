@@ -7,7 +7,7 @@ import Box from 'components/shared/box';
 
 export const Article = styled(Card).attrs(() => ({ forwardedAs: 'article' }))`
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto minmax(0, 1fr);
   grid-template-rows: auto auto auto auto;
   grid-template-areas:
     'date title'
@@ -16,7 +16,7 @@ export const Article = styled(Card).attrs(() => ({ forwardedAs: 'article' }))`
     'rsvp rsvp';
 
   @media screen and (min-width: ${p => p.theme.breakpoints.xlLower}) {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     grid-template-rows: 1fr auto 1fr;
     grid-template-areas:
       'date title featured-image'
@@ -35,7 +35,7 @@ export const Article = styled(Card).attrs(() => ({ forwardedAs: 'article' }))`
     p.type === 'compact' &&
     css`
       &&& {
-        grid-template-columns: auto 1fr;
+        grid-template-columns: auto minmax(0, 1fr);
         grid-template-rows: 1fr auto;
         grid-template-areas:
           'date title'
@@ -49,6 +49,18 @@ export const Article = styled(Card).attrs(() => ({ forwardedAs: 'article' }))`
   background-color: white;
   box-sizing: border-box;
   padding: 0;
+`;
+
+export const EventName = styled(Text).attrs(() => ({ forwardedAs: 'h5' }))`
+  color: ${p => p.theme.colors.Blues[100]};
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: normal;
+
+  @media screen and (max-width: ${p => p.theme.breakpoints.xs}) {
+    font-size: 20px;
+  }
 `;
 
 export const Description = styled.p`
