@@ -4,11 +4,13 @@ import { graphql } from 'gatsby';
 import Layout from 'components/layout';
 import Head from 'components/head';
 import Box from 'components/shared/box';
+import Button from 'components/shared/button';
 import PageContainer from 'components/shared/pagecontainer';
 import Title from 'components/shared/title';
 import Text from 'components/shared/text';
 import TeamMember from 'components/shared/teammember';
 import { Image, Team } from 'customtypes';
+import MailtoIcon from 'images/mailto-icon.svg';
 
 const About = ({
   data: {
@@ -28,13 +30,26 @@ const About = ({
       <Text as="p" fontSize={3}>
         {home.description}
       </Text>
-      <ul style={{ listStyle: 'inside', marginLeft: '2rem' }}>
+      <ul
+        style={{
+          listStyle: 'inside',
+          marginLeft: '2rem',
+          marginBottom: '2rem',
+        }}
+      >
         {home.values.map((v, i) => (
           <li key={i}>
             <Text fontSize={3}>{v}</Text>
           </li>
         ))}
       </ul>
+      <Button
+        as="a"
+        href="mailto:organizers@newhaven.io?subject=NewHaven.io"
+        prefixIcon={<MailtoIcon />}
+      >
+        {home.contact}
+      </Button>
       <Box my={4}>
         <Title
           color="Oranges.100"
@@ -75,6 +90,7 @@ export const aboutQuery = graphql`
           description
           title
           values
+          contact
         }
         board {
           title

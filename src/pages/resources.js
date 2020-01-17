@@ -43,7 +43,7 @@ const Resources = ({
         target="_blank"
         rel="noopener noreferrer"
       >
-        Code of Conduct
+        {home.title}
       </Button>
       <Box my={4}>
         <Title
