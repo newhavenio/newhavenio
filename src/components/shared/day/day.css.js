@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { space } from 'styled-system';
 
 export const Container = styled.div`
@@ -31,11 +31,19 @@ export const Month = styled.span`
   letter-spacing: ${p => p.theme.typography.LETTER_SPACINGS.wide};
 `;
 
-export const DaysAway = styled.span`
+export const DaysAway = styled.div`
   color: ${p => p.theme.colors.Oranges[100]};
   text-transform: uppercase;
   font-size: 14px;
   font-weight: ${p => p.theme.typography.FONT_WEIGHTS.bold};
   letter-spacing: ${p => p.theme.typography.LETTER_SPACINGS.tight};
   margin-top: 4px;
+  padding: 2px 4px;
+  border-radius: ${p => p.theme.radii.sm};
+  ${p =>
+    p.featured &&
+    `
+      color: ${p.theme.colors.Whites[100]};
+      background: ${p.theme.colors.Oranges[100]};
+    `};
 `;

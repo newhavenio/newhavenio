@@ -1,7 +1,6 @@
 import React from 'react';
 import P from 'prop-types';
-import isPast from 'date-fns/isPast';
-import parse from 'date-fns/parse';
+import { isPast, parse, endOfDay } from 'date-fns';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import Box from 'components/shared/box';
@@ -40,8 +39,11 @@ const EventList = ({ count }) => {
     }
   `);
 
+  // We use `endOfDay` here because we don't want to filter out events that are currently happening
   const excludePastEvents = event => {
-    return !isPast(parse(event.node.local_date, 'yyyy-MM-dd', new Date()));
+    return !isPast(
+      endOfDay(parse(event.node.local_date, 'yyyy-MM-dd', new Date()))
+    );
   };
 
   const [nextEvent, ...otherEvents] = data.allMeetupEvent.edges
@@ -52,7 +54,13 @@ const EventList = ({ count }) => {
     <Styled.Container>
       {nextEvent && (
         <Box>
-          <EventCard event={nextEvent.node} type="featured" />
+          <EventCard
+            event={nextEvent.node}
+            type="featured"
+            isNow={isPast(
+              parse(nextEvent.node.local_date, 'yyyy-MM-dd', new Date())
+            )}
+          />
         </Box>
       )}
 
