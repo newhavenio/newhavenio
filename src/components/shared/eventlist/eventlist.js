@@ -1,11 +1,13 @@
 import React from 'react';
 import P from 'prop-types';
-import { isPast, parse, endOfDay } from 'date-fns';
+import { isPast, parseISO, addMilliseconds } from 'date-fns';
+import { set } from 'lodash/fp';
 import { graphql, useStaticQuery } from 'gatsby';
 
 import Box from 'components/shared/box';
 import EventCard from 'components/shared/eventcard';
 import Text from 'components/shared/text';
+import { GUESSTIMATED_EVENT_LENGTH_MS } from 'constants/events';
 
 import * as Styled from './eventlist.css';
 
@@ -23,6 +25,7 @@ const EventList = ({ count }) => {
             id
             local_date
             local_time
+            duration
             name
             plain_text_description
             short_link
@@ -39,15 +42,33 @@ const EventList = ({ count }) => {
     }
   `);
 
-  // We use `endOfDay` here because we don't want to filter out events that are currently happening
-  const excludePastEvents = event => {
-    return !isPast(
-      endOfDay(parse(event.node.local_date, 'yyyy-MM-dd', new Date()))
-    );
-  };
-
   const [nextEvent, ...otherEvents] = data.allMeetupEvent.edges
-    .filter(excludePastEvents)
+    /**
+     * Adds the parsed date and time to the event object to reduce the need to
+     * constantly parse ISO strings.
+     */
+    .map(event => {
+      const {
+        node: { local_date, local_time },
+      } = event;
+      const datetime = parseISO([local_date, local_time].join('T'));
+      return set(['node', 'datetime'], datetime, event);
+    })
+    /**
+     * We use `addMilliseconds` here because we don't want to filter out events
+     * that are currently happening. If there is no provided duration, We
+     * assume that events with a start time within 2 hours of now are ongoing,
+     * and filter out events that occurred after that.
+     */
+    .filter(
+      event =>
+        !isPast(
+          addMilliseconds(
+            event.node.datetime,
+            event.node.duration || GUESSTIMATED_EVENT_LENGTH_MS
+          )
+        )
+    )
     .slice(0, count);
 
   return (
@@ -57,9 +78,7 @@ const EventList = ({ count }) => {
           <EventCard
             event={nextEvent.node}
             type="featured"
-            isNow={isPast(
-              parse(nextEvent.node.local_date, 'yyyy-MM-dd', new Date())
-            )}
+            isNow={isPast(nextEvent.node.datetime)}
           />
         </Box>
       )}

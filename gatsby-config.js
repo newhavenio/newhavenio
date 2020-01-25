@@ -47,7 +47,7 @@ module.exports = {
       resolve: 'gatsby-source-meetup',
       options: {
         groupUrlName: 'newhavenio',
-        fields: 'featured_photo,plain_text_description,short_link',
+        fields: 'featured_photo,plain_text_description,short_link,duration',
         status: 'upcoming',
         desc: 'false',
         page: 10,

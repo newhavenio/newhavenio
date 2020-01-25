@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import P from 'prop-types';
-import { parse, format } from 'date-fns';
+import { format } from 'date-fns';
 
 import Day from 'components/shared/day';
 import Box from 'components/shared/box';
@@ -27,8 +27,7 @@ import {
 const EventCard = ({ event, type }) => {
   const {
     featured_photo,
-    local_date,
-    local_time,
+    datetime,
     name,
     plain_text_description,
     short_link,
@@ -39,8 +38,7 @@ const EventCard = ({ event, type }) => {
   const isCompact = type === 'compact';
 
   const [short_description] = plain_text_description.split('\n');
-  const parsedDateTime = parse(local_time, 'HH:mm', new Date());
-  const formattedTime = format(parsedDateTime, 'h:mm a');
+  const formattedTime = format(datetime, 'h:mm a');
 
   const onCardClick = useCallback(() => window.open(short_link), [short_link]);
 
@@ -52,7 +50,7 @@ const EventCard = ({ event, type }) => {
         px={isCompact ? 0 : { _: 24, sm: 32 }}
         gridArea="date"
       >
-        <Day date={local_date} alignItems={{ _: 'start', sm: 'center' }} />
+        <Day datetime={datetime} alignItems={{ _: 'start', sm: 'center' }} />
       </Box>
       <Box
         p={isCompact ? 0 : 32}
