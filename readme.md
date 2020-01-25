@@ -9,6 +9,8 @@ This site is an open source Gatsby site for the NewHaven.io community! We're a t
 
 ## Contributing
 
+To get involved in this project, first join our Slack. There is a self-serve invite link on the website.
+
 ### Getting Started
 
 ```bash
