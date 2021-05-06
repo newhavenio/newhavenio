@@ -41,4 +41,11 @@
   tech: "Linux, Cisco, Palo Alto, AWS"
   postedOn: "04/15/2021"
   description: "The role supports a secure, compliant, robust, reliable, scalable, and efficient infrastructure. They are responsible for ensuring platforms are efficiently utilized, the cost to operate and support the platforms aligns with group and business expectations, and that all compliance requirements are met for all platforms including, but not limited to, HIPAA, HITRUST, federal and state security, and compliance regulations."
-  
+- company: "Yale University"
+  jobURL: "http://bit.ly/YaleCareers-64939BR"
+  location: "New Haven, CT"
+  remote: "For Now"
+  jobTitle: "Principal Full Stack Engineer"
+  tech: "C#/.NET, SQL Server, Azure"
+  postedOn: "05/06/2021"
+  description: "We are looking for a principal engineer with substantial C# and SQL Server experience.  The principal engineer will work with a small team that is focused on customization and integration of applications used by Yale University Library."
