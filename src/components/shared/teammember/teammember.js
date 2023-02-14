@@ -36,7 +36,7 @@ TeamMember.propTypes = {
   description: P.string.isRequired,
   image: Image,
   social: P.shape({
-    slack: P.string,
+    discord: P.string,
     twitter: P.string,
     github: P.string,
   }).isRequired,

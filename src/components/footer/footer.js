@@ -3,7 +3,7 @@ import { ThemeContext } from 'styled-components';
 import Link from 'gatsby-link';
 
 import Logo from 'components/shared/logo';
-import SlackIcon from 'images/slack-icon.svg';
+import DiscordIcon from 'images/discord-icon.svg';
 import MeetupIcon from 'images/meetup-icon.svg';
 import TwitterIcon from 'images/twitter-icon.svg';
 import GithubIcon from 'images/github-icon.svg';
@@ -54,12 +54,12 @@ const Footer = () => {
           <ul>
             <li>
               <Styled.SocialLink
-                href="https://newhavenio.slack.com"
+                href="https://discord.gg/gM3zkw9MvP"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <SlackIcon />
-                Slack
+                <DiscordIcon />
+                Discord
               </Styled.SocialLink>
             </li>
             <li>

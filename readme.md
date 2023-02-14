@@ -4,11 +4,11 @@
   [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
   [![Netlify Status](https://api.netlify.com/api/v1/badges/9fc179f1-e990-4301-a60f-4d0dedbcb593/deploy-status)](https://app.netlify.com/sites/fervent-kepler-18363b/deploys)
 
-This site is an open source Gatsby site for the NewHaven.io community! We're a tech Meetup and Slack community in New Haven interested in bringing people together around and through technology.
+This site is an open source Gatsby site for the NewHaven.io community! We're a tech Meetup and Discord community in New Haven interested in bringing people together around and through technology.
 
 ## Contributing
 
-To get involved in this project, first join our Slack. There is a self-serve invite link on the website.
+To get involved in this project, first join our Discord. There is a self-serve invite link on the website.
 
 ### Getting Started
 

@@ -106,7 +106,7 @@ export const aboutQuery = graphql`
           title
           social {
             github
-            slack
+            discord
           }
         }
       }

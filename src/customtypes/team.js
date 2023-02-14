@@ -7,7 +7,7 @@ const Team = P.shape({
     title: P.string,
     image: P.string,
     social: P.shape({
-      slack: P.string,
+      discord: P.string,
       twitter: P.string,
       github: P.string,
     }),

@@ -7,13 +7,16 @@ import { useMediaQuery } from 'react-responsive';
 import * as Styled from './animatedtitle.css';
 
 const TECH_TERMS = [
-  // List created based on active Slack channels and commonly discussed topics -- can add more.
+  // List created based on active Discord channels and commonly discussed topics -- can add more.
   // The carets are an additional delay in ms for short words.
   'AWS^100',
+  'ChatGPT',
   'data science',
   'DevOps',
   'Docker',
+  'Fediverse',
   'Git^100',
+  'homelabs',
   'interview prep',
   'infosec',
   'JavaScript',

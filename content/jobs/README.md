@@ -15,9 +15,9 @@ Here's an example:
   remote: "Yes"
   jobTitle: "Community Moderator"
   salary: "Volunteer"
-  tech: "Slack, MeetUp, GatsbyJS"
+  tech: "Disord, MeetUp, GatsbyJS"
   postedOn: "02/27/2021"
-  description: "We're looking for help with some community moderation. As vaccines keep rolling out we're looking at ways we can begin to breathe life back into the group. We want to wade back into holding some events and we're going to need help keeping an eye our Slack team and Meetup page. Over time we can fold whoever takes this role into our organizing and leadership teams. If you've gotten some value from IO in the past we'd love your help in carrying it forward."
+  description: "We're looking for help with some community moderation. As vaccines keep rolling out we're looking at ways we can begin to breathe life back into the group. We want to wade back into holding some events and we're going to need help keeping an eye our Discord server and Meetup page. Over time we can fold whoever takes this role into our organizing and leadership teams. If you've gotten some value from IO in the past we'd love your help in carrying it forward."
 - company: "Your Company Name"
   hidden: "true"
   jobURL: "URL to Your Site (or Job Post)"
@@ -38,6 +38,6 @@ You might see a `hidden: "true"` attribute for the example job post in the `jobs
 
 Once we get the notification of your PR, check your formatting, and roll your change into the main branch: a Netlify build should kick off and deploy the updated version.
 
-Please feel free to [join our Slack](https://newhaven.io) and contact any of us admins in the #organizing channel if there's anything else we might be able to do to help you hire local!
+Please feel free to [join our Discord](https://discord.gg/gM3zkw9MvP) and contact any of us admins in the #organizing channel if there's anything else we might be able to do to help you hire local!
 
 And please remember to take your role off this page and submit a new PR when you close out your search. We look forward to reviewing a celebratory PR with you!

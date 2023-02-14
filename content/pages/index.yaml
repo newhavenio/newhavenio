@@ -3,10 +3,6 @@ index:
   home:
     title: Where tech happens in New Haven.
     description: NewHaven.io acts as the hub of the local tech community by helping its members learn, solve problems, and connect with the local tech scene.
-  slack:
-    title: Join the Slack community
-    subtitle: Online chat
-    description: The water cooler of the New Haven tech scene.
   events:
     title: Meet People IRL
     subtitle: Upcoming Events

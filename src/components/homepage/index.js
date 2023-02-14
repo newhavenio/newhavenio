@@ -29,20 +29,6 @@ export const HeroSection = styled(Box).attrs(() => ({
   }
 `;
 
-export const SlackSection = styled(Box).attrs(() => ({
-  forwardedAs: 'section',
-}))`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 6rem 4rem;
-
-  @media screen and (min-width: ${p => p.theme.breakpoints.xxlLower}) {
-    align-items: center;
-    padding-right: 10%;
-  }
-`;
-
 export const EventSection = styled(Box).attrs(() => ({
   forwardedAs: 'section',
 }))`

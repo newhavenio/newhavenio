@@ -121,6 +121,4 @@ export default createGlobalStyle`
     margin-bottom: 2rem;
   }
 
-  /* Visually hide recaptcha badge */
-  .grecaptcha-badge { visibility: hidden; }
 `;
