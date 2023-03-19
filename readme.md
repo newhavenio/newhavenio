@@ -32,6 +32,11 @@ yarn ssr
 yarn format
 ```
 
+#### VSCode Dev container
+
+Development is also supported using Visual Studio Code's [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers).
+The above [Getting Started](#getting-started) instructions apply from within the dev container.
+
 ### Pages
 
 #### Content
