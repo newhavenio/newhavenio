@@ -47,7 +47,7 @@ const Index = ({
             prefixIcon={<DiscordIcon />}
             {...entryAnimation(0)}
           >
-            Join the Discord 
+            Join the Discord
           </Button>
           <Button
             as={motion.a}
