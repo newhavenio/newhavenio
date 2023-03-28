@@ -54,7 +54,7 @@ const Footer = () => {
           <ul>
             <li>
               <Styled.SocialLink
-                href="https://discord.gg/gM3zkw9MvP"
+                href="https://discord.gg/yP7WxSXq5h"
                 target="_blank"
                 rel="noopener noreferrer"
               >
