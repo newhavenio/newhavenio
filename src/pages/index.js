@@ -40,7 +40,7 @@ const Index = ({
         <Button.Wrapper>
           <Button
             as={motion.a}
-            href="https://discord.gg/XMb6QKnj"
+            href="https://discord.gg/yP7WxSXq5h"
             palette="tertiary"
             target="_blank"
             rel="noopener noreferrer"
