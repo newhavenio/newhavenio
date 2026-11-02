@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import P from 'prop-types';
+import { format, parseISO } from 'date-fns';
 
 import Box from 'components/shared/box';
 
@@ -11,49 +12,62 @@ import {
   Description,
 } from './jobPost.css';
 
+const formatDate = date => {
+  const parsed = parseISO(date);
+  return Number.isNaN(parsed.getTime()) ? date : format(parsed, 'MMM d, yyyy');
+};
+
 /**
- * A static component to display image, name, title and description of a team member
+ * A job listing card. Manual listings carry salary/tech/remote; listings
+ * synced from Discord carry employment type and source instead, so every
+ * detail line is optional.
  */
 const JobPost = ({
   company,
-  hidden,
   jobURL,
   location,
   remote,
+  employmentType,
   jobTitle,
   salary,
   tech,
   postedOn,
   description,
+  source,
 }) => {
-  const onCardClick = useCallback(() => window.open(jobURL), [jobURL]);
+  const onCardClick = useCallback(
+    () => window.open(jobURL, '_blank', 'noopener'),
+    [jobURL]
+  );
+
+  const where = [location, remote && `Remote Friendly: ${remote}`]
+    .filter(Boolean)
+    .join(' || ');
+  const role = [jobTitle, employmentType, salary].filter(Boolean).join(' || ');
 
   return (
     <div>
-      {!hidden && (
-        <Article role="link" onClick={onCardClick}>
-          <Box
-            pl={{ _: 0, lg: 0 }}
-            display="flex"
-            flexDirection="column"
-            justifyContent={{
-              _: 'center',
-            }}
-            gridArea="title"
-          >
-            <JobPrimary>
-              {company} ({location} <span>|| Remote Friendly: {remote}</span>)
-            </JobPrimary>
-            <JobSecondary>
-              {jobTitle}
-              {salary ? (
-                <span> || {salary}</span>
-              ) : (
-                <span> || Salary Not Provided</span>
-              )}
-            </JobSecondary>
-            <JobTertiary>Tech: {tech}</JobTertiary>
-            <JobTertiary>Posted On: {postedOn}</JobTertiary>
+      <Article role="link" onClick={onCardClick}>
+        <Box
+          pl={{ _: 0, lg: 0 }}
+          display="flex"
+          flexDirection="column"
+          justifyContent={{
+            _: 'center',
+          }}
+          gridArea="title"
+        >
+          <JobPrimary>
+            {company}
+            {where && <span> ({where})</span>}
+          </JobPrimary>
+          <JobSecondary>{role}</JobSecondary>
+          {tech && <JobTertiary>Tech: {tech}</JobTertiary>}
+          <JobTertiary>
+            Posted {formatDate(postedOn)}
+            {source && ` · via ${source}`}
+          </JobTertiary>
+          {description && (
             <Description
               mt={{ _: 0, lg: 16 }}
               mb={0}
@@ -62,31 +76,26 @@ const JobPost = ({
             >
               {description}
             </Description>
-          </Box>
-          <Box
-            mt={{ _: 4, sm: 0 }}
-            ml={{ _: 0, sm: 2 }}
-            alignSelf={{ sm: 'flex-end' }}
-            alignItems="flex-end"
-          ></Box>
-        </Article>
-      )}
+          )}
+        </Box>
+      </Article>
       <br />
     </div>
   );
 };
 
 JobPost.propTypes = {
-  company: P.string.isRequired,
-  hidden: P.string,
+  company: P.string,
   jobURL: P.string.isRequired,
-  location: P.string.isRequired,
-  remote: P.string.isRequired,
+  location: P.string,
+  remote: P.string,
+  employmentType: P.string,
   jobTitle: P.string.isRequired,
   salary: P.string,
-  tech: P.string.isRequired,
+  tech: P.string,
   postedOn: P.string.isRequired,
-  description: P.string.isRequired,
+  description: P.string,
+  source: P.string,
 };
 
 export default JobPost;
