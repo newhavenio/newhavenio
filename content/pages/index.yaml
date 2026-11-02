@@ -35,6 +35,7 @@ jobs:
     title: Tech Jobs in New Haven
     description: We're passionate about helping grow our local tech scene. What better way to do that than help connect workers with local employers?
     submitpr: Submit a Job
+    feed: "New openings from around Connecticut are shared daily in the #jobs channel on our Discord, and this page picks them up automatically."
 resources:
   home:
     title: Rules and Resources
