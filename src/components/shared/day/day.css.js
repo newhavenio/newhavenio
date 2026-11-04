@@ -39,6 +39,7 @@ export const DaysAway = styled.div`
   letter-spacing: ${p => p.theme.typography.LETTER_SPACINGS.tight};
   margin-top: 4px;
   padding: 2px 4px;
+  white-space: nowrap;
   border-radius: ${p => p.theme.radii.sm};
   ${p =>
     p.featured &&

@@ -1,11 +1,11 @@
 import React from 'react';
 import P from 'prop-types';
-import { isPast, parseISO, addMilliseconds } from 'date-fns';
+import { format, isPast, parseISO, addMilliseconds } from 'date-fns';
 import { set } from 'lodash/fp';
 import { graphql, useStaticQuery } from 'gatsby';
 
-import Box from 'components/shared/box';
-import EventCard from 'components/shared/eventcard';
+import Button from 'components/shared/button';
+import Day from 'components/shared/day';
 import Text from 'components/shared/text';
 import { GUESSTIMATED_EVENT_LENGTH_MS } from 'constants/events';
 
@@ -22,7 +22,6 @@ const EventList = ({ count }) => {
             local_time
             duration
             name
-            plain_text_description
             short_link
           }
         }
@@ -59,39 +58,40 @@ const EventList = ({ count }) => {
     )
     .slice(0, count);
 
-  const [nextEvent, ...otherEvents] = events;
-
   return (
     <Styled.Container>
-      {nextEvent && (
-        <Box>
-          <EventCard
-            event={nextEvent.node}
-            type="featured"
-            isNow={isPast(nextEvent.node.datetime)}
-          />
-        </Box>
-      )}
-
-      {otherEvents.length > 0 && (
-        <Box
-          display="grid"
-          gridTemplateColumns={{ _: '1 fr', lg: '1fr 1fr' }}
-          gridColumnGap={32}
-          gridRowGap={32}
-          mt={32}
-        >
-          {otherEvents.map((edge, idx) => (
-            <EventCard
-              key={edge.node.id}
-              event={edge.node}
-              type={idx >= 2 ? 'compact' : 'default'}
-            />
+      {events.length > 0 ? (
+        <Styled.List>
+          {events.map(({ node }) => (
+            <Styled.Row key={node.id}>
+              <Day datetime={node.datetime} />
+              <Styled.Details>
+                <Styled.Name
+                  href={node.short_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {node.name}
+                </Styled.Name>
+                <Styled.Time>{format(node.datetime, 'h:mm a')}</Styled.Time>
+              </Styled.Details>
+              <Styled.RSVP>
+                <Button
+                  as="a"
+                  p=".5rem 1.25rem"
+                  href={node.short_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  RSVP
+                </Button>
+              </Styled.RSVP>
+            </Styled.Row>
           ))}
-        </Box>
+        </Styled.List>
+      ) : (
+        <Text as="p">Sorry, no upcoming events!</Text>
       )}
-
-      {events.length === 0 && <Text as="p">Sorry, no upcoming events!</Text>}
     </Styled.Container>
   );
 };
