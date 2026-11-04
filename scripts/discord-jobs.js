@@ -75,8 +75,9 @@ const parseMessage = message =>
 /** Dedupes by job ID and title+company, newest first. */
 const buildJobs = messages => {
   const byKey = new Map();
-  messages
-    .flatMap(parseMessage)
+  // concat rather than flatMap: Netlify builds on Node 10, which lacks flatMap.
+  []
+    .concat(...messages.map(parseMessage))
     .sort((a, b) => b.sharedOn.localeCompare(a.sharedOn))
     .forEach(job => {
       const titleCompany = `${job.jobTitle}|${job.company}`.toLowerCase();
