@@ -100,6 +100,20 @@ test('dedupes reposts by job ID and by title+company, newest posting first', t =
   t.is(jobs[1].sharedOn, '2026-11-02', 'keeps the most recent share');
 });
 
+test('drops jobs posted before the cutoff, even if shared recently', t => {
+  const stale = jsearchMessage({ id: '6' });
+  stale.embeds[0].fields[3].value = 'September 13, 2026';
+  stale.embeds[0].footer.text = 'Job ID: jsearch_stale';
+  stale.embeds[0].title = 'Stale Role';
+
+  const jobs = buildJobs([jsearchMessage(), stale], '2026-10-05');
+  t.deepEqual(
+    jobs.map(j => j.jobTitle),
+    ['Software Engineer, FTT Investment Tech Solutions']
+  );
+  t.is(buildJobs([stale]).length, 1, 'no cutoff keeps everything');
+});
+
 test('toISODate handles the formats the bot emits', t => {
   t.is(toISODate('October 30, 2026'), '2026-10-30');
   t.is(toISODate('2026-10-30T00:00:00.000Z'), '2026-10-30');

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import P from 'prop-types';
-import { graphql } from 'gatsby';
+import { graphql, navigate } from 'gatsby';
 
 import Layout from 'components/layout';
 import Head from 'components/head';
@@ -21,7 +21,15 @@ const toISODate = date => {
   return `${y}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
 };
 
+const PAGE_SIZE = 20;
+
+const pageFromSearch = search => {
+  const match = /[?&]page=(\d+)/.exec(search || '');
+  return match ? Number(match[1]) : 1;
+};
+
 const Jobs = ({
+  location,
   data: {
     pagesYaml: {
       jobs: { home },
@@ -38,6 +46,24 @@ const Jobs = ({
   ]
     .map(job => ({ ...job, postedOn: toISODate(job.postedOn) }))
     .sort((a, b) => b.postedOn.localeCompare(a.postedOn));
+
+  // The static HTML is always page 1; read ?page= only after hydrating so the
+  // first client render matches it.
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
+
+  const pageCount = Math.max(1, Math.ceil(jobPosts.length / PAGE_SIZE));
+  const requested = hydrated ? pageFromSearch(location.search) : 1;
+  const page = Math.min(Math.max(requested, 1), pageCount);
+  const visible = jobPosts.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+
+  const listTop = useRef(null);
+  const goTo = target => {
+    navigate(
+      target === 1 ? location.pathname : `${location.pathname}?page=${target}`
+    );
+    if (listTop.current) listTop.current.scrollIntoView();
+  };
 
   return (
     <Layout>
@@ -61,6 +87,7 @@ const Jobs = ({
         >
           {home.submitpr}
         </Button>
+        <div ref={listTop} />
         <Box my={4}>
           <Title
             color="Oranges.100"
@@ -76,9 +103,37 @@ const Jobs = ({
               No openings right now. Check back soon.
             </Text>
           )}
-          {jobPosts.map(({ key, ...jobPost }) => (
+          {visible.map(({ key, ...jobPost }) => (
             <JobPost key={key} {...jobPost} />
           ))}
+          {pageCount > 1 && (
+            <Box
+              as="nav"
+              aria-label="Job listing pages"
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+              mt={4}
+            >
+              <Button
+                palette="secondary"
+                disabled={page === 1}
+                onClick={() => goTo(page - 1)}
+              >
+                Newer
+              </Button>
+              <Text as="span" fontSize="3">
+                Page {page} of {pageCount}
+              </Text>
+              <Button
+                palette="secondary"
+                disabled={page === pageCount}
+                onClick={() => goTo(page + 1)}
+              >
+                Older
+              </Button>
+            </Box>
+          )}
         </Box>
       </PageContainer>
     </Layout>
@@ -128,6 +183,10 @@ export const jobPostsQuery = graphql`
 `;
 
 Jobs.propTypes = {
+  location: P.shape({
+    pathname: P.string,
+    search: P.string,
+  }).isRequired,
   data: P.shape({
     pagesYaml: P.any.isRequired,
     allJobsYaml: P.shape({

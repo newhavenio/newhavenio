@@ -12,7 +12,8 @@
  * Env:
  *   DISCORD_BOT_TOKEN       token of a bot that can read the channel
  *   DISCORD_JOBS_CHANNEL_ID the #jobs channel ID
- *   JOBS_MAX_AGE_DAYS       how far back to read (default 30)
+ *   JOBS_MAX_AGE_DAYS       drop jobs posted (or shared) longer ago than
+ *                           this many days (default 30)
  *
  * Without the token and channel ID (local dev, deploy previews), the script
  * leaves the committed discord.json alone. In a Netlify production build
@@ -72,12 +73,17 @@ const parseMessage = message =>
       };
     });
 
-/** Dedupes by job ID and title+company, newest first. */
-const buildJobs = messages => {
+/**
+ * Dedupes by job ID and title+company, newest first. With a cutoff date
+ * (YYYY-MM-DD), drops jobs posted before it: the bot often shares jobs that
+ * were posted weeks earlier, so reading only recent messages isn't enough.
+ */
+const buildJobs = (messages, cutoffDate = '') => {
   const byKey = new Map();
   // concat rather than flatMap: Netlify builds on Node 10, which lacks flatMap.
   []
     .concat(...messages.map(parseMessage))
+    .filter(job => job.postedOn >= cutoffDate)
     .sort((a, b) => b.sharedOn.localeCompare(a.sharedOn))
     .forEach(job => {
       const titleCompany = `${job.jobTitle}|${job.company}`.toLowerCase();
@@ -148,8 +154,7 @@ const main = async () => {
   const token = process.env.DISCORD_BOT_TOKEN;
   const channelId = process.env.DISCORD_JOBS_CHANNEL_ID;
   if (!token || !channelId) {
-    const message =
-      'DISCORD_BOT_TOKEN and DISCORD_JOBS_CHANNEL_ID are not set';
+    const message = 'DISCORD_BOT_TOKEN and DISCORD_JOBS_CHANNEL_ID are not set';
     if (process.env.CONTEXT === 'production') throw new Error(message);
     console.warn(`${message}; keeping the committed discord.json.`);
     return;
@@ -158,7 +163,7 @@ const main = async () => {
   const cutoff = Date.now() - maxAgeDays * 24 * 60 * 60 * 1000;
 
   const messages = await fetchMessages(channelId, token, cutoff);
-  const jobs = buildJobs(messages);
+  const jobs = buildJobs(messages, new Date(cutoff).toISOString().slice(0, 10));
   fs.writeFileSync(OUTPUT, `${JSON.stringify(jobs, null, 2)}\n`);
   console.log(
     `Read ${messages.length} messages from the last ${maxAgeDays} days; wrote ${
