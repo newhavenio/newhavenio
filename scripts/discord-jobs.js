@@ -1,7 +1,9 @@
 /**
  * Builds content/jobs/discord.json from the job postings that the jobbot
  * (github.com/josh-levinson/newhavenio-jobbot) posts to our Discord #jobs
- * channel. Run by .github/workflows/discord-jobs.yml on a schedule.
+ * channel. Runs at the start of every build (`yarn build`), so each Netlify
+ * deploy has current jobs. .github/workflows/discord-jobs.yml triggers a
+ * Netlify build on a schedule to keep the page fresh between code changes.
  *
  * The bot posts one embed per job: the author is the source ("JSearch" or
  * "Yale Careers"), the title links to the posting, and Location / Type /
@@ -12,10 +14,16 @@
  *   DISCORD_JOBS_CHANNEL_ID the #jobs channel ID
  *   JOBS_MAX_AGE_DAYS       how far back to read (default 30)
  *
- * Requires Node 18+ (global fetch). No dependencies.
+ * Without the token and channel ID (local dev, deploy previews), the script
+ * leaves the committed discord.json alone. In a Netlify production build
+ * (CONTEXT=production) it fails instead, so we never deploy stale jobs
+ * silently. Netlify keeps the last good deploy live when a build fails.
+ *
+ * No dependencies.
  */
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
 
 const API = 'https://discord.com/api/v10';
 const OUTPUT = path.join(__dirname, '..', 'content', 'jobs', 'discord.json');
@@ -84,20 +92,37 @@ const buildJobs = messages => {
   );
 };
 
+// Minimal GET returning { status, body }. Uses https rather than fetch so it
+// runs on whatever Node version the Netlify build image is pinned to.
+const get = (url, headers) =>
+  new Promise((resolve, reject) => {
+    https
+      .get(url, { headers }, res => {
+        let body = '';
+        res.setEncoding('utf8');
+        res.on('data', chunk => {
+          body += chunk;
+        });
+        res.on('end', () => resolve({ status: res.statusCode, body }));
+      })
+      .on('error', reject);
+  });
+
 const discord = async (route, token) => {
   for (;;) {
-    const res = await fetch(`${API}${route}`, {
-      headers: { Authorization: `Bot ${token}` },
+    const res = await get(`${API}${route}`, {
+      Authorization: `Bot ${token}`,
+      'User-Agent': 'newhaven.io jobs sync',
     });
     if (res.status === 429) {
-      const { retry_after: wait = 1 } = await res.json();
+      const { retry_after: wait = 1 } = JSON.parse(res.body);
       await new Promise(r => setTimeout(r, wait * 1000));
       continue;
     }
-    if (!res.ok) {
-      throw new Error(`Discord ${route} -> ${res.status} ${await res.text()}`);
+    if (res.status < 200 || res.status >= 300) {
+      throw new Error(`Discord ${route} -> ${res.status} ${res.body}`);
     }
-    return res.json();
+    return JSON.parse(res.body);
   }
 };
 
@@ -122,9 +147,11 @@ const main = async () => {
   const token = process.env.DISCORD_BOT_TOKEN;
   const channelId = process.env.DISCORD_JOBS_CHANNEL_ID;
   if (!token || !channelId) {
-    throw new Error(
-      'DISCORD_BOT_TOKEN and DISCORD_JOBS_CHANNEL_ID are required'
-    );
+    const message =
+      'DISCORD_BOT_TOKEN and DISCORD_JOBS_CHANNEL_ID are not set';
+    if (process.env.CONTEXT === 'production') throw new Error(message);
+    console.warn(`${message}; keeping the committed discord.json.`);
+    return;
   }
   const maxAgeDays = Number(process.env.JOBS_MAX_AGE_DAYS || 30);
   const cutoff = Date.now() - maxAgeDays * 24 * 60 * 60 * 1000;

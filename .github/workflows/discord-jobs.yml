@@ -1,43 +1,27 @@
-name: Sync jobs from Discord
+name: Refresh jobs from Discord
 
-# Pulls the jobbot's postings from the Discord #jobs channel into
-# content/jobs/discord.json. Committing to master triggers a Netlify deploy.
+# The Netlify build pulls the jobbot's postings from the Discord #jobs channel
+# (scripts/discord-jobs.js, run by `yarn build`). This triggers a production
+# build on a schedule so the jobs page stays current between code changes.
+# Nothing is committed, so branch protection on master doesn't come into it.
 on:
   schedule:
     - cron: '17 */6 * * *'
   workflow_dispatch:
 
-permissions:
-  contents: write
-
-concurrency:
-  group: discord-jobs
-  cancel-in-progress: false
+permissions: {}
 
 jobs:
-  sync:
+  rebuild:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: Fetch jobs from Discord
-        run: node scripts/discord-jobs.js
+      - name: Trigger Netlify build
         env:
-          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
-          DISCORD_JOBS_CHANNEL_ID: ${{ secrets.DISCORD_JOBS_CHANNEL_ID }}
-
-      - name: Commit if changed
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
         run: |
-          if git diff --quiet -- content/jobs/discord.json; then
-            echo "No job changes."
-            exit 0
+          if [ -z "$NETLIFY_BUILD_HOOK" ]; then
+            echo "::error::NETLIFY_BUILD_HOOK secret is not set"
+            exit 1
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/jobs/discord.json
-          git commit -m "Update jobs from Discord"
-          git push
+          curl --fail --silent --show-error -X POST -d '{}' \
+            "$NETLIFY_BUILD_HOOK?trigger_title=Scheduled+jobs+refresh"
