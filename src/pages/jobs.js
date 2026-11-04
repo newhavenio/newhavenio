@@ -11,15 +11,6 @@ import Title from 'components/shared/title';
 import Text from 'components/shared/text';
 import JobPost from 'components/shared/jobPost';
 import { Job } from 'customtypes';
-import GithubIcon from 'images/github-icon.svg';
-
-// Manual jobs.yaml entries use MM/DD/YYYY; Discord jobs use YYYY-MM-DD.
-const toISODate = date => {
-  const us = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(date || '');
-  if (!us) return date || '';
-  const [, m, d, y] = us;
-  return `${y}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
-};
 
 const PAGE_SIZE = 20;
 
@@ -34,18 +25,12 @@ const Jobs = ({
     pagesYaml: {
       jobs: { home },
     },
-    allJobsYaml: { nodes: manualJobs },
     allDiscordJson: { nodes: discordJobs },
   },
 }) => {
-  const jobPosts = [
-    ...manualJobs
-      .filter(job => !job.hidden)
-      .map(job => ({ ...job, key: job.jobURL })),
-    ...discordJobs.map(job => ({ ...job, key: job.jobId })),
-  ]
-    .map(job => ({ ...job, postedOn: toISODate(job.postedOn) }))
-    .sort((a, b) => b.postedOn.localeCompare(a.postedOn));
+  const jobPosts = [...discordJobs].sort((a, b) =>
+    b.postedOn.localeCompare(a.postedOn)
+  );
 
   // The static HTML is always page 1; read ?page= only after hydrating so the
   // first client render matches it.
@@ -78,15 +63,6 @@ const Jobs = ({
         <Text as="p" fontSize="3">
           {home.feed}
         </Text>
-        <Button
-          as="a"
-          href="https://github.com/newhavenio/newhavenio/tree/master/content/jobs"
-          target="_blank"
-          rel="noopener noreferrer"
-          prefixIcon={<GithubIcon />}
-        >
-          {home.submitpr}
-        </Button>
         <div ref={listTop} />
         <Box my={4}>
           <Title
@@ -103,8 +79,8 @@ const Jobs = ({
               No openings right now. Check back soon.
             </Text>
           )}
-          {visible.map(({ key, ...jobPost }) => (
-            <JobPost key={key} {...jobPost} />
+          {visible.map(({ jobId, ...jobPost }) => (
+            <JobPost key={jobId} {...jobPost} />
           ))}
           {pageCount > 1 && (
             <Box
@@ -142,20 +118,6 @@ const Jobs = ({
 
 export const jobPostsQuery = graphql`
   query JobPosts2Query {
-    allJobsYaml {
-      nodes {
-        company
-        hidden
-        jobURL
-        location
-        remote
-        jobTitle
-        salary
-        tech
-        postedOn
-        description
-      }
-    }
     allDiscordJson {
       nodes {
         jobId
@@ -175,7 +137,6 @@ export const jobPostsQuery = graphql`
           title
           description
           feed
-          submitpr
         }
       }
     }
@@ -189,9 +150,6 @@ Jobs.propTypes = {
   }).isRequired,
   data: P.shape({
     pagesYaml: P.any.isRequired,
-    allJobsYaml: P.shape({
-      nodes: P.arrayOf(Job),
-    }),
     allDiscordJson: P.shape({
       nodes: P.arrayOf(Job),
     }),

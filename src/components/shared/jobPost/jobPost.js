@@ -17,20 +17,13 @@ const formatDate = date => {
   return Number.isNaN(parsed.getTime()) ? date : format(parsed, 'MMM d, yyyy');
 };
 
-/**
- * A job listing card. Manual listings carry salary/tech/remote; listings
- * synced from Discord carry employment type and source instead, so every
- * detail line is optional.
- */
+/** A job listing card. Discord postings can omit most details, so they're optional. */
 const JobPost = ({
   company,
   jobURL,
   location,
-  remote,
   employmentType,
   jobTitle,
-  salary,
-  tech,
   postedOn,
   description,
   source,
@@ -40,10 +33,7 @@ const JobPost = ({
     [jobURL]
   );
 
-  const where = [location, remote && `Remote Friendly: ${remote}`]
-    .filter(Boolean)
-    .join(' || ');
-  const role = [jobTitle, employmentType, salary].filter(Boolean).join(' || ');
+  const role = [jobTitle, employmentType].filter(Boolean).join(' || ');
 
   return (
     <div>
@@ -59,10 +49,9 @@ const JobPost = ({
         >
           <JobPrimary>
             {company}
-            {where && <span> ({where})</span>}
+            {location && <span> ({location})</span>}
           </JobPrimary>
           <JobSecondary>{role}</JobSecondary>
-          {tech && <JobTertiary>Tech: {tech}</JobTertiary>}
           <JobTertiary>
             Posted {formatDate(postedOn)}
             {source && ` · via ${source}`}
@@ -88,11 +77,8 @@ JobPost.propTypes = {
   company: P.string,
   jobURL: P.string.isRequired,
   location: P.string,
-  remote: P.string,
   employmentType: P.string,
   jobTitle: P.string.isRequired,
-  salary: P.string,
-  tech: P.string,
   postedOn: P.string.isRequired,
   description: P.string,
   source: P.string,
