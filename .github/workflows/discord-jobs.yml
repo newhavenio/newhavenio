@@ -1,8 +1,9 @@
 name: Refresh jobs from Discord
 
 # The Netlify build pulls the jobbot's postings from the Discord #jobs channel
-# (scripts/discord-jobs.js, run by `yarn build`). This triggers a production
-# build on a schedule so the jobs page stays current between code changes.
+# (scripts/discord-jobs.js) and upcoming events from Meetup
+# (scripts/meetup-events.js), both run by `yarn build`. This triggers a
+# production build on a schedule so those pages stay current between code changes.
 # Nothing is committed, so branch protection on master doesn't come into it.
 on:
   schedule:

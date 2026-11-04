@@ -43,9 +43,6 @@ module.exports = {
         },
       },
     },
-    // gatsby-source-meetup was removed: Meetup shut down the v3 REST API it
-    // used, which broke every build. The MeetupEvent type is declared in
-    // gatsby-node.js so the events list still builds (and shows its empty state).
     {
       resolve: 'gatsby-plugin-styled-components',
     },
