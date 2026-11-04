@@ -12,16 +12,11 @@ import { GUESSTIMATED_EVENT_LENGTH_MS } from 'constants/events';
 import * as Styled from './eventlist.css';
 
 const EventList = ({ count }) => {
-  // TODO: Possibly combine with events.js query if other components there need
-  // Meetup data, to reduce concurrent fetches.
   const data = useStaticQuery(graphql`
     query UpcomingEvents {
-      allMeetupEvent {
+      allMeetupJson(sort: { fields: [local_date, local_time], order: ASC }) {
         edges {
           node {
-            featured_photo {
-              photo_link
-            }
             id
             local_date
             local_time
@@ -29,20 +24,13 @@ const EventList = ({ count }) => {
             name
             plain_text_description
             short_link
-            # venue {
-            #   name
-            #   address_1
-            #   city
-            #   state
-            #   zip
-            # }
           }
         }
       }
     }
   `);
 
-  const [nextEvent, ...otherEvents] = data.allMeetupEvent.edges
+  const events = data.allMeetupJson.edges
     /**
      * Adds the parsed date and time to the event object to reduce the need to
      * constantly parse ISO strings.
@@ -71,6 +59,8 @@ const EventList = ({ count }) => {
     )
     .slice(0, count);
 
+  const [nextEvent, ...otherEvents] = events;
+
   return (
     <Styled.Container>
       {nextEvent && (
@@ -93,7 +83,7 @@ const EventList = ({ count }) => {
         >
           {otherEvents.map((edge, idx) => (
             <EventCard
-              key={edge.id}
+              key={edge.node.id}
               event={edge.node}
               type={idx >= 2 ? 'compact' : 'default'}
             />
@@ -101,9 +91,7 @@ const EventList = ({ count }) => {
         </Box>
       )}
 
-      {data.allMeetupEvent.edges.length === 0 && (
-        <Text as="p">Sorry, no upcoming events!</Text>
-      )}
+      {events.length === 0 && <Text as="p">Sorry, no upcoming events!</Text>}
     </Styled.Container>
   );
 };

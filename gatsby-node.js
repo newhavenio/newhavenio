@@ -14,11 +14,10 @@ exports.onCreateWebpackConfig = ({
   });
 };
 
-// Declared explicitly because their sources may produce no nodes, and Gatsby
-// can't infer a type it has never seen:
-// - DiscordJson: content/jobs/discord.json, written by scripts/discord-jobs.js,
-//   may be an empty array.
-// - MeetupEvent: nothing sources these since gatsby-source-meetup was removed.
+// Declared explicitly because these files may be empty arrays, and Gatsby can't
+// infer a type it has never seen:
+// - DiscordJson: content/jobs/discord.json, written by scripts/discord-jobs.js.
+// - MeetupJson: content/events/meetup.json, written by scripts/meetup-events.js.
 exports.createSchemaCustomization = ({ actions }) => {
   actions.createTypes(`
     type DiscordJson implements Node @dontInfer {
@@ -34,18 +33,13 @@ exports.createSchemaCustomization = ({ actions }) => {
       description: String
     }
 
-    type MeetupEventFeatured_photo {
-      photo_link: String
-    }
-
-    type MeetupEvent implements Node @dontInfer {
-      featured_photo: MeetupEventFeatured_photo
-      local_date: String
-      local_time: String
+    type MeetupJson implements Node @dontInfer {
+      name: String!
+      local_date: String!
+      local_time: String!
       duration: Float
-      name: String
-      plain_text_description: String
-      short_link: String
+      plain_text_description: String!
+      short_link: String!
     }
   `);
 };
